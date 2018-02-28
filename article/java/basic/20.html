@@ -1,0 +1,514 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>java设计模式</title>
+    <meta name="description"
+          content="java设计模式分为:工厂模式 抽象工厂模式 单例模式 建造者模式 原型模式 适配器模式 装饰器模式 代理模式 外观模式 桥接模式 组合模式 享元模式 策略模式 模板方法模式 观察者模式 迭代子模式 责任链模式 命令模式 备忘录模式 状态模式 访问者模式 中介者模式 解释器模式">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+
+    <link rel="stylesheet" href="http://mip.localhost/css/bootstrap.css">
+    <link rel="stylesheet" href="http://mip.localhost/css/dashidan.css">
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6632e058970afc4f6d1475330c7682cd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://mip.localhost/index.html">首页</a></li>
+            <li><a href="http://mip.localhost/about.html">关于</a></li>
+            <li><a href="http://mip.localhost/thanks.html">鸣谢</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="fullscreen">
+    <div class="container-fluid">
+        <!-- 顶部面包屑导航-->
+        <ol class="breadcrumb">
+            <li><a href="http://mip.localhost/index.html">首页</a></li>
+            <li class="active"><a href="http://mip.localhost/article/java/index.html">Java</a></li>
+        </ol>
+
+        <div class="dsd_content">
+            <div id="xs_index" class="col-sm-3 col-md-3 col-lg-3 col-xs-12 hidden-xs">
+                <div>
+                    <div class="dsd_title" onclick="clickTitle('basic')">
+                        <h3><span id="basic_title">+ Java入门到精通</span></h3>
+                    </div>
+
+                    <div id="basic" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/1.html">1.Java教程概述</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/2.html">2.搭建Java开发环境</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/3.html">3.第一个Java程序</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/4.html">4.Java代码注释</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/5.html">5.Java变量</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/6.html">6.Java集成开发环境</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/7.html">7.Java运算符</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/8.html">8.Java方法</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/9.html">9.Java流程控制</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/10.html">10.Java命名空间</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/11.html">11.Java数组</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/12.html">12.Java静态变量与常量</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/13.html">13.Java对象</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/14.html">14.Java包装类</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/15.html">15.Java集合类</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/16.html">16.Java异常</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/17.html">17.Java位运算</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/18.html">18.Java转义字符</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/19.html">19.Java线程</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/20.html">20.Java设计模式</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/21.html">21.Java编码优化</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/22.html">22.jvm参数优化</a>
+                        </div>
+                    </div>
+
+                    <div class="dsd_title" onclick="clickTitle('jdk8')">
+                        <h3 id="jdk8_title">+ JDK8新特性</h3>
+                    </div>
+                    <div id="jdk8" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/1.html">1.JDK8新增语法特性简介</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/2.html">2.JDK8函数式接口</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/3.html">3.Java兰姆达(Lambda)表达式</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/4.html">4.java拉姆达(Lambda)表达式应用</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/5.html">5.JDK8的default方法</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/6.html">6.JDK8方法引用</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/7.html">7.JDK8集合类库的批量数据操作</a>
+                        </div>
+                    </div>
+
+                    <div class="dsd_title" onclick="clickTitle('addenda')">
+                        <h3 id="addenda_title">+ 附录</h3>
+                    </div>
+                    <div id="addenda" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/1.html">1.Java中@Override标签作用</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/2.html">2.Java编码规范</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/3.html">3.Java保留关键字</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/4.html">4.Linux搭建Java开发环境配置环境变量</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/5.html">5.阿里巴巴Java开发手册</a>
+                        </div>
+                    </div>
+
+                    <div class="dsd_title" onclick="clickTitle('idea')">
+                        <h3 id="idea_title">+ Intelij IDEA</h3>
+                    </div>
+                    <div id="idea" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/idea/1.html">1.IntelliJ IDEA设置xmx和xms</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/idea/2.html">2.IntelliJ IDEA格式化代码目录</a>
+                        </div>
+                    </div>
+
+                    <div class="dsd_title" onclick="clickTitle('api')">
+                        <h3><span id="api_title">+ Java中文手册</span></h3>
+                    </div>
+
+                    <div id="api" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/apidoc/java/api6/index.html">Java6手册(中)</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/apidoc/java/api8en/index.html">Java8手册(英)</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/apidoc/java/api9en/index.html">Java9手册(英)</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-9 col-md-9 col-lg-9">
+                <!-- 文章内容-->
+                <div class="dsd_title"><h1>Java设计模式</h1></div>
+                <div id="xs_content_border">
+                    <div>
+                        <div class="dsd_catalog"><h3>目录</h3><a href="#1">1 java设计模式简介</a><br><a href="#2">2 java单例模式</a><br><a
+                            href="#2.1">&nbsp;&nbsp;2.1 java懒汉式单例模式</a><br><a href="#2.2">&nbsp;&nbsp;2.2
+                            java饿汉式单例模式</a><br><a href="#2.3">&nbsp;&nbsp;2.3 java线程安全的懒汉式</a><br><a href="#2.4">&nbsp;&nbsp;2.4
+                            java内部类线程安全单例模式</a><br><a href="#3">3 java工厂模式</a><br><a href="#4">4 java观察者模式</a></div>
+                    </div>
+                    <div class="jumbotron">
+                        <p>软件设计领域的四位世界级大师Gang Of Four (GoF):Erich Gamma,Richard Helm,Ralph Johnson,John
+                            Vlissides合著了一本非常著名的书《Design Patterns - Elements of Reusable Object-Oriented
+                            Software》翻译的中文名为《设计模式:可复用面向对象软件的基础》.书中提出了23种基本设计模式,从理论高度提炼并规范了设计模式,对面向对象软件设计产生了巨大影响.
+                        </p>
+                    </div>
+                    <p><img class="center-block img-responsive" src="http://mip.localhost/img/java/basic/19-1.jpg"
+                            alt="图19-1"/></p>
+                    <div id="1"><h3>1 java设计模式简介</h3></div>
+                    <p>总体来说设计模式分为三大类:</p>
+                    <ul>
+                        <li>创建型模式,共五种:工厂模式、抽象工厂模式、单例模式、建造者模式、原型模式.</li>
+                        <li>结构型模式,共七种:适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式.</li>
+                        <li>行为型模式,共十一种:策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式.</li>
+                    </ul>
+                    <p>有些设计模式我个人认为,不是很具象,就像星座一样抽象概念居多,导致应用场景不明确. 所以不希望他们占用我过多的脑容量和时间.只挑选几个含金量高,模型具象,应用场景广泛的模式来介绍.
+                        以下这几个都是非常值得花时间去熟悉的模式.</p>
+                    <div id="2"><h3>2 java单例模式</h3></div>
+                    <p>单例模式即是只产生一个对象的模式.在Java中，每次使用new<a href="http://mip.localhost/article/java/addenda/3.html">关键字</a>,就会产生一个新的<a
+                        href="http://mip.localhost/article/java/basic/13.html">Java对象</a>.
+                        有时我们需要只有一个对象产生,比如一些管理类,全局管理其它模块时,这个管理类适合采用单例模式.</p>
+                    <p>普通的单例模式分为2种,懒汉式和饿汉式.懒汉式比较懒,用到的时候才创建对象,饿汉式不讲理,你用不用我都创建好放着. </p>
+                    <p><img class="center-block img-responsive" src="http://mip.localhost/img/common/secret.jpg"
+                            alt="降龙十八掌秘籍"/></p>
+                    <p>普通单例模式的秘籍:</p>
+                    <ul>
+                        <li>将构造函数定义为私有private,只能在本类中创建,不能被继承.</li>
+                        <li>通过private和static关键字定义一个私有并且静态的本类实例对象,保证内存中只有1个实例,并且只有本类能调用.</li>
+                        <li>公开一个获得本类实例的静态方法,来获取这个实例,保证每次得到的实例都是同一个,来实现单例模式.</li>
+                    </ul>
+                    <p>列出4种常用的单例模式的写法,推荐第4种. 第4种是通过内部类实现,高效且线程安全. 记住这个好了,其他的可以忘.</p>
+                    <div id="2.1" class="dsd_title_c_2"><h4>2.1 java懒汉式单例模式</h4></div>
+                    <p>java懒汉式单例模式代码:</p>
+                    <pre class="prettyprint"><code class="java language-java">/**
+ * 懒汉式单例模式
+ */
+class Singleton1 {
+
+    private static Singleton1 singleton1;
+
+    private Singleton1() {
+
+    }
+
+    public static Singleton1 getInstance() {
+        if (null == singleton1) {
+            singleton1 = new Singleton1();
+        }
+        return singleton1;
+    }
+}
+</code></pre>
+                    <div id="2.2" class="dsd_title_c_2"><h4>2.2 java饿汉式单例模式</h4></div>
+                    <p>java饿汉式单例模式代码:</p>
+                    <pre class="prettyprint"><code class="java language-java">/**
+ * 饿汉式单例模式
+ */
+class Singleton2 {
+
+    private static Singleton2 singleton2 = new Singleton2();
+
+    private Singleton2() {
+    }
+
+    public static Singleton2 getInstance() {
+        return singleton2;
+    }
+}
+</code></pre>
+                    <div id="2.3" class="dsd_title_c_2"><h4>2.3 java线程安全的懒汉式</h4></div>
+                    <p>java线程安全的懒汉式代码:</p>
+                    <pre class="prettyprint"><code class="java language-java">/**
+ * 线程安全懒汉式单例模式
+ */
+class Singleton3 {
+
+    private static Singleton3 singleton3;
+
+    private Singleton3() {
+
+    }
+
+    public static synchronized Singleton3 getInstance() {
+        if (null == singleton3) {
+            singleton3 = new Singleton3();
+        }
+        return singleton3;
+    }
+}
+</code></pre>
+                    <div id="2.4" class="dsd_title_c_2"><h4>2.4 java内部类线程安全单例模式</h4></div>
+                    <p>这种方式利用java的final关键字特性,一旦赋值无法改变.线程安全,效率高,推荐方式.java内部类线程安全单例模式示例代码:</p>
+                    <pre class="prettyprint"><code class="java language-java">/**
+ * 内部类线程安全单例模式
+ */
+class Singleton4 {
+
+    private static class SingletonHolder {
+        public final static Singleton4 instance = new Singleton4();
+    }
+
+    public static Singleton4 getInstance() {
+        return SingletonHolder.instance;
+    }
+}
+</code></pre>
+                    <div id="3"><h3>3 java工厂模式</h3></div>
+                    <p>工厂模式本质是通过条件语句,根据不同的条件创建不同的对象.通常情况下,产生的对象继承自同一个父类,工厂类提供的方法返回的类型为父类对象类型.达到对象封装的作用.</p>
+                    <p>java工厂模式代码示例:</p>
+                    <pre class="prettyprint"><code class="java language-java">package com.dashidan.lesson19;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * &lt;p&gt;
+ * Java教程基础篇:  19.Java设计模式
+ * 工厂模式
+ */
+public class Demo2 {
+    public static void main(String[] args) {
+        /** 传入需要生产的产品类型*/
+        Product product = Factory.getProduct(1);
+        /** 打印产品信息*/
+        product.info();
+    }
+}
+
+/**
+ * 工厂模式
+ * 根据不同的类型，生产不同的产品
+ */
+class Factory {
+    public static Product getProduct(int type) {
+        switch (type) {
+            case 1:
+                return new Product1();
+            case 2:
+                return new Product2();
+        }
+        return null;
+    }
+}
+
+/**
+ * 产品的父类是抽象类，提供一个info方法
+ */
+abstract class Product {
+
+    public abstract void info();
+}
+
+/**
+ * 产品Product1继承自父类Product
+ */
+class Product1 extends Product {
+    @Override
+    public void info() {
+        System.out.println("Product1 info.");
+    }
+}
+
+/**
+ * 产品Product2继承自父类Product
+ */
+class Product2 extends Product {
+    @Override
+    public void info() {
+        System.out.println("Product2 info.");
+    }
+}
+</code></pre>
+                    <p>输出:</p>
+                    <pre class="prettyprint"><code>Product1 info.
+</code></pre>
+                    <div id="4"><h3>4 java观察者模式</h3></div>
+                    <p>
+                        观察者模式(也称为发布(publish)-订阅(Subscribe)模式、模型-视图(View)模式、源-收听者(Listener)模式或从属者模式).是一个非常棒的降低代码耦合度的方式.</p>
+                    <p><img class="center-block img-responsive" src="http://mip.localhost/img/common/secret.jpg"
+                            alt="降龙十八掌秘籍"/></p>
+                    <p>观察者模式的秘籍:</p>
+                    <ul>
+                        <li>观察者在发布者对象上注册消息侦听,加入消息侦听列表</li>
+                        <li>发布者遍历消息侦听列表,调用观察者方法处理消息</li>
+                        <li>不同的观察者对象通常继承同一个观察者接口,通过接口方法统一处理</li>
+                    </ul>
+                    <p>通常用在一对多或者多对多的场景中,一个对象数据变化了,需要通知其他对象的场景. 比如ActionScript3语言底层的事件冒泡机制,就是采用观察者模式设计.</p>
+                    <p>java观察者模式代码示例:</p>
+                    <pre class="prettyprint"><code class="java language-java">package com.dashidan.lesson19;
+
+
+import java.util.ArrayList;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * &lt;p&gt;
+ * Java教程基础篇:  19.Java设计模式
+ * 观察者模式
+ */
+public class Demo3 {
+    public static void main(String[] args) {
+        /** 初始化发布者和观察者*/
+        Publisher publisher = new Publisher();
+        Observer1 observer1 = new Observer1();
+        Observer2 observer2 = new Observer2();
+        /** 加入2个观察者到发布者的消息侦听队列*/
+        publisher.addObserver(observer1);
+        publisher.addObserver(observer2);
+        /** 通知观察者*/
+        publisher.notifyAllObserver();
+    }
+}
+
+/**
+ * 发布者
+ */
+class Publisher {
+
+    /**
+     * 发布者的消息侦听队列
+     */
+    ArrayList&lt;IObserver&gt; observers = new ArrayList&lt;&gt;();
+
+    /**
+     * 加入消息侦听队列
+     */
+    public void addObserver(IObserver iObserver) {
+        System.out.println("加入观察者");
+        observers.add(iObserver);
+    }
+
+    /**
+     * 通知侦听队列中所有的观察者
+     */
+    public void notifyAllObserver() {
+        for (IObserver iObserver : observers) {
+            System.out.println("通知观察者");
+            iObserver.action();
+        }
+    }
+}
+
+/**
+ * 观察者接口
+ */
+interface IObserver {
+    void action();
+}
+
+/**
+ * 观察者Observer1类
+ */
+class Observer1 implements IObserver {
+    @Override
+    public void action() {
+        System.out.println("Observer1 action.");
+    }
+}
+
+/**
+ * 观察者Observer2类
+ */
+class Observer2 implements IObserver {
+    @Override
+    public void action() {
+        System.out.println("Observer2 action.");
+    }
+}
+</code></pre>
+                    <p>输出:</p>
+                    <pre class="prettyprint"><code>加入观察者
+加入观察者
+通知观察者
+Observer1 action.
+通知观察者
+Observer2 action.
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center navbar-fixed-bottom">
+    <div class="visible-xs-block">
+        <div class="bg-primary text-center" onclick="window.open('../index.html','_self')" style="cursor: pointer">
+            目录
+        </div>
+    </div>
+    <a href="http://mip.localhost/article/java/basic/21.html">下一篇: Java编码优化</a>
+</footer>
+
+<script src="http://mip.localhost/js/jquery-3.2.1.min.js"></script>
+<script src="http://mip.localhost/js/vendor/modernizr-custom.js"></script>
+<script src="http://mip.localhost/js/bootstrap.js"></script>
+<script src="http://mip.localhost/js/google-code-prettify/run_prettify.js"></script>
+<script src="http://mip.localhost/js/main.js"></script>
+</body>
+</html>

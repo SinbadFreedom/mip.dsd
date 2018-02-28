@@ -1,0 +1,379 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>java 方法引用</title>
+    <meta name="description"
+          content="java方法引用(method references)的概念 java方法引用的种类 java静态方法引用 java某个对象的方法引用 java特定类的任意对象的方法引用">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+
+    <link rel="stylesheet" href="http://mip.localhost/css/bootstrap.css">
+    <link rel="stylesheet" href="http://mip.localhost/css/dashidan.css">
+
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6632e058970afc4f6d1475330c7682cd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="http://mip.localhost/index.html">首页</a></li>
+            <li><a href="http://mip.localhost/about.html">关于</a></li>
+            <li><a href="http://mip.localhost/thanks.html">鸣谢</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="fullscreen">
+    <div class="container-fluid">
+        <!-- 顶部面包屑导航-->
+        <ol class="breadcrumb">
+            <li><a href="http://mip.localhost/index.html">首页</a></li>
+            <li class="active"><a href="http://mip.localhost/article/java/index.html">Java</a></li>
+        </ol>
+
+        <div class="dsd_content">
+            <div id="xs_index" class="col-sm-3 col-md-3 col-lg-3 col-xs-12 hidden-xs">
+                <div>
+                    <div class="dsd_title" onclick="clickTitle('basic')">
+                        <h3><span id="basic_title">+ Java入门到精通</span></h3>
+                    </div>
+
+                    <div id="basic" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/1.html">1.Java教程概述</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/2.html">2.搭建Java开发环境</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/3.html">3.第一个Java程序</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/4.html">4.Java代码注释</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/5.html">5.Java变量</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/6.html">6.Java集成开发环境</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/7.html">7.Java运算符</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/8.html">8.Java方法</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/9.html">9.Java流程控制</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/10.html">10.Java命名空间</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/11.html">11.Java数组</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/12.html">12.Java静态变量与常量</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/13.html">13.Java对象</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/14.html">14.Java包装类</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/15.html">15.Java集合类</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/16.html">16.Java异常</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/17.html">17.Java位运算</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/18.html">18.Java转义字符</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/19.html">19.Java线程</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/20.html">20.Java设计模式</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/21.html">21.Java编码优化</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/basic/22.html">22.jvm参数优化</a>
+                        </div>
+                    </div>
+
+                    <div class="dsd_title" onclick="clickTitle('jdk8')">
+                        <h3 id="jdk8_title">+ JDK8新特性</h3>
+                    </div>
+                    <div id="jdk8" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/1.html">1.JDK8新增语法特性简介</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/2.html">2.JDK8函数式接口</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/3.html">3.Java兰姆达(Lambda)表达式</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/4.html">4.java拉姆达(Lambda)表达式应用</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/5.html">5.JDK8的default方法</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/6.html">6.JDK8方法引用</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/jdk8/7.html">7.JDK8集合类库的批量数据操作</a>
+                        </div>
+                    </div>
+
+                    <div class="dsd_title" onclick="clickTitle('addenda')">
+                        <h3 id="addenda_title">+ 附录</h3>
+                    </div>
+                    <div id="addenda" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/1.html">1.Java中@Override标签作用</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/2.html">2.Java编码规范</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/3.html">3.Java保留关键字</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/4.html">4.Linux搭建Java开发环境配置环境变量</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/addenda/5.html">5.阿里巴巴Java开发手册</a>
+                        </div>
+                    </div>
+
+                    <div class="dsd_title" onclick="clickTitle('idea')">
+                        <h3 id="idea_title">+ Intelij IDEA</h3>
+                    </div>
+                    <div id="idea" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/idea/1.html">1.IntelliJ IDEA设置xmx和xms</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/article/java/idea/2.html">2.IntelliJ IDEA格式化代码目录</a>
+                        </div>
+                    </div>
+
+                    <div class="dsd_title" onclick="clickTitle('api')">
+                        <h3><span id="api_title">+ Java中文手册</span></h3>
+                    </div>
+
+                    <div id="api" class="dsd_catalog_left_hide">
+                        <div class="single_line">
+                            <a href="http://mip.localhost/apidoc/java/api6/index.html">Java6手册(中)</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/apidoc/java/api8en/index.html">Java8手册(英)</a>
+                        </div>
+                        <div class="single_line">
+                            <a href="http://mip.localhost/apidoc/java/api9en/index.html">Java9手册(英)</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-9 col-md-9 col-lg-9">
+                <!-- 文章内容-->
+                <div class="dsd_title"><h1>JDK8方法引用</h1></div>
+                <div id="xs_content_border">
+                    <div>
+                        <div class="dsd_catalog"><h3>目录</h3><a href="#1">1 java方法引用的概念</a><br><a href="#2">2
+                            java方法引用的种类</a><br><a href="#2.1">&nbsp;&nbsp;2.1 java静态方法引用</a><br><a href="#2.2">&nbsp;&nbsp;2.2
+                            java某个对象的方法引用</a><br><a href="#2.3">&nbsp;&nbsp;2.3 java特定类的任意对象的方法引用</a><br><a href="#2.4">&nbsp;&nbsp;2.4
+                            java构造方法引用</a><br><a href="#3">3 参考文章</a></div>
+                    </div>
+                    <div class="jumbotron">
+                        <p>jdk8.0引入了方法引用的概念.</p>
+                    </div>
+                    <div id="1"><h3>1 java方法引用的概念</h3></div>
+                    <p>某些lambda表达式里面仅仅是执行一个方法调用.
+                        在这种情况下,不用lambda表达式,直接通过方法名称引用方法的形式可读性更高一些,这种形式就是方法引用.方法引用是一种更简洁易懂的lambda表达式.</p>
+                    <p>看下面这个Person类:</p>
+                    <pre class="prettyprint"><code class="java language-java">public class Person {
+       public enum Sex {
+              MALE, FEMALE
+       }
+       String name;
+       LocalDate birthday;
+       Sex gender;
+       String emailAddress;
+       public int getAge() {
+              // ...
+       }
+       public Calendar getBirthday() {
+              return birthday;
+       }
+       public static int compareByAge(Person a, Person b) {
+              return a.birthday.compareTo(b.birthday);
+       }
+}
+</code></pre>
+                    <p>假设你社交网络里的好友们构成一个数组, 然后你想按好友年龄对数组排序.你可能会这么写代码:</p>
+                    <pre class="prettyprint"><code class="java language-java">Person[]rosterAsArray = roster.toArray(new Person[roster.size()]);//可认为roster是你好友的名册
+class PersonAgeComparator implements Comparator&lt;Person&gt; {
+public int compare(Person a, Person b) {
+        return a.getBirthday().compareTo(b.getBirthday());
+    }
+}
+Arrays.sort(rosterAsArray, new PersonAgeComparator());
+</code></pre>
+                    <p>sort方法定义如下:</p>
+                    <pre class="prettyprint"><code class="java language-java">static &lt;T&gt; void sort(T[] a, Comparator&lt;? super T&gt; c)
+</code></pre>
+                    <p>Comparator接口是一个函数接口. 因此,这里可以使用lambda表达式,省去了定义PersonAgeComparator类和创建一个类实例.</p>
+                    <p>修改如下:</p>
+                    <pre class="prettyprint"><code class="java language-java">Arrays.sort(rosterAsArray,
+    (Person a, Person b) -&gt; {
+        return a.getBirthday().compareTo(b.getBirthday());
+    }
+);
+</code></pre>
+                    <p>然而, 比较两个Person对象的生日大小的方法Person.compareByAge,已经在Person类中定义了.
+                        这样,在lambda表达式主体内直接调用Person.compareByAge就好了:</p>
+                    <pre class="prettyprint"><code class="java language-java">Arrays.sort(rosterAsArray,
+    (a, b) -&gt; Person.compareByAge(a, b)
+);
+</code></pre>
+                    <p>因为上面的lamdba表达式调用了一个现成的方法,所以可以用方法引用替代这个lamdba表达式:</p>
+                    <pre class="prettyprint"><code class="java language-java">Arrays.sort(rosterAsArray,
+   Person::compareByAge
+);
+</code></pre>
+                    <p>方法引用Person::compareByAge跟lambda表达式(a, b) -&gt; Person.compareByAge(a,b)在语义上是等价的. </p>
+                    <p>两者有如下的共同点:</p>
+                    <p>1.形参相同.都是(Person, Person).
+                        2.调用方法Person.compareByAge.</p>
+                    <div id="2"><h3>2 java方法引用的种类</h3></div>
+                    <table class="table table-bordered table-responsive text-center">
+                        <thead>
+                        <tr class="info">
+                            <td>类型</td>
+                            <td>示例</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>类静态方法引用</td>
+                            <td>ContainingClass::staticMethodName</td>
+                        </tr>
+                        <tr>
+                            <td>某个对象的方法引用</td>
+                            <td>ContainingObject::instanceMethodName</td>
+                        </tr>
+                        <tr>
+                            <td>特定类的任意对象的方法引用</td>
+                            <td>ContainingType::methodName</td>
+                        </tr>
+                        <tr>
+                            <td>构造方法引用</td>
+                            <td>ClassName::new</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div id="2.1" class="dsd_title_c_2"><h4>2.1 java静态方法引用</h4></div>
+                    <p>方法引用Person::compareByAge 就是对一个静态方法引用.</p>
+                    <div id="2.2" class="dsd_title_c_2"><h4>2.2 java某个对象的方法引用</h4></div>
+                    <p>下面就是一个对特定对象的实例方法引用的例子:</p>
+                    <pre class="prettyprint"><code class="java language-java">class ComparisonProvider {
+    public int compareByName(Person a, Person b) {
+        return a.getName().compareTo(b.getName());
+    }
+    public int compareByAge(Person a, Person b) {
+        return a.getBirthday().compareTo(b.getBirthday());
+    }
+}
+ComparisonProvider myComparisonProvider = new ComparisonProvider();
+Arrays.sort(rosterAsArray, myComparisonProvider::compareByName);
+</code></pre>
+                    <p>这个方法引用myComparisonProvider::compareByName调用了myComparisonProvider对象的compareByName方法.
+                        JRE会推断出方法的类型参数,比如在这个例子中是(Person, Person).</p>
+                    <div id="2.3" class="dsd_title_c_2"><h4>2.3 java特定类的任意对象的方法引用</h4></div>
+                    <pre class="prettyprint"><code class="java language-java">String[]stringArray = { "Barbara", "James", "Mary", "John",
+    "Patricia", "Robert", "Michael", "Linda" };
+Arrays.sort(stringArray, String::compareToIgnoreCase);
+</code></pre>
+                    <p>与这个方法引用String::compareToIgnoreCase等价的lambda表达式要有形参列表(String a, String
+                        b),此处a和b是随意取的名字.这个方法引用将会触发a.compareToIgnoreCase(b) 方法执行.</p>
+                    <div id="2.4" class="dsd_title_c_2"><h4>2.4 java构造方法引用</h4></div>
+                    <p>使用new关键词引用构造方法就像引用类静态方法一样.下面方法实现了从一个集合复制其元素到另一个集合中:</p>
+                    <pre class="prettyprint"><code class="java language-java">public static &lt;T, SOURCE extends Collection&lt;T&gt;, DEST extends Collection&lt;T&gt;&gt;
+    DEST transferElements(
+        SOURCEsourceCollection,
+        Supplier&lt;DEST&gt;collectionFactory) {
+      DESTresult = collectionFactory.get();
+        for (T t : sourceCollection) {
+           result.add(t);
+        }
+        return result;
+}
+</code></pre>
+                    <p>函数接口Supplier有一个方法get,get无输入参数,输出是一个对象.这样,你可以使用一个lambda 表达式调用transferElements方法,如下所示:</p>
+                    <pre class="prettyprint"><code class="java language-java">Set&lt;Person&gt;rosterSetLambda =
+    transferElements(roster, () -&gt; { return new HashSet&lt;&gt;(); });
+</code></pre>
+                    <p>进一步,你可以使用构造方法引用来替代lambda 表达式:</p>
+                    <pre class="prettyprint"><code class="java language-java">Set&lt;Person&gt;rosterSet = transferElements(roster, HashSet::new);
+</code></pre>
+                    <p>Java编译器推断出你想创建一个HashSet集合,其中包含Person类型的元素.当然,你也可以像下面这样显式的指定集合元素的类型为Person</p>
+                    <pre class="prettyprint"><code class="java language-java">Set&lt;Person&gt;rosterSet = transferElements(roster,HashSet&lt;Person&gt;::new);
+</code></pre>
+                    <div id="3"><h3>3 参考文章</h3></div>
+                    <p><a href="http://blog.csdn.net/wwwsssaaaddd/article/details/37573517">http://blog.csdn.net/wwwsssaaaddd/article/details/37573517</a>
+                    </p>
+                    <p><a href="http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html">http://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center navbar-fixed-bottom">
+    <div class="visible-xs-block">
+        <div class="bg-primary text-center" onclick="window.open('../index.html','_self')" style="cursor: pointer">
+            目录
+        </div>
+    </div>
+    <a href="http://mip.localhost/article/java/jdk8/7.html">下一篇: JDK8集合类库的批量数据操作</a>
+</footer>
+
+<script src="http://mip.localhost/js/jquery-3.2.1.min.js"></script>
+<script src="http://mip.localhost/js/vendor/modernizr-custom.js"></script>
+<script src="http://mip.localhost/js/bootstrap.js"></script>
+<script src="http://mip.localhost/js/google-code-prettify/run_prettify.js"></script>
+<script src="http://mip.localhost/js/main.js"></script>
+</body>
+</html>
