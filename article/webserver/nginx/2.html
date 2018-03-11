@@ -235,17 +235,6 @@ th {
     box-sizing: border-box;
 }
 
-html {
-    font-size: 10px;
-}
-
-body {
-    font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 26px;
-    color: #212121;
-}
-
 input,
 button,
 select,
@@ -1711,9 +1700,12 @@ html {
 body {
     min-height: 100%;
     padding-bottom: 80px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Helvetica", sans-serif;
     font-weight: 300;
     letter-spacing: .56px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #212121;
 }
 
 .fullscreen {
@@ -1767,7 +1759,7 @@ footer > a {
        "@id": "https://mip.dashidan.com/article/webserver/nginx/2.html",
        "title":"windows系统nginx停止启动及常用命令",
        "description": "windows系统nginx停止启动及常用命令.重新载入Nginx配置,重新打开日志文件,查看Nginx版本.",
-       "pubDate": "2018-03-08T00:27:47",
+       "pubDate": "2018-03-11T17:15:27",
        "isOriginal": "1"
 }</script>
 
@@ -1804,7 +1796,7 @@ footer > a {
 <p>建议使用第一种,第二种会使你的cmd窗口一直处于执行中,不能进行其他命令操作.</p>
 <p>注:<code>d:\dashidan.com</code>换成自己的nginx安装路径</p>
 <div id="2"><h3>2 windows停止nginx</h3></div>
-<p>可以直接在资源管理器中找到nginx.exe进程点右键,选择结束进程, 或者将下边的脚本保存为<code>nginx_stop.bat</code>文件双击运行.需要将nginx.exe的路径改为nginx的安装目录.</p>
+<p>可以直接在资源管理器中找到nginx.exe进程点右键,选择结束进程, 或者将下边的脚本保存为nginx_stop.bat文件双击运行.需要将nginx.exe的路径改为nginx的安装目录.</p>
 <pre class="prettyprint"><code>d:\dashidan.com\nginx-1.0.2&gt;nginx.exe -s stop
 </code></pre>
 <p>或</p>

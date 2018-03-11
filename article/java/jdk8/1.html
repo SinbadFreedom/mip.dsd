@@ -235,17 +235,6 @@ th {
     box-sizing: border-box;
 }
 
-html {
-    font-size: 10px;
-}
-
-body {
-    font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 26px;
-    color: #212121;
-}
-
 input,
 button,
 select,
@@ -1711,9 +1700,12 @@ html {
 body {
     min-height: 100%;
     padding-bottom: 80px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Helvetica", sans-serif;
     font-weight: 300;
     letter-spacing: .56px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #212121;
 }
 
 .fullscreen {
@@ -1767,7 +1759,7 @@ footer > a {
        "@id": "https://mip.dashidan.com/article/java/jdk8/1.html",
        "title":"java JDK8新增语法特性 - java教程 - 大屎蛋教程网",
        "description": "java JDK8新增语法特性:函数接口(Functional Interface) Lambda表达式 方法引用(Method Reference) default方法(defender方法) 批量数据操作(bulk dataoperations)",
-       "pubDate": "2018-03-08T00:26:43",
+       "pubDate": "2018-03-11T17:15:12",
        "isOriginal": "1"
 }</script>
 
@@ -1808,7 +1800,7 @@ footer > a {
     <h4>单方法接口(Single Abstract Method)</h4>
     单方法接口顾名思义就是接口中只有一个方法.
 </div>
-<p><mip-img layout="responsive" src="https://dashidan.com/img/common/example.jpg" alt="举个栗子"></mip-img></p>
+<p><mip-img layout="responsive" src="http://lost/img/common/example.jpg" alt="举个栗子" width="224" height="296"></mip-img></p>
 <p>Runnable接口中,只有一个run()方法.这个Runnalbe接口即为单方法接口,也叫<a href="https://dashidan.com/article/java/jdk8/2.html">函数式接口</a>.JDK8中新增了许多函数接口,一个重要的原因是为了支持新增加的Lambda表达式.</p>
 <div id="3"><h3>3 java Lambda表达式</h3></div>
 <p>Java的Lambda表达式是一种匿名方法.可以将函数接口中的函数作为方法参数处理,使代码更加简洁.在Java中Lambda表达式返回值是一个对象,这个对象必须是单方法接口(Single Abstract Method)对象.</p>

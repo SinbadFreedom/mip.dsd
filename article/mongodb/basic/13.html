@@ -235,17 +235,6 @@ th {
     box-sizing: border-box;
 }
 
-html {
-    font-size: 10px;
-}
-
-body {
-    font-family: Roboto, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 16px;
-    line-height: 26px;
-    color: #212121;
-}
-
 input,
 button,
 select,
@@ -1711,9 +1700,12 @@ html {
 body {
     min-height: 100%;
     padding-bottom: 80px;
-    font-family: "Roboto", sans-serif;
+    font-family: "Helvetica", sans-serif;
     font-weight: 300;
     letter-spacing: .56px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #212121;
 }
 
 .fullscreen {
@@ -1767,7 +1759,7 @@ footer > a {
        "@id": "https://mip.dashidan.com/article/mongodb/basic/13.html",
        "title":"MongoDB查询绑定或嵌套的方法 - Mongodb中文手册 - 大屎蛋教程网",
        "description": "mongodb查询绑定或嵌套的方法.匹配一个绑定或嵌套的文档,mongodb查询一个嵌套数据字段,mongodb通过操作符匹配,mongodb多条件查询.",
-       "pubDate": "2018-03-08T00:27:37",
+       "pubDate": "2018-03-11T17:15:18",
        "isOriginal": "1"
 }</script>
 
@@ -1804,8 +1796,6 @@ footer > a {
    { item: "postcard", qty: 45, size: { h: 10, w: 15.25, uom: "cm" }, status: "A" }
 ]);
 </code></pre>
-<p>你可以在以下窗口输入命令测试:</p>
-<iframe class="mws-root" allowfullscreen="" sandbox="allow-scripts allow-same-origin" width="600" height="280" src="https://mws.mongodb.com/?version=3.4"></iframe>
 <div id="1"><h3>1 mongodb匹配一个绑定或嵌套的文档</h3></div>
 <p>举个栗子.</p>
 <p>查询<code>size</code>数组满足条件<code>{ h: 14, w: 21, uom: "cm" }</code>的数据.</p>
