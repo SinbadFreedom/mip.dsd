@@ -7,7 +7,6 @@
     <link rel="canonical" href="https://dashidan.com/article/java/basic/19.html">
     <title>java线程 - java教程 - 大屎蛋教程网</title>
     <meta name="description" content="java线程 java启动线程 java线程的状态 java线程阻塞与线程死锁 java synchronized关键字用法 java Lock对象实现线程同步">
-
     <style mip-custom>
         html {
     -webkit-text-size-adjust: 100%;
@@ -1759,7 +1758,7 @@ footer > a {
        "@id": "https://mip.dashidan.com/article/java/basic/19.html",
        "title":"java线程 - java教程 - 大屎蛋教程网",
        "description": "java线程 java启动线程 java线程的状态 java线程阻塞与线程死锁 java synchronized关键字用法 java Lock对象实现线程同步",
-       "pubDate": "2018-03-11T17:15:10",
+       "pubDate": "2018-03-15T04:21:30",
        "isOriginal": "1"
 }</script>
 
@@ -1791,7 +1790,7 @@ footer > a {
 </div>
 <div id="1"><h3>1 java线程和进程的概念</h3></div>
 <p>进程是指一个内存中运行有自己独立的一块内存空间的应用程序.一个进程中至少一个线程.线程是指进程中的一个执行流程.每个线程有独立的运行栈.线程从属于进程.一个进程中可以运行多个线程.进程中的多个线程共享进程的内存.线程和进程一样分为五个阶段:创建、就绪、运行、阻塞、终止.多进程是指操作系统能同时运行多个任务(程序).多线程是指在同一程序中,有多个顺序流在执行.</p>
-<p><mip-img layout="responsive" src="https://dashidan.com/img/java/basic/18-1.jpg" alt="线程" width="473" height="252"></mip-img>   </p>
+<p><mip-img src="https://dashidan.com/img/java/basic/18-1.jpg" alt="线程" width="473" height="252"></mip-img>   </p>
 <div id="2"><h3>2 java线程的实现</h3></div>
 <p>线程是比进程更轻量级的调度执行单位,线程的引入,可以把一个进程的资源分配和执行调度分开,各个线程既可以共享进程资源(内存地址、文件I/O等),又可以独立调度(线程是CPU调度的基本单位).主流的操作系统都提供了线程实现,Java语言则提供了在不同硬件和操作系统平台下对线程操作的统一处理.Thread类中所有关键方法都是声明为Native的,在Java API中,本地方法往往意味着这个方法没有使用或无法使用平台无关的手段来实现(当然也有可能是为了执行效率而使用Native方法)</p>
 <div id="3"><h3>3 Java线程调度</h3></div>
@@ -2444,7 +2443,7 @@ class ReadThread extends Thread {
 <li>线程的调度由Java虚拟机(JVM)控制.</li>
 </ul>
 <p>在单核CPU的电脑上,实际上一次只能运行一个线程,CPU分时处理,看上去向同步运行一样.多核CPU的电脑同时可以运行多个线程.Java虚拟机决定实际运行哪个线程.有多个可运行线程时,其中的某一个会被Java虚拟机选为当前线程.默认情况下不能保证线程运行的先后顺序.量子理论的上帝掷骰子.</p>
-<p><mip-img layout="responsive" src="https://dashidan.com/img/common/aiyinsitan.jpg" alt="爱因斯坦" width="390" height="350"></mip-img></p>
+<p><mip-img src="https://dashidan.com/img/common/aiyinsitan.jpg" alt="爱因斯坦" width="390" height="350"></mip-img></p>
         </div>
     </div>
 </div>

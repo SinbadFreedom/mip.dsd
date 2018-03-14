@@ -7,7 +7,6 @@
     <link rel="canonical" href="https://dashidan.com/article/mongodb/basic/7.html">
     <title>mongo命令行运行JavaScript脚本 - Mongodb中文手册 - 大屎蛋教程网</title>
     <meta name="description" content="mongo命令行运行JavaScript脚本.命令输入和通过mongo运行脚本操作的区别.">
-
     <style mip-custom>
         html {
     -webkit-text-size-adjust: 100%;
@@ -1759,7 +1758,7 @@ footer > a {
        "@id": "https://mip.dashidan.com/article/mongodb/basic/7.html",
        "title":"mongo命令行运行JavaScript脚本 - Mongodb中文手册 - 大屎蛋教程网",
        "description": "mongo命令行运行JavaScript脚本.命令输入和通过mongo运行脚本操作的区别.",
-       "pubDate": "2018-03-11T17:15:18",
+       "pubDate": "2018-03-15T04:21:30",
        "isOriginal": "1"
 }</script>
 
@@ -1808,7 +1807,7 @@ db = conn.getDB("myDatabase");
 <li>设置全局<code>db</code>变量, 可以通过<code>getDB()</code>方法或者<code>connect()</code>方法, 你可以将这个数据库引用设置给其他变量.</li>
 <li>Write operations in the mongo shell use a write concern of { w: 1 } by default. If performing bulk operations, use the Bulk() methods. See Write Method Acknowledgements for more information.
 Changed in version 2.6: Before MongoDB 2.6, call db.getLastError() explicitly to wait for the result of write operations.</li>
-<li>你无法在JavaScript文件中使用任何命令行帮助,(例如: use <dbname>, show dbs, etc.)因为JavaScript中不支持.以下为常用命令行帮助有JavaScript对照表:</li>
+<li>你无法在JavaScript文件中使用任何命令行帮助,(例如: use dbname, show dbs, etc.)因为JavaScript中不支持.以下为常用命令行帮助有JavaScript对照表:</li>
 </ul>
 <table class="table table-bordered table-responsive text-center">
     <thead>
