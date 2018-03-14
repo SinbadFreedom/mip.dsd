@@ -62,6 +62,10 @@ https://mip.dashidan.com/article/mongodb/addenda/1.html
 https://mip.dashidan.com/article/mongodb/addenda/2.html
 https://mip.dashidan.com/article/mongodb/addenda/3.html
 
+https://mip.dashidan.com/article/redis/index.html
+https://mip.dashidan.com/article/redis/faq/1.html
+https://mip.dashidan.com/article/redis/faq/2.html
+
 https://mip.dashidan.com/article/git/index.html
 https://mip.dashidan.com/article/git/faq/1.html
 https://mip.dashidan.com/article/git/faq/2.html
@@ -69,6 +73,7 @@ https://mip.dashidan.com/article/git/faq/3.html
 https://mip.dashidan.com/article/git/faq/4.html
 https://mip.dashidan.com/article/git/faq/5.html
 https://mip.dashidan.com/article/git/faq/6.html
+https://mip.dashidan.com/article/git/addenda/1.html
 
 https://mip.dashidan.com/article/html/index.html
 https://mip.dashidan.com/article/html/faq/1.html
@@ -125,3 +130,15 @@ https://mip.dashidan.com/article/webserver/nginx/2.html
 https://mip.dashidan.com/article/webserver/nginx/3.html
 https://mip.dashidan.com/article/webserver/nginx/4.html
 https://mip.dashidan.com/article/webserver/nginx/5.html
+https://mip.dashidan.com/article/webserver/dns/1.html
+https://mip.dashidan.com/article/webserver/dns/2.html
+
+https://mip.dashidan.com/article/windows/index.html
+https://mip.dashidan.com/article/windows/faq/1.html
+https://mip.dashidan.com/article/windows/faq/2.html
+https://mip.dashidan.com/article/windows/faq/3.html
+https://mip.dashidan.com/article/windows/faq/4.html
+https://mip.dashidan.com/article/windows/faq/5.html
+https://mip.dashidan.com/article/windows/faq/6.html
+https://mip.dashidan.com/article/windows/faq/7.html
+https://mip.dashidan.com/article/windows/faq/8.html
