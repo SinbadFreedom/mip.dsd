@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
     <link rel="canonical" href="https://dashidan.com/article/java/basic/10.html">
     <title>java class与命名空间package - java教程 - 大屎蛋教程网</title>
-    <meta name="description" content="java对象概念 java class关键字 java this关键字 java 命名空间 java package关键字 java import关键字">
+    <meta name="description" content="java对象概念 class关键字 this关键字 命名空间 package关键字 import关键字">
     <style mip-custom>
         html {
     -webkit-text-size-adjust: 100%;
@@ -1757,8 +1757,8 @@ footer > a {
        "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
        "@id": "https://mip.dashidan.com/article/java/basic/10.html",
        "title":"java class与命名空间package - java教程 - 大屎蛋教程网",
-       "description": "java对象概念 java class关键字 java this关键字 java 命名空间 java package关键字 java import关键字",
-       "pubDate": "2018-03-15T04:21:30",
+       "description": "java对象概念 class关键字 this关键字 命名空间 package关键字 import关键字",
+       "pubDate": "2018-03-17T20:30:21",
        "isOriginal": "1"
 }</script>
 
@@ -1785,12 +1785,12 @@ footer > a {
         <!-- 文章内容-->
         <div class="dsd_title"><h1>Java命名空间</h1></div>
         <div id="xs_content_border">
-            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 java对象概念</a><br><a href="#1">1 java class关键字</a><br><a href="#1.1">&nbsp;&nbsp;1.1 java class类文件示例</a><br><a href="#2">2 java this关键字</a><br><a href="#3">3 java命名空间package</a><br><a href="#3.1">&nbsp;&nbsp;3.1 java package关键字</a><br><a href="#3.2">&nbsp;&nbsp;3.2 java import关键字</a></div></div><div class="jumbotron">
+            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 对象概念</a><br><a href="#1">1 class关键字</a><br><a href="#1.1">&nbsp;&nbsp;1.1 class类文件示例</a><br><a href="#2">2 this关键字</a><br><a href="#3">3 命名空间package</a><br><a href="#3.1">&nbsp;&nbsp;3.1 package关键字</a><br><a href="#3.2">&nbsp;&nbsp;3.2 import关键字</a></div></div><div class="jumbotron">
 <p>Object是java中所有对象的基础类,每个对象是继承自Object类.系统会隐式设定这个关系.</p>  
 </div>
-<div id="1"class="dsd_title_c_2"><h4>1 java class关键字</h4></div>
+<div id="1"class="dsd_title_c_2"><h4>1 class关键字</h4></div>
 <p>class是的一个<a href="https://dashidan.com/article/java/addenda/3.html">Java保留关键字</a>, 用来标识这是一个类文件.这个类文件相当于是对象模板.通过创建(new)对象模板(class)的方式创建一个对象(Object).这就是Java面向对象编程的基础.new是Java在内存(堆)中创建对象的关键字.</p>
-<div id="1.1"class="dsd_title_c_2"><h4>1.1 java class类文件示例</h4></div>
+<div id="1.1"class="dsd_title_c_2"><h4>1.1 class类文件示例</h4></div>
 <p>java代码</p>
 <pre class="prettyprint"><code class="java language-java">public class Demo1 {
     ...
@@ -1801,7 +1801,7 @@ footer > a {
     ...
 }
 </code></pre>
-<div id="1"><h3>1 java对象概念</h3></div>
+<div id="1"><h3>1 对象概念</h3></div>
 <p>java编程中对象概念相当于现实生活中的物体的抽象.以狗为例:狗属于脊索动物门、脊椎动物亚门、哺乳纲、真兽亚纲、食肉目、裂脚亚目、犬科动物.这个属于狗的属性描述,相当于Java中class文件的概念.</p>
 <p><mip-img src="https://dashidan.com/img/common/example.jpg" alt="举个栗子" width="224" height="296"></mip-img></p>
 <p>你有一只泰迪犬,名字叫泰日天.隔壁老王有只哈士奇,名字叫哈拆迁.每只狗相当于java中对象的概念,拥有狗的属性,是个唯一的个体(Object),拥有自己的属性-名字.你可以给它们起名,并且可以知道它们叫什么名.</p>
@@ -1829,7 +1829,7 @@ public class Dog {
 }
 </code></pre>
 <ul>
-<li>java示例代码Demo1类:</li>
+<li>示例代码Demo1类:</li>
 </ul>
 <pre class="prettyprint"><code class="java language-java">package com.dashidan.lesson10;
 
@@ -1853,7 +1853,7 @@ public class Demo1 {
 <pre class="prettyprint"><code>泰日天
 哈拆迁
 </code></pre>
-<div id="2"><h3>2 java this关键字</h3></div>
+<div id="2"><h3>2 this关键字</h3></div>
 <p>java语言中this关键字表示当前<a href="https://dashidan.com/article/java/basic/13.html">java对象</a>的引用.当方法参数中传入的参数名(局部变量名)和成员变量名重复时,需要区别引用的是成员变量,还是局部变量.  </p>
 <ul>
 <li>this.变量名,表示引用的是成员变量.默认也可以省略this.</li>
@@ -1864,9 +1864,9 @@ public class Demo1 {
     return this.name = name;    
 }
 </code></pre>
-<div id="3"><h3>3 java命名空间package</h3></div>
+<div id="3"><h3>3 命名空间package</h3></div>
 <p>Java使用包(package)这种机制是为了防止命名冲突.可以简单理解为文件目录,将一类功能的代码放在同一个目录中.为了确保同样名字的源码文件不冲突,用包名来控制命名空间.为了确保包名的唯一性,一般用网站域名的倒叙作为包名.包名中的"."表示目录的层级. </p>
-<div id="3.1"class="dsd_title_c_2"><h4>3.1 java package关键字</h4></div>
+<div id="3.1"class="dsd_title_c_2"><h4>3.1 package关键字</h4></div>
 <p>包声明应该在源文件的第一行,每个源文件只能有一个包声明,这个文件中的每个类型都应用于它.如果一个源文件中没有使用包声明,那么其中的类,函数,枚举,注释等将被放在一个无名的包(unnamed package)中.由于包创建了新的命名空间(namespace),所以不会跟其他包中的任何名字产生命名冲突.使用包这种机制,更容易实现访问控制,并且让定位相关类更加简单.比如本网站的教程代码,将课程域名倒叙+课程编号定义为包名,很方便就将源码和课程对应上.</p>
 <ul>
 <li>大屎蛋教程网package包名示例:</li>
@@ -1874,7 +1874,7 @@ public class Demo1 {
 <pre class="prettyprint"><code class="java language-java">package com.dashidan.lesson21;
 ...
 </code></pre>
-<div id="3.2"class="dsd_title_c_2"><h4>3.2 java import关键字</h4></div>
+<div id="3.2"class="dsd_title_c_2"><h4>3.2 import关键字</h4></div>
 <p>为了能够使用某一个包的成员,我们需要在Java程序中明确导入该包.使用import语句可完成此功能.在java源文件中import语句应位于package语句之后,所有类的定义之前,可以没有,也可以有多条.</p>
 <ul>
 <li>java import语法格式</li>
