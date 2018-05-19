@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
-    <link rel="canonical" href="https://dashidan.com/article/mongodb/basic/6.html">
-    <title>mongo命令提示符帮助 - Mongodb中文手册 - 大屎蛋教程网</title>
+    <link rel="canonical" href="https://dashidan.com/article/java/faq/2.html">
+    <title>HashMap中的put和putIfAbsense区别 - java常见问题 - 大屎蛋教程网</title>
     <meta name="description"
-          content="mongo命令行参数帮助,mongo指令帮助,mongo数据库帮助,显示全部数据库,显示方法的实现,mongodb集合帮助,显示全部集合,显示集合方法实现,cursor帮助.">
+          content="HashMap集合类中有put()方法，还提供了一个putIfAbsent方法，在项目中一个同事用错putIfAbsent方法，从而导致了一个比较严重的bug。在本文中总结了一下这两个方法的区别与应用场景, 避免用错。">
     <style mip-custom>
         html {
             -webkit-text-size-adjust: 100%;
@@ -1757,10 +1757,10 @@
 
     <script type="application/ld+json"> {
        "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
-       "@id": "https://mip.dashidan.com/article/mongodb/basic/6.html",
-       "title":"mongo命令提示符帮助 - Mongodb中文手册 - 大屎蛋教程网",
-       "description": "mongo命令行参数帮助,mongo指令帮助,mongo数据库帮助,显示全部数据库,显示方法的实现,mongodb集合帮助,显示全部集合,显示集合方法实现,cursor帮助.",
-       "pubDate": "2018-03-17T23:37:39",
+       "@id": "https://mip.dashidan.com/article/java/faq/2.html",
+       "title":"HashMap中的put和putIfAbsense区别 - java常见问题 - 大屎蛋教程网",
+       "description": "HashMap集合类中有put()方法，还提供了一个putIfAbsent方法，在项目中一个同事用错putIfAbsent方法，从而导致了一个比较严重的bug。在本文中总结了一下这两个方法的区别与应用场景, 避免用错。",
+       "pubDate": "2018-05-19T14:38:31",
        "isOriginal": "1"
 }
 
@@ -1772,253 +1772,90 @@
 <body>
 <nav class="navbar navbar-default">
     <div class="navbar-header">
-        <a class="navbar-brand" href="https://mip.dashidan.com/index.html">大屎蛋教程网</a>
+        <a class="navbar-brand" href="https://mip.dashidan.com//index.html">大屎蛋教程网</a>
     </div>
 </nav>
 
 <mip-cambrian site-id="1588397041009826"></mip-cambrian>
 
 <div class="container-fluid">
-    <!-- 顶部面包屑导航-->
     <div class="text-left">
-        <a href="https://mip.dashidan.com/index.html">首页</a> > <a
-            href="https://mip.dashidan.com/article/mongodb/index.html">mongodb</a> > mongo命令提示符帮助
+        <a href="https://mip.dashidan.com//index.html">首页</a> > <a
+            href="https://mip.dashidan.com//article/java/index.html">java</a> > 2.HashMap中的put和putIfAbsense区别
     </div>
 
     <div class="dsd_content">
-        <!-- 文章内容-->
-        <div class="dsd_title"><h1>mongo命令提示符帮助</h1></div>
+        <div class="dsd_title"><h1>2.HashMap中的put和putIfAbsense区别</h1></div>
         <div id="xs_content_border">
             <div>
-                <div class="dsd_catalog"><h3>目录</h3><a href="#1">1 mongo命令行参数帮助</a><br><a href="#2">2
-                    mongo指令帮助</a><br><a href="#3">3 数据库帮助</a><br><a href="#3.1">&nbsp;&nbsp;3.1 显示全部数据库</a><br><a
-                        href="#3.2">&nbsp;&nbsp;3.2 显示部数据操作帮助</a><br><a href="#3.3">&nbsp;&nbsp;3.3 显示方法的实现</a><br><a
-                        href="#4">4 集合帮助</a><br><a href="#4.1">&nbsp;&nbsp;4.1 显示全部集合</a><br><a href="#4.2">&nbsp;&nbsp;4.2
-                    显示集合帮助</a><br><a href="#4.3">&nbsp;&nbsp;4.3 显示集合方法实现</a><br><a href="#5">5 cursor帮助</a><br><a
-                        href="#6">6 包装对象帮助</a><br><a href="#7">7 参考文章</a><br><a href="#8">8 相关文章</a></div>
+                <div class="dsd_catalog"><h3>目录</h3><a href="#1">1 HashMap中put方法和putIfAbsent方法区别</a><br><a href="#2">2
+                    HashMap如何判断key是否存在</a><br><a href="#2.1">&nbsp;&nbsp;2.1 hash()方法</a><br><a href="#2.2">&nbsp;&nbsp;2.2
+                    hashCode()方法</a></div>
             </div>
-            <div id="1"><h3>1 mongo命令行参数帮助</h3></div>
-            <p>通过<code>--help</code>参数显示命令行帮助信息</p>
-            <pre class="prettyprint"><code>mongo --help
-</code></pre>
-            <p>显示:</p>
-            <pre class="prettyprint"><code>MongoDB shell version: 2.0.4
-usage: mongo [options] [db address] [file names (ending in .js)]
-db address can be:
-  foo                   foo database on local machine
-  192.169.0.5/foo       foo database on 192.168.0.5 machine
-  192.169.0.5:9999/foo  foo database on 192.168.0.5 machine on port 9999
-options:
-  --shell               run the shell after executing files
-  --nodb                don't connect to mongod on startup - no 'db address' 
-                        arg expected
-  --norc                开始不执行".mongorc.js"文件
-  --quiet               安静模式
-  --port arg            端口
-  --host arg            IP
-  --eval arg            运行javascript脚本
-  -u [ --username ] arg 用户名
-  -p [ --password ] arg 密码
-  -h [ --help ]         显示这个帮助信息
-  --version             版本号
-  --verbose             increase verbosity
-  --ipv6                开启IPv6支持(默认关闭)
-</code></pre>
-            <div id="2"><h3>2 mongo指令帮助</h3></div>
-            <p>通过命令提示符连上mongo数据库后,可以输入<code>help</code>来显示命令提示符帮助.</p>
-            <pre class="prettyprint"><code>help
-</code></pre>
-            <p>会显示:</p>
-            <pre class="prettyprint"><code>db.help()                    数据库方法帮助信息
-db.mycoll.help()             集合方法帮助信息
-rs.help()                    help on replica set methods
-help admin                   管理员帮助信息
-help connect                 连接数据库帮助
-help keys                    快捷键
-help misc                    杂项信息帮助
-help mr                      mapreduce帮助
-
-show dbs                     显示全部数据库名
-show collections             显示当前数据库中的全部集合名
-show users                   显示当前数据库的全部用户
-show profile                 show most recent system.profile entries with time &gt;= 1ms
-show logs                    显示可以连接的日志(`logger`)名
-show log [name]              输出内存中的最近log的片段, 默认输出`global`
-use &lt;db_name&gt;                设定当前数据库
-db.foo.find()                显示集合`foo`中的对象列表
-db.foo.find( { a : 1 } )     查询foo集合中`a == 1`的对象
-it                           输入it, 继续迭代显示结果, 输出更多结果
-DBQuery.shellBatchSize = x   设置显示结果条数
-exit                         退出命令行
-</code></pre>
-            <div id="3"><h3>3 数据库帮助</h3></div>
-            <div id="3.1" class="dsd_title_c_2"><h4>3.1 显示全部数据库</h4></div>
-            <pre class="prettyprint"><code>show dbs
-</code></pre>
-            <div id="3.2" class="dsd_title_c_2"><h4>3.2 显示部数据操作帮助</h4></div>
-            <pre class="prettyprint"><code>db.help()
-</code></pre>
-            <div id="3.3" class="dsd_title_c_2"><h4>3.3 显示方法的实现</h4></div>
-            <p>显示一个数据的方法的具体实现，输入<code>db.&lt;method name&gt;</code>不带<code>()</code>.
-                例如:</p>
-            <pre class="prettyprint"><code>db.updateUser
-</code></pre>
-            <p>显示:</p>
-            <pre class="prettyprint"><code>test.updateUser
-</code></pre>
-            <div id="4"><h3>4 集合帮助</h3></div>
-            <div id="4.1" class="dsd_title_c_2"><h4>4.1 显示全部集合</h4></div>
-            <pre class="prettyprint"><code>show collections
-</code></pre>
-            <div id="4.2" class="dsd_title_c_2"><h4>4.2 显示集合帮助</h4></div>
-            <pre class="prettyprint"><code>db.collection.help()
-</code></pre>
-            <p>显示</p>
-            <pre class="prettyprint"><code>db.collection.find().help() - show DBCursor help
-db.collection.count()
-db.collection.dataSize()
-db.collection.distinct( key ) - eg. db.collection.distinct( 'x' )
-db.collection.drop() drop the collection
-db.collection.dropIndex(name)
-db.collection.dropIndexes()
-db.collection.ensureIndex(keypattern[,options]) - options is an object with these possible fields: name, unique, dropDups
-db.collection.reIndex()
-db.collection.find([query],[fields]) - query is an optional query filter. fields is optional set of fields to return.
-                                              e.g. db.collection.find( {x:77} , {name:1, x:1} )
-db.collection.find(...).count()
-db.collection.find(...).limit(n)
-db.collection.find(...).skip(n)
-db.collection.find(...).sort(...)
-db.collection.findOne([query])
-db.collection.findAndModify( { update : ... , remove : bool [, query: {}, sort: {}, 'new': false] } )
-db.collection.getDB() get DB object associated with collection
-db.collection.getIndexes()
-db.collection.group( { key : ..., initial: ..., reduce : ...[, cond: ...] } )
-db.collection.mapReduce( mapFunction , reduceFunction , &lt;optional params&gt; )
-db.collection.remove(query)
-db.collection.renameCollection( newName , &lt;dropTarget&gt; ) renames the collection.
-db.collection.runCommand( name , &lt;options&gt; ) runs a db command with the given name where the first param is the collection name
-db.collection.save(obj)
-db.collection.stats()
-db.collection.storageSize() - includes free space allocated to this collection
-db.collection.totalIndexSize() - size in bytes of all the indexes
-db.collection.totalSize() - storage allocated for all data and indexes
-db.collection.update(query, object[, upsert_bool, multi_bool])
-db.collection.validate( &lt;full&gt; ) - SLOW
-db.collection.getShardVersion() - only for use with sharding
-db.collection.getShardDistribution() - prints statistics about data distribution in the cluster
-</code></pre>
-            <div id="4.3" class="dsd_title_c_2"><h4>4.3 显示集合方法实现</h4></div>
-            <p>显示方法实现输入<code>db.&lt;collection&gt;.&lt;method&gt;</code>, 不带<code>()</code>.
-                例如输入:</p>
-            <pre class="prettyprint"><code>db.collection.save
-</code></pre>
-            <p>显示:</p>
-            <pre class="prettyprint"><code>function (obj) {
-    if (obj == null || typeof obj == "undefined") {
-        throw "can't save a null";
-    }
-    if (typeof obj == "number" || typeof obj == "string") {
-        throw "can't save a number or string";
-    }
-    if (typeof obj._id == "undefined") {
-        obj._id = new ObjectId;
-        return this.insert(obj);
-    } else {
-        return this.update({_id:obj._id}, obj, true);
-    }
+            <div class="jumbotron">
+                <p>
+                    HashMap集合类中有put()方法，还提供了一个putIfAbsent方法，在项目中一个同事用错putIfAbsent方法，从而导致了一个比较严重的bug。在本文中总结了一下这两个方法的区别与应用场景,
+                    避免用错。</p>
+            </div>
+            <div id="1"><h3>1 HashMap中put方法和putIfAbsent方法区别</h3></div>
+            <ul>
+                <li>put方法</li>
+            </ul>
+            <p>HashMap中的put方式是将key和value放入Map队列中.如果key值已存在，则替换对应的value.</p>
+            <p>put方法源码:</p>
+            <pre class="prettyprint"><code>/**
+ * 大屎蛋教程网-dashidan.com
+ * Created by 大屎蛋 on 2018/5/18.
+ */
+public V put(K key, V value) {
+    return putVal(hash(key), key, value, false, true);
 }
 </code></pre>
-            <div id="5"><h3>5 cursor帮助</h3></div>
-            <p>当你在mongo命令行使用find()方法时, 可以使用很多cursor方法来修改find()行为和结果.</p>
             <ul>
-                <li><p>显示find()方法可用的修改器和cursor处理方法</p>
-                    <p>db.collection.find().help()</p></li>
+                <li>putIfAbsent方法</li>
             </ul>
-            <p>显示:</p>
-            <pre class="prettyprint"><code>&gt; db.collection.find().help()
-find() modifiers
-    .sort( {...} )
-    .limit( n )
-    .skip( n )
-    .count() - total # of objects matching query, ignores skip,limit
-    .size() - total # of objects cursor would return, honors skip,limit
-    .explain([verbose])
-    .hint(...)
-    .showDiskLoc() - adds a $diskLoc field to each returned object
-
-Cursor methods
-    .forEach( func )
-    .map( func )
-    .hasNext()
-    .next()
-</code></pre>
-            <ul>
-                <li>看cursor方法的实现, 输入<code>db.&lt;collection&gt;.find().&lt;method&gt;</code>, 不包含<code>()</code>.
-                    例如:
-                </li>
-            </ul>
-            <pre class="prettyprint"><code>db.collection.find().toArray
-</code></pre>
-            <p>显示:</p>
-            <pre class="prettyprint"><code>&gt; db.collection.find().toArray
-function () {
-    if (this._arr) {
-        return this._arr;
-    }
-    var a = [];
-    while (this.hasNext()) {
-        a.push(this.next());
-    }
-    this._arr = a;
-    return a;
+            <p>与put方法的不同点是：如果key值已存在，则不替换对应的value.</p>
+            <p>putIfAbsense方法源码:</p>
+            <pre class="prettyprint"><code>/**
+ * 大屎蛋教程网-dashidan.com
+ * Created by 大屎蛋 on 2018/5/18.
+ */
+public V putIfAbsent(K key, V value) {
+    return putVal(hash(key), key, value, true, true);
 }
 </code></pre>
-            <p>常用的cursor方法</p>
-            <ul>
-                <li>hasNext() 查询cursor是否还有数据.</li>
-                <li>next() 返回下一个数据对象, 并且cursor指向位置加1.</li>
-                <li>forEach(function) function方法遍历执行全部结果.function只有1参数, 迭代器中指向的对象.</li>
-            </ul>
-            <div id="6"><h3>6 包装对象帮助</h3></div>
-            <p>可以通过输入help misc来获取对象包装类.</p>
-            <pre class="prettyprint"><code>help misc
+            <p>这两个方法的区别调用putVal方法的第三个参数true，表示如果存在不替换现有数据，如果false，替换现有数据。</p>
+            <div id="2"><h3>2 HashMap如何判断key是否存在</h3></div>
+            <p>HashMap通过Hash值来判断。这个值不是Object对象中提供的hashCode值。是通过HashMap中的hash()方法计算出来的.</p>
+            <p>该方法是通过hashCode返回的值，进行高位异或运算得出的。如果key值是空，返回0.</p>
+            <div id="2.1" class="dsd_title_c_2"><h4>2.1 hash()方法</h4></div>
+            <pre class="prettyprint"><code>/**
+ * 大屎蛋教程网-dashidan.com
+ * Created by 大屎蛋 on 2018/5/18.
+ */
+static final int hash(Object key) {
+    int h;
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);
+}
 </code></pre>
-            <p>显示:</p>
-            <pre class="prettyprint"><code>&gt; help misc
-    b = new BinData(subtype,base64str)  create a BSON BinData value
-    b.subtype()                         the BinData subtype (0..255)
-    b.length()                          length of the BinData data in bytes
-    b.hex()                             the data as a hex encoded string
-    b.base64()                          the data as a base 64 encoded string
-    b.toString()
-
-    b = HexData(subtype,hexstr)         create a BSON BinData value from a hex string
-    b = UUID(hexstr)                    create a BSON BinData value of UUID subtype
-    b = MD5(hexstr)                     create a BSON BinData value of MD5 subtype
-
-    o = new ObjectId()                  create a new ObjectId
-    o.getTimestamp()                    return timestamp derived from first 32 bits of the OID
-    o.isObjectId()
-    o.toString()
-    o.equals(otherid)
+            <div id="2.2" class="dsd_title_c_2"><h4>2.2 hashCode()方法</h4></div>
+            <p>hashCode()方法返回对象的哈希码。相同对象返回相同值。这个在JDK中是通过native方法实现。</p>
+            <pre class="prettyprint"><code>public native int hashCode();
 </code></pre>
-            <div id="7"><h3>7 参考文章</h3></div>
-            <p><a href="https://docs.mongodb.com/manual/tutorial/access-mongo-shell-help/">https://docs.mongodb.com/manual/tutorial/access-mongo-shell-help/</a>
-            </p>
-            <div id="8"><h3>8 相关文章</h3></div>
-            <p><a href="https://dashidan.com/article/mongodb/index.html">MongoDB中文文档</a></p>
         </div>
     </div>
 </div>
 
-<footer class="text-center navbar-fixed-bottom navbar-default">
-    <div class="text-center">
-        <a class="navbar-brand"
-           href="https://mip.dashidan.com/article/mongodb/basic/7.html">下一篇: mongo命令行运行JavaScript脚本</a>
+<hr>
+
+<footer>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
+        <a href="https://dashidan.com//article/java/faq/1.html"> &lt; 1.HashMap与ConcurrentHashMap的区别与应用场景</a>
     </div>
-    <div class="text-center">
-        <a class="navbar-brand" href="https://mip.dashidan.com/index.html">目录</a>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <a href="https://dashidan.com//article/java/index.html">目录</a>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
     </div>
 </footer>
 

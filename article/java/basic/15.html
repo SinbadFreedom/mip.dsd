@@ -6,1739 +6,1741 @@
     <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
     <link rel="canonical" href="https://dashidan.com/article/java/basic/15.html">
     <title>java常用集合类与遍历方式 - java教程 - 大屎蛋教程网</title>
-    <meta name="description" content="java常用集合类接口:Collection List Set Queue Map介绍 集合类的遍历 HashMap  HashSet LinkList ArrayList Vector等">
+    <meta name="description"
+          content="java常用集合类接口:Collection,List,Set,Queue,Map介绍.HashMap,HashSet,LinkList,ArrayList,Vector等集合类的遍历.">
     <style mip-custom>
         html {
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-}
-
-body {
-    margin: 0;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
-    display: block;
-}
-
-audio,
-canvas,
-progress,
-video {
-    display: inline-block;
-    vertical-align: baseline;
-}
-
-audio:not([controls]) {
-    display: none;
-    height: 0;
-}
-
-a {
-    background-color: transparent;
-    font-weight: 400;
-}
-
-a:active,
-a:hover {
-    outline: 0;
-}
-
-abbr[title] {
-    border-bottom: 1px dotted;
-}
-
-b,
-strong {
-    font-weight: bold;
-}
-
-dfn {
-    font-style: italic;
-}
-
-mark {
-    color: #000;
-    background: #ff0;
-}
-
-small {
-    font-size: 80%;
-}
-
-sub,
-sup {
-    position: relative;
-    font-size: 75%;
-    line-height: 0;
-    vertical-align: baseline;
-}
-
-sup {
-    top: -.5em;
-}
-
-sub {
-    bottom: -.25em;
-}
-
-img {
-    border: 0;
-}
-
-svg:not(:root) {
-    overflow: hidden;
-}
-
-figure {
-    margin: 1em 40px;
-}
-
-hr {
-    height: 0;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-}
-
-pre {
-    overflow: auto;
-}
-
-code,
-kbd,
-pre,
-samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-    margin: 0;
-    font: inherit;
-    color: inherit;
-}
-
-button {
-    overflow: visible;
-}
-
-button,
-select {
-    text-transform: none;
-}
-
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-    -webkit-appearance: button;
-    cursor: pointer;
-}
-
-button[disabled],
-html input[disabled] {
-    cursor: default;
-}
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-}
-
-input {
-    line-height: normal;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 0;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    height: auto;
-}
-
-input[type="search"] {
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    -webkit-appearance: textfield;
-}
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-}
-
-fieldset {
-    padding: .35em .625em .75em;
-    margin: 0 2px;
-    border: 1px solid #c0c0c0;
-}
-
-legend {
-    padding: 0;
-    border: 0;
-}
-
-textarea {
-    overflow: auto;
-}
-
-optgroup {
-    font-weight: bold;
-}
-
-table {
-    border-spacing: 0;
-    border-collapse: collapse;
-}
-
-td,
-th {
-    padding: 0;
-}
-
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-*:before,
-*:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-input,
-button,
-select,
-textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-}
-
-a {
-    color: #1c79c0;
-    text-decoration: none;
-}
-
-a:hover,
-a:focus {
-    color: #23527c;
-    text-decoration: underline;
-}
-
-a:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-}
-
-figure {
-    margin: 0;
-}
-
-img {
-    vertical-align: middle;
-}
-
-.thumbnail > img,
-.thumbnail a > img,
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-hr {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px;
-}
-
-[role="button"] {
-    cursor: pointer;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-    font-weight: 400;
-    line-height: 1.1;
-    color: inherit;
-}
-
-h1, .h1 {
-    font-weight: 100;
-    line-height: 50px;
-    color: #1c79c0;
-}
-
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-h4,
-.h4,
-h5,
-.h5,
-h6,
-.h6 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-h1,
-.h1 {
-    font-size: 40px;
-}
-
-h2,
-.h2 {
-    font-size: 30px;
-}
-
-h3,
-.h3 {
-    font-size: 24px;
-}
-
-h4,
-.h4 {
-    font-size: 16px;
-}
-
-h5,
-.h5 {
-    font-size: 14px;
-}
-
-h6,
-.h6 {
-    font-size: 12px;
-}
-
-p {
-    margin: 0 0 0px;
-}
-
-small,
-.small {
-    font-size: 85%;
-}
-
-mark,
-.mark {
-    padding: .2em;
-    background-color: #fcf8e3;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.text-right {
-    text-align: right;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.text-justify {
-    text-align: justify;
-}
-
-.text-nowrap {
-    white-space: nowrap;
-}
-
-.text-lowercase {
-    text-transform: lowercase;
-}
-
-.text-uppercase {
-    text-transform: uppercase;
-}
-
-.text-capitalize {
-    text-transform: capitalize;
-}
-
-.text-muted {
-    color: #777;
-}
-
-.text-primary {
-    color: #337ab7;
-}
-
-ul,
-ol {
-    margin-top: 0;
-    margin-bottom: 0px;
-}
-
-ul ul,
-ol ul,
-ul ol,
-ol ol {
-    margin-bottom: 0;
-}
-
-dl {
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-dt,
-dd {
-    line-height: 1.42857143;
-}
-
-dt {
-    font-weight: bold;
-}
-
-dd {
-    margin-left: 0;
-}
-
-abbr[title],
-abbr[data-original-title] {
-    cursor: help;
-    border-bottom: 1px dotted #777;
-}
-
-code {
-    padding: 2px 4px;
-    font-size: 90%;
-    background-color: #eee;
-    border-radius: 6px;
-}
-
-pre {
-    display: block;
-    padding: 9.5px;
-    margin: 0 0 10px;
-    font-size: 13px;
-    line-height: 1.42857143;
-    word-break: break-all;
-    word-wrap: break-word;
-    background-color: #f5f5f5;
-    border-radius: 3px;
-}
-
-pre code {
-    padding: 0;
-    font-size: inherit;
-    color: inherit;
-    white-space: pre-wrap;
-    background-color: transparent;
-    border-radius: 0;
-}
-
-.container {
-    margin-top: 2px;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: #ffffff;
-    border-radius: 6px;
-}
-
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
-}
-
-table {
-    background-color: transparent;
-}
-
-caption {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    color: #777;
-    text-align: left;
-}
-
-th {
-    text-align: left;
-}
-
-.table {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-}
-
-.table > thead > tr > th,
-.table > tbody > tr > th,
-.table > tfoot > tr > th,
-.table > thead > tr > td,
-.table > tbody > tr > td,
-.table > tfoot > tr > td {
-    padding: 8px;
-    line-height: 1.42857143;
-    vertical-align: top;
-    border-top: 1px solid #ddd;
-}
-
-.table > thead > tr > th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #ddd;
-}
-
-.table > caption + thead > tr:first-child > th,
-.table > colgroup + thead > tr:first-child > th,
-.table > thead:first-child > tr:first-child > th,
-.table > caption + thead > tr:first-child > td,
-.table > colgroup + thead > tr:first-child > td,
-.table > thead:first-child > tr:first-child > td {
-    border-top: 0;
-}
-
-.table > tbody + tbody {
-    border-top: 2px solid #ddd;
-}
-
-.table .table {
-    background-color: #fff;
-}
-
-.table-striped > tbody > tr:nth-of-type(odd) {
-    background-color: #f9f9f9;
-}
-
-.table-hover > tbody > tr:hover {
-    background-color: #f5f5f5;
-}
-
-table col[class*="col-"] {
-    position: static;
-    display: table-column;
-    float: none;
-}
-
-table td[class*="col-"],
-table th[class*="col-"] {
-    position: static;
-    display: table-cell;
-    float: none;
-}
-
-.table > thead > tr > td.active,
-.table > tbody > tr > td.active,
-.table > tfoot > tr > td.active,
-.table > thead > tr > th.active,
-.table > tbody > tr > th.active,
-.table > tfoot > tr > th.active,
-.table > thead > tr.active > td,
-.table > tbody > tr.active > td,
-.table > tfoot > tr.active > td,
-.table > thead > tr.active > th,
-.table > tbody > tr.active > th,
-.table > tfoot > tr.active > th {
-    background-color: #f5f5f5;
-}
-
-.table-hover > tbody > tr > td.active:hover,
-.table-hover > tbody > tr > th.active:hover,
-.table-hover > tbody > tr.active:hover > td,
-.table-hover > tbody > tr:hover > .active,
-.table-hover > tbody > tr.active:hover > th {
-    background-color: #e8e8e8;
-}
-
-.table > thead > tr > td.success,
-.table > tbody > tr > td.success,
-.table > tfoot > tr > td.success,
-.table > thead > tr > th.success,
-.table > tbody > tr > th.success,
-.table > tfoot > tr > th.success,
-.table > thead > tr.success > td,
-.table > tbody > tr.success > td,
-.table > tfoot > tr.success > td,
-.table > thead > tr.success > th,
-.table > tbody > tr.success > th,
-.table > tfoot > tr.success > th {
-    background-color: #dff0d8;
-}
-
-.table-hover > tbody > tr > td.success:hover,
-.table-hover > tbody > tr > th.success:hover,
-.table-hover > tbody > tr.success:hover > td,
-.table-hover > tbody > tr:hover > .success,
-.table-hover > tbody > tr.success:hover > th {
-    background-color: #d0e9c6;
-}
-
-.table > thead > tr > td.info,
-.table > tbody > tr > td.info,
-.table > tfoot > tr > td.info,
-.table > thead > tr > th.info,
-.table > tbody > tr > th.info,
-.table > tfoot > tr > th.info,
-.table > thead > tr.info > td,
-.table > tbody > tr.info > td,
-.table > tfoot > tr.info > td,
-.table > thead > tr.info > th,
-.table > tbody > tr.info > th,
-.table > tfoot > tr.info > th {
-    background-color: #d9edf7;
-}
-
-.table-hover > tbody > tr > td.info:hover,
-.table-hover > tbody > tr > th.info:hover,
-.table-hover > tbody > tr.info:hover > td,
-.table-hover > tbody > tr:hover > .info,
-.table-hover > tbody > tr.info:hover > th {
-    background-color: #c4e3f3;
-}
-
-.table > thead > tr > td.warning,
-.table > tbody > tr > td.warning,
-.table > tfoot > tr > td.warning,
-.table > thead > tr > th.warning,
-.table > tbody > tr > th.warning,
-.table > tfoot > tr > th.warning,
-.table > thead > tr.warning > td,
-.table > tbody > tr.warning > td,
-.table > tfoot > tr.warning > td,
-.table > thead > tr.warning > th,
-.table > tbody > tr.warning > th,
-.table > tfoot > tr.warning > th {
-    background-color: #fcf8e3;
-}
-
-.table-hover > tbody > tr > td.warning:hover,
-.table-hover > tbody > tr > th.warning:hover,
-.table-hover > tbody > tr.warning:hover > td,
-.table-hover > tbody > tr:hover > .warning,
-.table-hover > tbody > tr.warning:hover > th {
-    background-color: #faf2cc;
-}
-
-.table > thead > tr > td.danger,
-.table > tbody > tr > td.danger,
-.table > tfoot > tr > td.danger,
-.table > thead > tr > th.danger,
-.table > tbody > tr > th.danger,
-.table > tfoot > tr > th.danger,
-.table > thead > tr.danger > td,
-.table > tbody > tr.danger > td,
-.table > tfoot > tr.danger > td,
-.table > thead > tr.danger > th,
-.table > tbody > tr.danger > th,
-.table > tfoot > tr.danger > th {
-    background-color: #f2dede;
-}
-
-.table-hover > tbody > tr > td.danger:hover,
-.table-hover > tbody > tr > th.danger:hover,
-.table-hover > tbody > tr.danger:hover > td,
-.table-hover > tbody > tr:hover > .danger,
-.table-hover > tbody > tr.danger:hover > th {
-    background-color: #ebcccc;
-}
-
-.table-responsive {
-    min-height: .01%;
-    overflow-x: auto;
-}
-
-@media screen and (max-width: 767px) {
-    .table-responsive {
-        width: 100%;
-        margin-bottom: 15px;
-        overflow-y: hidden;
-        -ms-overflow-style: -ms-autohiding-scrollbar;
-        border: 1px solid #ddd;
-    }
-
-    .table-responsive > .table {
-        margin-bottom: 0;
-    }
-
-    .table-responsive > .table > thead > tr > th,
-    .table-responsive > .table > tbody > tr > th,
-    .table-responsive > .table > tfoot > tr > th,
-    .table-responsive > .table > thead > tr > td,
-    .table-responsive > .table > tbody > tr > td,
-    .table-responsive > .table > tfoot > tr > td {
-        white-space: nowrap;
-    }
-
-    .table-responsive > .table-bordered {
-        border: 0;
-    }
-
-    .table-responsive > .table-bordered > thead > tr > th:first-child,
-    .table-responsive > .table-bordered > tbody > tr > th:first-child,
-    .table-responsive > .table-bordered > tfoot > tr > th:first-child,
-    .table-responsive > .table-bordered > thead > tr > td:first-child,
-    .table-responsive > .table-bordered > tbody > tr > td:first-child,
-    .table-responsive > .table-bordered > tfoot > tr > td:first-child {
-        border-left: 0;
-    }
-
-    .table-responsive > .table-bordered > thead > tr > th:last-child,
-    .table-responsive > .table-bordered > tbody > tr > th:last-child,
-    .table-responsive > .table-bordered > tfoot > tr > th:last-child,
-    .table-responsive > .table-bordered > thead > tr > td:last-child,
-    .table-responsive > .table-bordered > tbody > tr > td:last-child,
-    .table-responsive > .table-bordered > tfoot > tr > td:last-child {
-        border-right: 0;
-    }
-
-    .table-responsive > .table-bordered > tbody > tr:last-child > th,
-    .table-responsive > .table-bordered > tfoot > tr:last-child > th,
-    .table-responsive > .table-bordered > tbody > tr:last-child > td,
-    .table-responsive > .table-bordered > tfoot > tr:last-child > td {
-        border-bottom: 0;
-    }
-}
-
-.btn {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 6px;
-}
-
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-}
-
-.btn:hover,
-.btn:focus,
-.btn.focus {
-    color: #333;
-    text-decoration: none;
-}
-
-.btn:active,
-.btn.active {
-    background-image: none;
-    outline: 0;
-    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-}
-
-.btn.disabled,
-.btn[disabled],
-fieldset[disabled] .btn {
-    cursor: not-allowed;
-    filter: alpha(opacity=65);
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    opacity: .65;
-}
-
-a.btn.disabled,
-fieldset[disabled] a.btn {
-    pointer-events: none;
-}
-
-.btn-default {
-    color: #333;
-    background-color: #fff;
-    border-color: #ccc;
-}
-
-.btn-default:focus,
-.btn-default.focus {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #8c8c8c;
-}
-
-.btn-default:hover {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad;
-}
-
-.btn-default:active,
-.btn-default.active {
-    color: #333;
-    background-color: #e6e6e6;
-    border-color: #adadad;
-}
-
-.btn-default:active:hover,
-.btn-default.active:hover,
-.btn-default.disabled:hover,
-.btn-default[disabled]:hover,
-fieldset[disabled] .btn-default:hover,
-.btn-default.disabled:focus,
-.btn-default[disabled]:focus,
-fieldset[disabled] .btn-default:focus,
-.btn-default.disabled.focus,
-.btn-default[disabled].focus,
-fieldset[disabled] .btn-default.focus {
-    background-color: #fff;
-    border-color: #ccc;
-}
-
-.btn-default .badge {
-    color: #fff;
-    background-color: #333;
-}
-
-.btn-lg,
-.btn-group-lg > .btn {
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.3333333;
-    border-radius: 6px;
-}
-
-.btn-sm,
-.btn-group-sm > .btn {
-    padding: 5px 10px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 6px;
-}
-
-.btn-xs,
-.btn-group-xs > .btn {
-    padding: 1px 5px;
-    font-size: 12px;
-    line-height: 1.5;
-    border-radius: 6px;
-}
-
-.fade {
-    opacity: 0;
-    -webkit-transition: opacity .15s linear;
-    -o-transition: opacity .15s linear;
-    transition: opacity .15s linear;
-}
-
-.btn .caret {
-    margin-left: 0;
-}
-
-.btn-lg .caret {
-    border-width: 5px 5px 0;
-    border-bottom-width: 0;
-}
-
-.dropup .btn-lg .caret {
-    border-width: 0 5px 5px;
-}
-
-[data-toggle="buttons"] > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
-[data-toggle="buttons"] > .btn input[type="checkbox"],
-[data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
-    position: absolute;
-    clip: rect(0, 0, 0, 0);
-    pointer-events: none;
-}
-
-.nav {
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-}
-
-.nav > li {
-    position: relative;
-    display: block;
-}
-
-.nav > li > a {
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-}
-
-.nav > li > a:hover,
-.nav > li > a:focus {
-    text-decoration: none;
-    background-color: #eee;
-}
-
-.nav > li.disabled > a {
-    color: #777;
-}
-
-.nav > li.disabled > a:hover,
-.nav > li.disabled > a:focus {
-    color: #777;
-    text-decoration: none;
-    cursor: not-allowed;
-    background-color: transparent;
-}
-
-.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus {
-    background-color: #eee;
-    border-color: #337ab7;
-}
-
-.nav .nav-divider {
-    height: 1px;
-    margin: 9px 0;
-    overflow: hidden;
-    background-color: #e5e5e5;
-}
-
-.nav > li > a > img {
-    max-width: none;
-}
-
-.nav-tabs {
-    border-bottom: 3px solid #337ab7;
-}
-
-.nav-tabs > li {
-    float: left;
-    margin-bottom: -1px;
-}
-
-.nav-tabs > li > a {
-    margin-right: 2px;
-    line-height: 1.42857143;
-    border: 1px solid #337ab7;
-    border-radius: 6px 6px 0 0;
-}
-
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
-    color: #ffffff;
-    cursor: pointer;
-    background-color: #337ab7;
-    border: 1px solid #337ab7;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.nav-pills > li {
-    float: left;
-}
-
-.nav-pills > li > a {
-    border-radius: 4px;
-}
-
-.nav-pills > li + li {
-    margin-left: 2px;
-}
-
-.nav-pills > li.active > a,
-.nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
-    color: #fff;
-    background-color: #337ab7;
-}
-
-.nav-stacked > li {
-    float: none;
-}
-
-.nav-stacked > li + li {
-    margin-top: 2px;
-    margin-left: 0;
-}
-
-.tab-content > .tab-pane {
-    display: none;
-}
-
-.tab-content > .active {
-    display: block;
-}
-
-.navbar {
-    position: relative;
-    min-height: 50px;
-    border: 1px solid transparent;
-}
-
-.navbar-collapse {
-    padding-right: 15px;
-    padding-left: 15px;
-    overflow-x: visible;
-    -webkit-overflow-scrolling: touch;
-    border-top: 1px solid transparent;
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
-}
-
-.navbar-collapse.in {
-    overflow-y: auto;
-}
-
-.navbar-fixed-top .navbar-collapse,
-.navbar-fixed-bottom .navbar-collapse {
-    max-height: 340px;
-}
-
-@media (max-device-width: 480px) and (orientation: landscape) {
-    .navbar-fixed-top .navbar-collapse,
-    .navbar-fixed-bottom .navbar-collapse {
-        max-height: 200px;
-    }
-}
-
-.navbar-static-top {
-    z-index: 1000;
-    border-width: 0 0 1px;
-}
-
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-    position: fixed;
-    right: 0;
-    left: 0;
-    z-index: 1030;
-}
-
-.navbar-fixed-top {
-    top: 0;
-    border-width: 0 0 1px;
-}
-
-.navbar-fixed-bottom {
-    bottom: 0;
-    margin-bottom: 0;
-    border-width: 1px 0 0;
-}
-
-.navbar-brand {
-    float: left;
-    height: 50px;
-    padding: 15px 15px;
-    font-size: 18px;
-    line-height: 20px;
-}
-
-.navbar-brand:hover,
-.navbar-brand:focus {
-    text-decoration: none;
-}
-
-.navbar-brand > img {
-    display: block;
-}
-
-.navbar-toggle {
-    position: relative;
-    float: right;
-    padding: 9px 10px;
-    margin-top: 8px;
-    margin-right: 15px;
-    margin-bottom: 8px;
-    background-color: transparent;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-
-.navbar-toggle:focus {
-    outline: 0;
-}
-
-.navbar-toggle .icon-bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    border-radius: 1px;
-}
-
-.navbar-toggle .icon-bar + .icon-bar {
-    margin-top: 4px;
-}
-
-.navbar-nav {
-    margin: 7.5px -15px;
-}
-
-.navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    line-height: 20px;
-}
-
-.navbar-btn {
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-
-.navbar-btn.btn-sm {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.navbar-btn.btn-xs {
-    margin-top: 14px;
-    margin-bottom: 14px;
-}
-
-.navbar-text {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.navbar-default .navbar-brand {
-    color: #ffffff;
-}
-
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-    color: #ec971f;
-    background-color: transparent;
-}
-
-.navbar-default .navbar-text {
-    color: #777;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: white;
-}
-
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-    color: #ec971f;
-    background-color: transparent;
-}
-
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-    color: #555;
-    background-color: #e7e7e7;
-}
-
-.navbar-default .navbar-nav > .disabled > a,
-.navbar-default .navbar-nav > .disabled > a:hover,
-.navbar-default .navbar-nav > .disabled > a:focus {
-    color: #ccc;
-    background-color: transparent;
-}
-
-.navbar-default .navbar-toggle {
-    border-color: #ddd;
-}
-
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-    background-color: #ddd;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #888;
-}
-
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-    border-color: #e7e7e7;
-}
-
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-    color: #555;
-    background-color: #e7e7e7;
-}
-
-.navbar-default .navbar-link {
-    color: #777;
-}
-
-.navbar-default .navbar-link:hover {
-    color: #333;
-}
-
-.pagination {
-    display: inline-block;
-    padding-left: 0;
-    margin: 20px 0;
-    border-radius: 4px;
-}
-
-.pagination > li {
-    display: inline;
-}
-
-.pagination > li > a,
-.pagination > li > span {
-    position: relative;
-    float: left;
-    padding: 6px 12px;
-    margin-left: -1px;
-    line-height: 1.42857143;
-    color: #337ab7;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
-}
-
-.pagination > li:first-child > a,
-.pagination > li:first-child > span {
-    margin-left: 0;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-
-.pagination > li:last-child > a,
-.pagination > li:last-child > span {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
-
-.pagination > li > a:hover,
-.pagination > li > span:hover,
-.pagination > li > a:focus,
-.pagination > li > span:focus {
-    z-index: 2;
-    color: #23527c;
-    background-color: #eee;
-    border-color: #ddd;
-}
-
-.pagination > .active > a,
-.pagination > .active > span,
-.pagination > .active > a:hover,
-.pagination > .active > span:hover,
-.pagination > .active > a:focus,
-.pagination > .active > span:focus {
-    z-index: 3;
-    color: #fff;
-    cursor: default;
-    background-color: #337ab7;
-    border-color: #337ab7;
-}
-
-.pagination > .disabled > span,
-.pagination > .disabled > span:hover,
-.pagination > .disabled > span:focus,
-.pagination > .disabled > a,
-.pagination > .disabled > a:hover,
-.pagination > .disabled > a:focus {
-    color: #777;
-    cursor: not-allowed;
-    background-color: #fff;
-    border-color: #ddd;
-}
-
-.pager {
-    padding-left: 0;
-    margin: 20px 0;
-    text-align: center;
-    list-style: none;
-}
-
-.pager li {
-    display: inline;
-}
-
-.pager li > a,
-.pager li > span {
-    display: inline-block;
-    padding: 5px 14px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-}
-
-.pager li > a:hover,
-.pager li > a:focus {
-    text-decoration: none;
-    background-color: #eee;
-}
-
-.pager .next > a,
-.pager .next > span {
-    float: right;
-}
-
-.pager .previous > a,
-.pager .previous > span {
-    float: left;
-}
-
-.pager .disabled > a,
-.pager .disabled > a:hover,
-.pager .disabled > a:focus,
-.pager .disabled > span {
-    color: #777;
-    cursor: not-allowed;
-    background-color: #fff;
-}
-
-.jumbotron {
-    color: inherit;
-    background-color: #eee;
-    margin-top: 5px;
-    border-radius: 3px;
-    padding: 10px;
-}
-
-.jumbotron h1,
-.jumbotron .h1 {
-    color: inherit;
-}
-
-.jumbotron > hr {
-    border-top-color: #d5d5d5;
-}
-
-.jumbotron .container {
-    max-width: 100%;
-}
-
-.thumbnail {
-    display: block;
-    padding: 4px;
-    margin-bottom: 20px;
-    line-height: 1.42857143;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    -webkit-transition: border .2s ease-in-out;
-    -o-transition: border .2s ease-in-out;
-    transition: border .2s ease-in-out;
-}
-
-.thumbnail > img,
-.thumbnail a > img {
-    margin-right: auto;
-    margin-left: auto;
-}
-
-a.thumbnail:hover,
-a.thumbnail:focus,
-a.thumbnail.active {
-    border-color: #337ab7;
-}
-
-.thumbnail .caption {
-    padding: 9px;
-    color: #333;
-}
-
-.alert {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-}
-
-.alert h4 {
-    margin-top: 0;
-    color: inherit;
-}
-
-.alert .alert-link {
-    font-weight: bold;
-}
-
-.alert > p,
-.alert > ul {
-    margin-bottom: 0;
-}
-
-.alert > p + p {
-    margin-top: 5px;
-}
-
-.alert-dismissable,
-.alert-dismissible {
-    padding-right: 35px;
-}
-
-.alert-dismissable .close,
-.alert-dismissible .close {
-    position: relative;
-    top: -2px;
-    right: -21px;
-    color: inherit;
-}
-
-.alert-success {
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-
-.alert-success hr {
-    border-top-color: #c9e2b3;
-}
-
-.alert-success .alert-link {
-    color: #2b542c;
-}
-
-.alert-info {
-    color: #31708f;
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-}
-
-.alert-info hr {
-    border-top-color: #a6e1ec;
-}
-
-.alert-info .alert-link {
-    color: #245269;
-}
-
-.alert-warning {
-    color: #8a6d3b;
-    background-color: #fcf8e3;
-    border-color: #faebcc;
-}
-
-.alert-warning hr {
-    border-top-color: #f7e1b5;
-}
-
-.alert-warning .alert-link {
-    color: #66512c;
-}
-
-.alert-danger {
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-}
-
-.alert-danger hr {
-    border-top-color: #e4b9c0;
-}
-
-.alert-danger .alert-link {
-    color: #843534;
-}
-
-.clearfix:before,
-.clearfix:after,
-.dl-horizontal dd:before,
-.dl-horizontal dd:after,
-.container:before,
-.container:after,
-.container:before,
-.container:after,
-.row:before,
-.row:after,
-.btn-toolbar:before,
-.btn-toolbar:after,
-.btn-group-vertical > .btn-group:before,
-.btn-group-vertical > .btn-group:after,
-.nav:before,
-.nav:after,
-.navbar:before,
-.navbar:after,
-.navbar-header:before,
-.navbar-header:after,
-.navbar-collapse:before,
-.navbar-collapse:after,
-.pager:before,
-.pager:after,
-.modal-header:before,
-.modal-header:after,
-.modal-footer:before,
-.modal-footer:after {
-    display: table;
-    content: " ";
-}
-
-.clearfix:after,
-.dl-horizontal dd:after,
-.container:after,
-.container:after,
-.row:after,
-.btn-toolbar:after,
-.btn-group-vertical > .btn-group:after,
-.nav:after,
-.navbar:after,
-.navbar-header:after,
-.navbar-collapse:after,
-.pager:after,
-.modal-header:after,
-.modal-footer:after {
-    clear: both;
-}
-
-.center-block {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.invisible {
-    visibility: hidden;
-}
-
-.text-hide {
-    font: 0/0 a;
-    color: transparent;
-    text-shadow: none;
-    background-color: transparent;
-    border: 0;
-}
-
-.affix {
-    position: fixed;
-}
-
-.bs-callout {
-    padding: 20px;
-    border: 1px solid #eee;
-    border-left-width: 3px;
-    border-radius: 3px;
-}
-
-.bs-callout h4 {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-.bs-callout p:last-child {
-    margin-bottom: 0;
-}
-
-.bs-callout code {
-    border-radius: 3px;
-}
-
-.bs-callout + .bs-callout {
-    margin-top: -5px;
-}
-
-.bs-callout-default {
-    border-left-color: #777;
-}
-
-.bs-callout-default h4 {
-    color: #777;
-}
-
-.bs-callout-primary {
-    border-left-color: #428bca;
-}
-
-.bs-callout-primary h4 {
-    color: #428bca;
-}
-
-.bs-callout-success {
-    border-left-color: #5cb85c;
-}
-
-.bs-callout-success h4 {
-    color: #5cb85c;
-}
-
-.bs-callout-danger {
-    border-left-color: #d9534f;
-}
-
-.bs-callout-danger h4 {
-    color: #d9534f;
-}
-
-.bs-callout-warning {
-    border-left-color: #f0ad4e;
-}
-
-.bs-callout-warning h4 {
-    color: #f0ad4e;
-}
-
-.bs-callout-info {
-    border-left-color: #5bc0de;
-}
-
-.bs-callout-info h4 {
-    color: #5bc0de;
-}
-
-.container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        main,
+        menu,
+        nav,
+        section,
+        summary {
+            display: block;
+        }
+
+        audio,
+        canvas,
+        progress,
+        video {
+            display: inline-block;
+            vertical-align: baseline;
+        }
+
+        audio:not([controls]) {
+            display: none;
+            height: 0;
+        }
+
+        a {
+            background-color: transparent;
+            font-weight: 400;
+        }
+
+        a:active,
+        a:hover {
+            outline: 0;
+        }
+
+        abbr[title] {
+            border-bottom: 1px dotted;
+        }
+
+        b,
+        strong {
+            font-weight: bold;
+        }
+
+        dfn {
+            font-style: italic;
+        }
+
+        mark {
+            color: #000;
+            background: #ff0;
+        }
+
+        small {
+            font-size: 80%;
+        }
+
+        sub,
+        sup {
+            position: relative;
+            font-size: 75%;
+            line-height: 0;
+            vertical-align: baseline;
+        }
+
+        sup {
+            top: -.5em;
+        }
+
+        sub {
+            bottom: -.25em;
+        }
+
+        img {
+            border: 0;
+        }
+
+        svg:not(:root) {
+            overflow: hidden;
+        }
+
+        figure {
+            margin: 1em 40px;
+        }
+
+        hr {
+            height: 0;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+        pre {
+            overflow: auto;
+        }
+
+        code,
+        kbd,
+        pre,
+        samp {
+            font-family: monospace, monospace;
+            font-size: 1em;
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            margin: 0;
+            font: inherit;
+            color: inherit;
+        }
+
+        button {
+            overflow: visible;
+        }
+
+        button,
+        select {
+            text-transform: none;
+        }
+
+        button,
+        html input[type="button"],
+        input[type="reset"],
+        input[type="submit"] {
+            -webkit-appearance: button;
+            cursor: pointer;
+        }
+
+        button[disabled],
+        html input[disabled] {
+            cursor: default;
+        }
+
+        button::-moz-focus-inner,
+        input::-moz-focus-inner {
+            padding: 0;
+            border: 0;
+        }
+
+        input {
+            line-height: normal;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            height: auto;
+        }
+
+        input[type="search"] {
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            -webkit-appearance: textfield;
+        }
+
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-decoration {
+            -webkit-appearance: none;
+        }
+
+        fieldset {
+            padding: .35em .625em .75em;
+            margin: 0 2px;
+            border: 1px solid #c0c0c0;
+        }
+
+        legend {
+            padding: 0;
+            border: 0;
+        }
+
+        textarea {
+            overflow: auto;
+        }
+
+        optgroup {
+            font-weight: bold;
+        }
+
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            padding: 0;
+        }
+
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        input,
+        button,
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        a {
+            color: #1c79c0;
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            color: #23527c;
+            text-decoration: underline;
+        }
+
+        a:focus {
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        .thumbnail > img,
+        .thumbnail a > img,
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        hr {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px;
+        }
+
+        [role="button"] {
+            cursor: pointer;
+        }
+
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6 {
+            font-weight: 400;
+            line-height: 1.1;
+            color: inherit;
+        }
+
+        h1, .h1 {
+            font-weight: 100;
+            line-height: 50px;
+            color: #1c79c0;
+        }
+
+        h1,
+        .h1,
+        h2,
+        .h2,
+        h3,
+        .h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        h4,
+        .h4,
+        h5,
+        .h5,
+        h6,
+        .h6 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        h1,
+        .h1 {
+            font-size: 40px;
+        }
+
+        h2,
+        .h2 {
+            font-size: 30px;
+        }
+
+        h3,
+        .h3 {
+            font-size: 24px;
+        }
+
+        h4,
+        .h4 {
+            font-size: 16px;
+        }
+
+        h5,
+        .h5 {
+            font-size: 14px;
+        }
+
+        h6,
+        .h6 {
+            font-size: 12px;
+        }
+
+        p {
+            margin: 0 0 0px;
+        }
+
+        small,
+        .small {
+            font-size: 85%;
+        }
+
+        mark,
+        .mark {
+            padding: .2em;
+            background-color: #fcf8e3;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-justify {
+            text-align: justify;
+        }
+
+        .text-nowrap {
+            white-space: nowrap;
+        }
+
+        .text-lowercase {
+            text-transform: lowercase;
+        }
+
+        .text-uppercase {
+            text-transform: uppercase;
+        }
+
+        .text-capitalize {
+            text-transform: capitalize;
+        }
+
+        .text-muted {
+            color: #777;
+        }
+
+        .text-primary {
+            color: #337ab7;
+        }
+
+        ul,
+        ol {
+            margin-top: 0;
+            margin-bottom: 0px;
+        }
+
+        ul ul,
+        ol ul,
+        ul ol,
+        ol ol {
+            margin-bottom: 0;
+        }
+
+        dl {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        dt,
+        dd {
+            line-height: 1.42857143;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+
+        dd {
+            margin-left: 0;
+        }
+
+        abbr[title],
+        abbr[data-original-title] {
+            cursor: help;
+            border-bottom: 1px dotted #777;
+        }
+
+        code {
+            padding: 2px 4px;
+            font-size: 90%;
+            background-color: #eee;
+            border-radius: 6px;
+        }
+
+        pre {
+            display: block;
+            padding: 9.5px;
+            margin: 0 0 10px;
+            font-size: 13px;
+            line-height: 1.42857143;
+            word-break: break-all;
+            word-wrap: break-word;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+        }
+
+        pre code {
+            padding: 0;
+            font-size: inherit;
+            color: inherit;
+            white-space: pre-wrap;
+            background-color: transparent;
+            border-radius: 0;
+        }
+
+        .container {
+            margin-top: 2px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: #ffffff;
+            border-radius: 6px;
+        }
+
+        .row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        table {
+            background-color: transparent;
+        }
+
+        caption {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            color: #777;
+            text-align: left;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .table > thead > tr > th,
+        .table > tbody > tr > th,
+        .table > tfoot > tr > th,
+        .table > thead > tr > td,
+        .table > tbody > tr > td,
+        .table > tfoot > tr > td {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+
+        .table > thead > tr > th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .table > caption + thead > tr:first-child > th,
+        .table > colgroup + thead > tr:first-child > th,
+        .table > thead:first-child > tr:first-child > th,
+        .table > caption + thead > tr:first-child > td,
+        .table > colgroup + thead > tr:first-child > td,
+        .table > thead:first-child > tr:first-child > td {
+            border-top: 0;
+        }
+
+        .table > tbody + tbody {
+            border-top: 2px solid #ddd;
+        }
+
+        .table .table {
+            background-color: #fff;
+        }
+
+        .table-striped > tbody > tr:nth-of-type(odd) {
+            background-color: #f9f9f9;
+        }
+
+        .table-hover > tbody > tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        table col[class*="col-"] {
+            position: static;
+            display: table-column;
+            float: none;
+        }
+
+        table td[class*="col-"],
+        table th[class*="col-"] {
+            position: static;
+            display: table-cell;
+            float: none;
+        }
+
+        .table > thead > tr > td.active,
+        .table > tbody > tr > td.active,
+        .table > tfoot > tr > td.active,
+        .table > thead > tr > th.active,
+        .table > tbody > tr > th.active,
+        .table > tfoot > tr > th.active,
+        .table > thead > tr.active > td,
+        .table > tbody > tr.active > td,
+        .table > tfoot > tr.active > td,
+        .table > thead > tr.active > th,
+        .table > tbody > tr.active > th,
+        .table > tfoot > tr.active > th {
+            background-color: #f5f5f5;
+        }
+
+        .table-hover > tbody > tr > td.active:hover,
+        .table-hover > tbody > tr > th.active:hover,
+        .table-hover > tbody > tr.active:hover > td,
+        .table-hover > tbody > tr:hover > .active,
+        .table-hover > tbody > tr.active:hover > th {
+            background-color: #e8e8e8;
+        }
+
+        .table > thead > tr > td.success,
+        .table > tbody > tr > td.success,
+        .table > tfoot > tr > td.success,
+        .table > thead > tr > th.success,
+        .table > tbody > tr > th.success,
+        .table > tfoot > tr > th.success,
+        .table > thead > tr.success > td,
+        .table > tbody > tr.success > td,
+        .table > tfoot > tr.success > td,
+        .table > thead > tr.success > th,
+        .table > tbody > tr.success > th,
+        .table > tfoot > tr.success > th {
+            background-color: #dff0d8;
+        }
+
+        .table-hover > tbody > tr > td.success:hover,
+        .table-hover > tbody > tr > th.success:hover,
+        .table-hover > tbody > tr.success:hover > td,
+        .table-hover > tbody > tr:hover > .success,
+        .table-hover > tbody > tr.success:hover > th {
+            background-color: #d0e9c6;
+        }
+
+        .table > thead > tr > td.info,
+        .table > tbody > tr > td.info,
+        .table > tfoot > tr > td.info,
+        .table > thead > tr > th.info,
+        .table > tbody > tr > th.info,
+        .table > tfoot > tr > th.info,
+        .table > thead > tr.info > td,
+        .table > tbody > tr.info > td,
+        .table > tfoot > tr.info > td,
+        .table > thead > tr.info > th,
+        .table > tbody > tr.info > th,
+        .table > tfoot > tr.info > th {
+            background-color: #d9edf7;
+        }
+
+        .table-hover > tbody > tr > td.info:hover,
+        .table-hover > tbody > tr > th.info:hover,
+        .table-hover > tbody > tr.info:hover > td,
+        .table-hover > tbody > tr:hover > .info,
+        .table-hover > tbody > tr.info:hover > th {
+            background-color: #c4e3f3;
+        }
+
+        .table > thead > tr > td.warning,
+        .table > tbody > tr > td.warning,
+        .table > tfoot > tr > td.warning,
+        .table > thead > tr > th.warning,
+        .table > tbody > tr > th.warning,
+        .table > tfoot > tr > th.warning,
+        .table > thead > tr.warning > td,
+        .table > tbody > tr.warning > td,
+        .table > tfoot > tr.warning > td,
+        .table > thead > tr.warning > th,
+        .table > tbody > tr.warning > th,
+        .table > tfoot > tr.warning > th {
+            background-color: #fcf8e3;
+        }
+
+        .table-hover > tbody > tr > td.warning:hover,
+        .table-hover > tbody > tr > th.warning:hover,
+        .table-hover > tbody > tr.warning:hover > td,
+        .table-hover > tbody > tr:hover > .warning,
+        .table-hover > tbody > tr.warning:hover > th {
+            background-color: #faf2cc;
+        }
+
+        .table > thead > tr > td.danger,
+        .table > tbody > tr > td.danger,
+        .table > tfoot > tr > td.danger,
+        .table > thead > tr > th.danger,
+        .table > tbody > tr > th.danger,
+        .table > tfoot > tr > th.danger,
+        .table > thead > tr.danger > td,
+        .table > tbody > tr.danger > td,
+        .table > tfoot > tr.danger > td,
+        .table > thead > tr.danger > th,
+        .table > tbody > tr.danger > th,
+        .table > tfoot > tr.danger > th {
+            background-color: #f2dede;
+        }
+
+        .table-hover > tbody > tr > td.danger:hover,
+        .table-hover > tbody > tr > th.danger:hover,
+        .table-hover > tbody > tr.danger:hover > td,
+        .table-hover > tbody > tr:hover > .danger,
+        .table-hover > tbody > tr.danger:hover > th {
+            background-color: #ebcccc;
+        }
+
+        .table-responsive {
+            min-height: .01%;
+            overflow-x: auto;
+        }
+
+        @media screen and (max-width: 767px) {
+            .table-responsive {
+                width: 100%;
+                margin-bottom: 15px;
+                overflow-y: hidden;
+                -ms-overflow-style: -ms-autohiding-scrollbar;
+                border: 1px solid #ddd;
+            }
+
+            .table-responsive > .table {
+                margin-bottom: 0;
+            }
+
+            .table-responsive > .table > thead > tr > th,
+            .table-responsive > .table > tbody > tr > th,
+            .table-responsive > .table > tfoot > tr > th,
+            .table-responsive > .table > thead > tr > td,
+            .table-responsive > .table > tbody > tr > td,
+            .table-responsive > .table > tfoot > tr > td {
+                white-space: nowrap;
+            }
+
+            .table-responsive > .table-bordered {
+                border: 0;
+            }
+
+            .table-responsive > .table-bordered > thead > tr > th:first-child,
+            .table-responsive > .table-bordered > tbody > tr > th:first-child,
+            .table-responsive > .table-bordered > tfoot > tr > th:first-child,
+            .table-responsive > .table-bordered > thead > tr > td:first-child,
+            .table-responsive > .table-bordered > tbody > tr > td:first-child,
+            .table-responsive > .table-bordered > tfoot > tr > td:first-child {
+                border-left: 0;
+            }
+
+            .table-responsive > .table-bordered > thead > tr > th:last-child,
+            .table-responsive > .table-bordered > tbody > tr > th:last-child,
+            .table-responsive > .table-bordered > tfoot > tr > th:last-child,
+            .table-responsive > .table-bordered > thead > tr > td:last-child,
+            .table-responsive > .table-bordered > tbody > tr > td:last-child,
+            .table-responsive > .table-bordered > tfoot > tr > td:last-child {
+                border-right: 0;
+            }
+
+            .table-responsive > .table-bordered > tbody > tr:last-child > th,
+            .table-responsive > .table-bordered > tfoot > tr:last-child > th,
+            .table-responsive > .table-bordered > tbody > tr:last-child > td,
+            .table-responsive > .table-bordered > tfoot > tr:last-child > td {
+                border-bottom: 0;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 6px;
+        }
+
+        .btn:focus,
+        .btn:active:focus,
+        .btn.active:focus,
+        .btn.focus,
+        .btn:active.focus,
+        .btn.active.focus {
+            outline: 5px auto -webkit-focus-ring-color;
+            outline-offset: -2px;
+        }
+
+        .btn:hover,
+        .btn:focus,
+        .btn.focus {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .btn:active,
+        .btn.active {
+            background-image: none;
+            outline: 0;
+            -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+            box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+        }
+
+        .btn.disabled,
+        .btn[disabled],
+        fieldset[disabled] .btn {
+            cursor: not-allowed;
+            filter: alpha(opacity=65);
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            opacity: .65;
+        }
+
+        a.btn.disabled,
+        fieldset[disabled] a.btn {
+            pointer-events: none;
+        }
+
+        .btn-default {
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+
+        .btn-default:focus,
+        .btn-default.focus {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #8c8c8c;
+        }
+
+        .btn-default:hover {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+
+        .btn-default:active,
+        .btn-default.active {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+
+        .btn-default:active:hover,
+        .btn-default.active:hover,
+        .btn-default.disabled:hover,
+        .btn-default[disabled]:hover,
+        fieldset[disabled] .btn-default:hover,
+        .btn-default.disabled:focus,
+        .btn-default[disabled]:focus,
+        fieldset[disabled] .btn-default:focus,
+        .btn-default.disabled.focus,
+        .btn-default[disabled].focus,
+        fieldset[disabled] .btn-default.focus {
+            background-color: #fff;
+            border-color: #ccc;
+        }
+
+        .btn-default .badge {
+            color: #fff;
+            background-color: #333;
+        }
+
+        .btn-lg,
+        .btn-group-lg > .btn {
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.3333333;
+            border-radius: 6px;
+        }
+
+        .btn-sm,
+        .btn-group-sm > .btn {
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 6px;
+        }
+
+        .btn-xs,
+        .btn-group-xs > .btn {
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 6px;
+        }
+
+        .fade {
+            opacity: 0;
+            -webkit-transition: opacity .15s linear;
+            -o-transition: opacity .15s linear;
+            transition: opacity .15s linear;
+        }
+
+        .btn .caret {
+            margin-left: 0;
+        }
+
+        .btn-lg .caret {
+            border-width: 5px 5px 0;
+            border-bottom-width: 0;
+        }
+
+        .dropup .btn-lg .caret {
+            border-width: 0 5px 5px;
+        }
+
+        [data-toggle="buttons"] > .btn input[type="radio"],
+        [data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
+        [data-toggle="buttons"] > .btn input[type="checkbox"],
+        [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+            pointer-events: none;
+        }
+
+        .nav {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style: none;
+        }
+
+        .nav > li {
+            position: relative;
+            display: block;
+        }
+
+        .nav > li > a {
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+        }
+
+        .nav > li > a:hover,
+        .nav > li > a:focus {
+            text-decoration: none;
+            background-color: #eee;
+        }
+
+        .nav > li.disabled > a {
+            color: #777;
+        }
+
+        .nav > li.disabled > a:hover,
+        .nav > li.disabled > a:focus {
+            color: #777;
+            text-decoration: none;
+            cursor: not-allowed;
+            background-color: transparent;
+        }
+
+        .nav .open > a,
+        .nav .open > a:hover,
+        .nav .open > a:focus {
+            background-color: #eee;
+            border-color: #337ab7;
+        }
+
+        .nav .nav-divider {
+            height: 1px;
+            margin: 9px 0;
+            overflow: hidden;
+            background-color: #e5e5e5;
+        }
+
+        .nav > li > a > img {
+            max-width: none;
+        }
+
+        .nav-tabs {
+            border-bottom: 3px solid #337ab7;
+        }
+
+        .nav-tabs > li {
+            float: left;
+            margin-bottom: -1px;
+        }
+
+        .nav-tabs > li > a {
+            margin-right: 2px;
+            line-height: 1.42857143;
+            border: 1px solid #337ab7;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .nav-tabs > li.active > a,
+        .nav-tabs > li.active > a:hover,
+        .nav-tabs > li.active > a:focus {
+            color: #ffffff;
+            cursor: pointer;
+            background-color: #337ab7;
+            border: 1px solid #337ab7;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .nav-pills > li {
+            float: left;
+        }
+
+        .nav-pills > li > a {
+            border-radius: 4px;
+        }
+
+        .nav-pills > li + li {
+            margin-left: 2px;
+        }
+
+        .nav-pills > li.active > a,
+        .nav-pills > li.active > a:hover,
+        .nav-pills > li.active > a:focus {
+            color: #fff;
+            background-color: #337ab7;
+        }
+
+        .nav-stacked > li {
+            float: none;
+        }
+
+        .nav-stacked > li + li {
+            margin-top: 2px;
+            margin-left: 0;
+        }
+
+        .tab-content > .tab-pane {
+            display: none;
+        }
+
+        .tab-content > .active {
+            display: block;
+        }
+
+        .navbar {
+            position: relative;
+            min-height: 50px;
+            border: 1px solid transparent;
+        }
+
+        .navbar-collapse {
+            padding-right: 15px;
+            padding-left: 15px;
+            overflow-x: visible;
+            -webkit-overflow-scrolling: touch;
+            border-top: 1px solid transparent;
+            -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+        }
+
+        .navbar-collapse.in {
+            overflow-y: auto;
+        }
+
+        .navbar-fixed-top .navbar-collapse,
+        .navbar-fixed-bottom .navbar-collapse {
+            max-height: 340px;
+        }
+
+        @media (max-device-width: 480px) and (orientation: landscape) {
+            .navbar-fixed-top .navbar-collapse,
+            .navbar-fixed-bottom .navbar-collapse {
+                max-height: 200px;
+            }
+        }
+
+        .navbar-static-top {
+            z-index: 1000;
+            border-width: 0 0 1px;
+        }
+
+        .navbar-fixed-top,
+        .navbar-fixed-bottom {
+            position: fixed;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+        }
+
+        .navbar-fixed-top {
+            top: 0;
+            border-width: 0 0 1px;
+        }
+
+        .navbar-fixed-bottom {
+            bottom: 0;
+            margin-bottom: 0;
+            border-width: 1px 0 0;
+        }
+
+        .navbar-brand {
+            float: left;
+            height: 50px;
+            padding: 15px 15px;
+            font-size: 18px;
+            line-height: 20px;
+        }
+
+        .navbar-brand:hover,
+        .navbar-brand:focus {
+            text-decoration: none;
+        }
+
+        .navbar-brand > img {
+            display: block;
+        }
+
+        .navbar-toggle {
+            position: relative;
+            float: right;
+            padding: 9px 10px;
+            margin-top: 8px;
+            margin-right: 15px;
+            margin-bottom: 8px;
+            background-color: transparent;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .navbar-toggle:focus {
+            outline: 0;
+        }
+
+        .navbar-toggle .icon-bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        .navbar-toggle .icon-bar + .icon-bar {
+            margin-top: 4px;
+        }
+
+        .navbar-nav {
+            margin: 7.5px -15px;
+        }
+
+        .navbar-nav > li > a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            line-height: 20px;
+        }
+
+        .navbar-btn {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        .navbar-btn.btn-sm {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .navbar-btn.btn-xs {
+            margin-top: 14px;
+            margin-bottom: 14px;
+        }
+
+        .navbar-text {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .navbar-default .navbar-brand {
+            color: #ffffff;
+        }
+
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-brand:focus {
+            color: #ec971f;
+            background-color: transparent;
+        }
+
+        .navbar-default .navbar-text {
+            color: #777;
+        }
+
+        .navbar-default .navbar-nav > li > a {
+            color: white;
+        }
+
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus {
+            color: #ec971f;
+            background-color: transparent;
+        }
+
+        .navbar-default .navbar-nav > .active > a,
+        .navbar-default .navbar-nav > .active > a:hover,
+        .navbar-default .navbar-nav > .active > a:focus {
+            color: #555;
+            background-color: #e7e7e7;
+        }
+
+        .navbar-default .navbar-nav > .disabled > a,
+        .navbar-default .navbar-nav > .disabled > a:hover,
+        .navbar-default .navbar-nav > .disabled > a:focus {
+            color: #ccc;
+            background-color: transparent;
+        }
+
+        .navbar-default .navbar-toggle {
+            border-color: #ddd;
+        }
+
+        .navbar-default .navbar-toggle:hover,
+        .navbar-default .navbar-toggle:focus {
+            background-color: #ddd;
+        }
+
+        .navbar-default .navbar-toggle .icon-bar {
+            background-color: #888;
+        }
+
+        .navbar-default .navbar-collapse,
+        .navbar-default .navbar-form {
+            border-color: #e7e7e7;
+        }
+
+        .navbar-default .navbar-nav > .open > a,
+        .navbar-default .navbar-nav > .open > a:hover,
+        .navbar-default .navbar-nav > .open > a:focus {
+            color: #555;
+            background-color: #e7e7e7;
+        }
+
+        .navbar-default .navbar-link {
+            color: #777;
+        }
+
+        .navbar-default .navbar-link:hover {
+            color: #333;
+        }
+
+        .pagination {
+            display: inline-block;
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .pagination > li {
+            display: inline;
+        }
+
+        .pagination > li > a,
+        .pagination > li > span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #337ab7;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .pagination > li:first-child > a,
+        .pagination > li:first-child > span {
+            margin-left: 0;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        .pagination > li:last-child > a,
+        .pagination > li:last-child > span {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .pagination > li > a:hover,
+        .pagination > li > span:hover,
+        .pagination > li > a:focus,
+        .pagination > li > span:focus {
+            z-index: 2;
+            color: #23527c;
+            background-color: #eee;
+            border-color: #ddd;
+        }
+
+        .pagination > .active > a,
+        .pagination > .active > span,
+        .pagination > .active > a:hover,
+        .pagination > .active > span:hover,
+        .pagination > .active > a:focus,
+        .pagination > .active > span:focus {
+            z-index: 3;
+            color: #fff;
+            cursor: default;
+            background-color: #337ab7;
+            border-color: #337ab7;
+        }
+
+        .pagination > .disabled > span,
+        .pagination > .disabled > span:hover,
+        .pagination > .disabled > span:focus,
+        .pagination > .disabled > a,
+        .pagination > .disabled > a:hover,
+        .pagination > .disabled > a:focus {
+            color: #777;
+            cursor: not-allowed;
+            background-color: #fff;
+            border-color: #ddd;
+        }
+
+        .pager {
+            padding-left: 0;
+            margin: 20px 0;
+            text-align: center;
+            list-style: none;
+        }
+
+        .pager li {
+            display: inline;
+        }
+
+        .pager li > a,
+        .pager li > span {
+            display: inline-block;
+            padding: 5px 14px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+        }
+
+        .pager li > a:hover,
+        .pager li > a:focus {
+            text-decoration: none;
+            background-color: #eee;
+        }
+
+        .pager .next > a,
+        .pager .next > span {
+            float: right;
+        }
+
+        .pager .previous > a,
+        .pager .previous > span {
+            float: left;
+        }
+
+        .pager .disabled > a,
+        .pager .disabled > a:hover,
+        .pager .disabled > a:focus,
+        .pager .disabled > span {
+            color: #777;
+            cursor: not-allowed;
+            background-color: #fff;
+        }
+
+        .jumbotron {
+            color: inherit;
+            background-color: #eee;
+            margin-top: 5px;
+            border-radius: 3px;
+            padding: 10px;
+        }
+
+        .jumbotron h1,
+        .jumbotron .h1 {
+            color: inherit;
+        }
+
+        .jumbotron > hr {
+            border-top-color: #d5d5d5;
+        }
+
+        .jumbotron .container {
+            max-width: 100%;
+        }
+
+        .thumbnail {
+            display: block;
+            padding: 4px;
+            margin-bottom: 20px;
+            line-height: 1.42857143;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            -webkit-transition: border .2s ease-in-out;
+            -o-transition: border .2s ease-in-out;
+            transition: border .2s ease-in-out;
+        }
+
+        .thumbnail > img,
+        .thumbnail a > img {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        a.thumbnail:hover,
+        a.thumbnail:focus,
+        a.thumbnail.active {
+            border-color: #337ab7;
+        }
+
+        .thumbnail .caption {
+            padding: 9px;
+            color: #333;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert h4 {
+            margin-top: 0;
+            color: inherit;
+        }
+
+        .alert .alert-link {
+            font-weight: bold;
+        }
+
+        .alert > p,
+        .alert > ul {
+            margin-bottom: 0;
+        }
+
+        .alert > p + p {
+            margin-top: 5px;
+        }
+
+        .alert-dismissable,
+        .alert-dismissible {
+            padding-right: 35px;
+        }
+
+        .alert-dismissable .close,
+        .alert-dismissible .close {
+            position: relative;
+            top: -2px;
+            right: -21px;
+            color: inherit;
+        }
+
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .alert-success hr {
+            border-top-color: #c9e2b3;
+        }
+
+        .alert-success .alert-link {
+            color: #2b542c;
+        }
+
+        .alert-info {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+
+        .alert-info hr {
+            border-top-color: #a6e1ec;
+        }
+
+        .alert-info .alert-link {
+            color: #245269;
+        }
+
+        .alert-warning {
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+        }
+
+        .alert-warning hr {
+            border-top-color: #f7e1b5;
+        }
+
+        .alert-warning .alert-link {
+            color: #66512c;
+        }
+
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        .alert-danger hr {
+            border-top-color: #e4b9c0;
+        }
+
+        .alert-danger .alert-link {
+            color: #843534;
+        }
+
+        .clearfix:before,
+        .clearfix:after,
+        .dl-horizontal dd:before,
+        .dl-horizontal dd:after,
+        .container:before,
+        .container:after,
+        .container:before,
+        .container:after,
+        .row:before,
+        .row:after,
+        .btn-toolbar:before,
+        .btn-toolbar:after,
+        .btn-group-vertical > .btn-group:before,
+        .btn-group-vertical > .btn-group:after,
+        .nav:before,
+        .nav:after,
+        .navbar:before,
+        .navbar:after,
+        .navbar-header:before,
+        .navbar-header:after,
+        .navbar-collapse:before,
+        .navbar-collapse:after,
+        .pager:before,
+        .pager:after,
+        .modal-header:before,
+        .modal-header:after,
+        .modal-footer:before,
+        .modal-footer:after {
+            display: table;
+            content: " ";
+        }
+
+        .clearfix:after,
+        .dl-horizontal dd:after,
+        .container:after,
+        .container:after,
+        .row:after,
+        .btn-toolbar:after,
+        .btn-group-vertical > .btn-group:after,
+        .nav:after,
+        .navbar:after,
+        .navbar-header:after,
+        .navbar-collapse:after,
+        .pager:after,
+        .modal-header:after,
+        .modal-footer:after {
+            clear: both;
+        }
+
+        .center-block {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .invisible {
+            visibility: hidden;
+        }
+
+        .text-hide {
+            font: 0/0 a;
+            color: transparent;
+            text-shadow: none;
+            background-color: transparent;
+            border: 0;
+        }
+
+        .affix {
+            position: fixed;
+        }
+
+        .bs-callout {
+            padding: 20px;
+            border: 1px solid #eee;
+            border-left-width: 3px;
+            border-radius: 3px;
+        }
+
+        .bs-callout h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .bs-callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bs-callout code {
+            border-radius: 3px;
+        }
+
+        .bs-callout + .bs-callout {
+            margin-top: -5px;
+        }
+
+        .bs-callout-default {
+            border-left-color: #777;
+        }
+
+        .bs-callout-default h4 {
+            color: #777;
+        }
+
+        .bs-callout-primary {
+            border-left-color: #428bca;
+        }
+
+        .bs-callout-primary h4 {
+            color: #428bca;
+        }
+
+        .bs-callout-success {
+            border-left-color: #5cb85c;
+        }
+
+        .bs-callout-success h4 {
+            color: #5cb85c;
+        }
+
+        .bs-callout-danger {
+            border-left-color: #d9534f;
+        }
+
+        .bs-callout-danger h4 {
+            color: #d9534f;
+        }
+
+        .bs-callout-warning {
+            border-left-color: #f0ad4e;
+        }
+
+        .bs-callout-warning h4 {
+            color: #f0ad4e;
+        }
+
+        .bs-callout-info {
+            border-left-color: #5bc0de;
+        }
+
+        .bs-callout-info h4 {
+            color: #5bc0de;
+        }
+
+        .container-fluid {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
         a, a:hover, a:visited, a:link {
-    text-decoration: none;
-}
+            text-decoration: none;
+        }
 
-a:hover {
-    color: #f0ad4e;
-}
+        a:hover {
+            color: #f0ad4e;
+        }
 
-.single_line {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        .single_line {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
-img {
-    border-radius: 6px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: #fbbc05;
-}
+        img {
+            border-radius: 6px;
+            border-width: 3px;
+            border-style: solid;
+            border-color: #fbbc05;
+        }
 
-.dsd_catalog {
-    padding: 10px;
-    border: 1px solid #888;
-    border-radius: 3px;
-}
+        .dsd_catalog {
+            padding: 10px;
+            border: 1px solid #888;
+            border-radius: 3px;
+        }
 
-.dsd_catalog_left_hide {
-    display: none;
-}
+        .dsd_catalog_left_hide {
+            display: none;
+        }
 
-.dsd_catalog_left_show {
-    padding-left: 10px;
-}
+        .dsd_catalog_left_show {
+            padding-left: 10px;
+        }
 
-.dsd_title {
-    border-left: 3px solid #337ab7;
-    border-radius: 3px;
-    padding: 4px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 24px;
-    line-height: 30px;
-}
+        .dsd_title {
+            border-left: 3px solid #337ab7;
+            border-radius: 3px;
+            padding: 4px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 24px;
+            line-height: 30px;
+        }
 
-.dsd_title_1 {
-    color: #1c79c0;
-}
+        .dsd_title_1 {
+            color: #1c79c0;
+        }
 
-.dsd_title_2 {
-    padding-left: 10px;
-}
+        .dsd_title_2 {
+            padding-left: 10px;
+        }
 
-#xs_content_border {
-    padding-left: 3px;
-}
+        #xs_content_border {
+            padding-left: 3px;
+        }
 
-.dsd_callout {
-    border-left: 3px solid #5cb85c;
-    border-radius: 3px;
-    padding-left: 5px;
-}
+        .dsd_callout {
+            border-left: 3px solid #5cb85c;
+            border-radius: 3px;
+            padding-left: 5px;
+        }
 
-html {
-    height: 100%;
-}
+        html {
+            height: 100%;
+        }
 
-body {
-    min-height: 100%;
-    padding-bottom: 80px;
-    font-family: "Helvetica", sans-serif;
-    font-weight: 300;
-    letter-spacing: .56px;
-    font-size: 16px;
-    line-height: 26px;
-    color: #212121;
-}
+        body {
+            min-height: 100%;
+            padding-bottom: 80px;
+            font-family: "Helvetica", sans-serif;
+            font-weight: 300;
+            letter-spacing: .56px;
+            font-size: 16px;
+            line-height: 26px;
+            color: #212121;
+        }
 
-.fullscreen {
-    min-height: 100%;
-    overflow-y: hidden;
-}
+        .fullscreen {
+            min-height: 100%;
+            overflow-y: hidden;
+        }
 
-nav {
-    position: absolute;
-    top: 0;
-    background: linear-gradient(36deg, #0dd3ff, #0389ff, #1c79c0);
-}
+        nav {
+            position: absolute;
+            top: 0;
+            background: linear-gradient(36deg, #0dd3ff, #0389ff, #1c79c0);
+        }
 
-footer {
-    background: linear-gradient(to right, #1c79c0, #0389ff, #0dd3ff);
-}
+        footer {
+            background: linear-gradient(to right, #1c79c0, #0389ff, #0dd3ff);
+        }
 
-footer > a {
-    color: white;
-}
+        footer > a {
+            color: white;
+        }
 
-.xs_content_border {
-    padding-bottom: 80px;
-}
+        .xs_content_border {
+            padding-bottom: 80px;
+        }
 
-.dsd_panel-primary {
-    height: 100px;
-    background: linear-gradient(36deg, #0dd3ff, #0389ff, #1c79c0);
-    color: white;
-}
+        .dsd_panel-primary {
+            height: 100px;
+            background: linear-gradient(36deg, #0dd3ff, #0389ff, #1c79c0);
+            color: white;
+        }
 
-.dsd_panel-primary a {
-    color: white;
-}
+        .dsd_panel-primary a {
+            color: white;
+        }
 
     </style>
 
@@ -1753,14 +1755,16 @@ footer > a {
         </style>
     </noscript>
 
-    <script  type="application/ld+json"> {
+    <script type="application/ld+json"> {
        "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
        "@id": "https://mip.dashidan.com/article/java/basic/15.html",
        "title":"java常用集合类与遍历方式 - java教程 - 大屎蛋教程网",
-       "description": "java常用集合类接口:Collection List Set Queue Map介绍 集合类的遍历 HashMap  HashSet LinkList ArrayList Vector等",
-       "pubDate": "2018-03-17T23:37:39",
+       "description": "java常用集合类接口:Collection,List,Set,Queue,Map介绍.HashMap,HashSet,LinkList,ArrayList,Vector等集合类的遍历.",
+       "pubDate": "2018-05-19T14:38:29",
        "isOriginal": "1"
-}</script>
+}
+
+    </script>
 
     <script src="https://c.mipcdn.com/extensions/platform/v1/mip-cambrian/mip-cambrian.js"></script>
 </head>
@@ -1768,30 +1772,47 @@ footer > a {
 <body>
 <nav class="navbar navbar-default">
     <div class="navbar-header">
-        <a class="navbar-brand" href="https://mip.dashidan.com/index.html">大屎蛋教程网</a>
+        <a class="navbar-brand" href="https://mip.dashidan.com//index.html">大屎蛋教程网</a>
     </div>
 </nav>
 
 <mip-cambrian site-id="1588397041009826"></mip-cambrian>
 
 <div class="container-fluid">
-    <!-- 顶部面包屑导航-->
     <div class="text-left">
-        <a href="https://mip.dashidan.com/index.html">首页</a> > <a
-            href="https://mip.dashidan.com/article/java/index.html">java</a> > Java集合类
+        <a href="https://mip.dashidan.com//index.html">首页</a> > <a
+            href="https://mip.dashidan.com//article/java/index.html">java</a> > 15.Java集合类
     </div>
 
     <div class="dsd_content">
-        <!-- 文章内容-->
-        <div class="dsd_title"><h1>Java集合类</h1></div>
+        <div class="dsd_title"><h1>15.Java集合类</h1></div>
         <div id="xs_content_border">
-            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 常用集合类接口</a><br><a href="#1.1">&nbsp;&nbsp;1.1 Collection接口</a><br><a href="#1.2">&nbsp;&nbsp;1.2 List接口</a><br><a href="#1.3">&nbsp;&nbsp;1.3 Set接口</a><br><a href="#1.4">&nbsp;&nbsp;1.4 Queue接口</a><br><a href="#1.5">&nbsp;&nbsp;1.5 Map接口</a><br><a href="#2">2 常用集合类</a><br><a href="#2.1">&nbsp;&nbsp;2.1 LinkedList类</a><br><a href="#2.2">&nbsp;&nbsp;2.2 ArrayList类</a><br><a href="#2.3">&nbsp;&nbsp;2.3 Vector类</a><br><a href="#2.4">&nbsp;&nbsp;2.4 Stack类</a><br><a href="#2.5">&nbsp;&nbsp;2.5 HashMap类</a><br><a href="#2.6">&nbsp;&nbsp;2.6 HashTable类</a><br><a href="#2.7">&nbsp;&nbsp;2.7 WeakHashMap类</a><br><a href="#2.8">&nbsp;&nbsp;2.8 HashSet类</a><br><a href="#2.9">&nbsp;&nbsp;2.9 ConcurrentHashMap类</a><br><a href="#2.10">&nbsp;&nbsp;2.10 LinkedHashMap类</a><br><a href="#2.11">&nbsp;&nbsp;2.11 TreeMap类</a><br><a href="#2.12">&nbsp;&nbsp;2.12 常用集合类总结</a><br><a href="#3">3 常用遍历集合方式</a><br><a href="#3.1">&nbsp;&nbsp;3.1 常用遍历集合方式</a><br><a href="#3.2">&nbsp;&nbsp;3.2 遍历集合示例代码</a><br><a href="#4">4 集合常见问题</a><br><a href="#4.1">&nbsp;&nbsp;4.1 集合类和数组的区别</a><br><a href="#4.2">&nbsp;&nbsp;4.2 ArrayList和LinkedList区别</a><br><a href="#4.3">&nbsp;&nbsp;4.3 ArrayList和LinkedList应用场景</a><br><a href="#4.4">&nbsp;&nbsp;4.4 队列和栈</a><br><a href="#4.5">&nbsp;&nbsp;4.5 HashTable与HashMap区别</a><br><a href="#4.6">&nbsp;&nbsp;4.6 ArrayList和Vector区别</a><br><a href="#4.7">&nbsp;&nbsp;4.7 ArrayList和Linklist区别</a><br><a href="#4.8">&nbsp;&nbsp;4.8 HashMap与TreeMap区别</a></div></div><div class="jumbotron">
-<p>Java集合类是java提供的工具包,包含了常用的数据结构:集合、链表、队列、栈、映射等.Java集合类主要可以划分为4个部分:List列表、Set集合、Map映射、工具类(Iterator迭代器、Enumeration枚举类、Arrays和Collections).
-</p>  
-</div>
-<div id="1"><h3>1 常用集合类接口</h3></div>
-<p>常用集合类继承关系如下所示:   </p>
-<pre class="prettyprint"><code>Collection
+            <div>
+                <div class="dsd_catalog"><h3>目录</h3><a href="#1">1 常用集合类接口</a><br><a href="#1.1">&nbsp;&nbsp;1.1
+                    Collection接口</a><br><a href="#1.2">&nbsp;&nbsp;1.2 List接口</a><br><a href="#1.3">&nbsp;&nbsp;1.3
+                    Set接口</a><br><a href="#1.4">&nbsp;&nbsp;1.4 Queue接口</a><br><a href="#1.5">&nbsp;&nbsp;1.5
+                    Map接口</a><br><a href="#2">2 常用集合类</a><br><a href="#2.1">&nbsp;&nbsp;2.1 LinkedList类</a><br><a
+                        href="#2.2">&nbsp;&nbsp;2.2 ArrayList类</a><br><a href="#2.3">&nbsp;&nbsp;2.3 Vector类</a><br><a
+                        href="#2.4">&nbsp;&nbsp;2.4 Stack类</a><br><a href="#2.5">&nbsp;&nbsp;2.5 HashMap类</a><br><a
+                        href="#2.6">&nbsp;&nbsp;2.6 HashTable类</a><br><a href="#2.7">&nbsp;&nbsp;2.7
+                    WeakHashMap类</a><br><a href="#2.8">&nbsp;&nbsp;2.8 HashSet类</a><br><a href="#2.9">&nbsp;&nbsp;2.9
+                    ConcurrentHashMap类</a><br><a href="#2.10">&nbsp;&nbsp;2.10 LinkedHashMap类</a><br><a href="#2.11">&nbsp;&nbsp;2.11
+                    TreeMap类</a><br><a href="#2.12">&nbsp;&nbsp;2.12 常用集合类总结</a><br><a href="#3">3 常用遍历集合方式</a><br><a
+                        href="#3.1">&nbsp;&nbsp;3.1 常用遍历集合方式</a><br><a href="#3.2">&nbsp;&nbsp;3.2 遍历集合示例代码</a><br><a
+                        href="#4">4 集合常见问题</a><br><a href="#4.1">&nbsp;&nbsp;4.1 集合类和数组的区别</a><br><a href="#4.2">&nbsp;&nbsp;4.2
+                    ArrayList和LinkedList区别</a><br><a href="#4.3">&nbsp;&nbsp;4.3 ArrayList和LinkedList应用场景</a><br><a
+                        href="#4.4">&nbsp;&nbsp;4.4 队列和栈</a><br><a href="#4.5">&nbsp;&nbsp;4.5
+                    HashTable与HashMap区别</a><br><a href="#4.6">&nbsp;&nbsp;4.6 ArrayList和Vector区别</a><br><a href="#4.7">&nbsp;&nbsp;4.7
+                    ArrayList和Linklist区别</a><br><a href="#4.8">&nbsp;&nbsp;4.8 HashMap与TreeMap区别</a></div>
+            </div>
+            <div class="jumbotron">
+                <p>
+                    Java集合类是java提供的工具包,包含了常用的数据结构:集合、链表、队列、栈、映射等.Java集合类主要可以划分为4个部分:List列表、Set集合、Map映射、工具类(Iterator迭代器、Enumeration枚举类、Arrays和Collections).
+                </p>
+            </div>
+            <div id="1"><h3>1 常用集合类接口</h3></div>
+            <p>常用集合类继承关系如下所示: </p>
+            <pre class="prettyprint"><code>Collection
     |-List
         |-LinkedList
         |-ArrayList
@@ -1803,33 +1824,38 @@ Map
     |-HashTable
     |-HashMap
 </code></pre>
-<div id="1.1"class="dsd_title_c_2"><h4>1.1 Collection接口</h4></div>
-<p>Collection是最基本的集合接口,一个Collection代表一组Object,即Collection的元素(Elements).实现Collection接口的类都必须提供两个标准的构造函数:</p>
-<ul>
-<li>无参数的构造函数用于创建一个空的Collection.</li>
-<li>有一个参数的构造函数用于创建一个新的Collection对象,这个对象传入的Collection有相同的元素.允许用户复制一个Collection.  </li>
-</ul>
-<p>由Collection接口派生的两个接口是List和Set.java List接口和Set接口区别:</p>
-<ul>
-<li>List允许有相同元素,Set不允许有相同元素.</li>
-</ul>
-<div id="1.2"class="dsd_title_c_2"><h4>1.2 List接口</h4></div>
-<p>java List是有序的Collection.使用此接口能够精确的控制每个元素插入的位置.能够使用索引(元素在List中的位置,类似于数组下标)来访问List中的元素,这类似于Java的数组.除了具有Collection接口必备的iterator()方法外,List还提供一个listIterator()方法,返回一个ListIterator接口,和标准的Iterator接口相比,ListIterator多了一些add()之类的方法,允许添加,删除,设定元素,还能向前或向后遍历.实现List接口的常用类有LinkedList,ArrayList,Vector和Stack.和Set不同,List允许有相同的元素.  </p>
-<div id="1.3"class="dsd_title_c_2"><h4>1.3 Set接口</h4></div>
-<p>java Set是一种不包含重复的元素的Collection,即任意的两个元素e1和e2都有e1.equals(e2)=false.Set的构造函数有一个约束条件,传入的Collection参数不能包含重复的元素.Set最多有一个null元素.</p>
-<div id="1.4"class="dsd_title_c_2"><h4>1.4 Queue接口</h4></div>
-<p>java Queue接口可以实现先进先出的队列.LinkedList同样实现了Queue接口.PriorityQueue用来创建自然排序的优先级队列.  </p>
-<div id="1.5"class="dsd_title_c_2"><h4>1.5 Map接口</h4></div>
-<p>java Map没有继承Collection接口.Map提供key到value的映射.一个Map中不能包含相同的key,每个key只能映射一个value.Map的内容可以被当作一组key集合,一组value集合,或者一组key-value映射.</p>
-<div id="2"><h3>2 常用集合类</h3></div>
-<div id="2.1"class="dsd_title_c_2"><h4>2.1 LinkedList类</h4></div>
-<p>java LinkedList实现了List接口,允许null元素.提供额外的get,remove,insert方法在LinkedList的首部或尾部.这些操作使LinkedList可被用作栈(stack),队列(queue)或双向队列(deque).</p>
-<div id="2.2"class="dsd_title_c_2"><h4>2.2 ArrayList类</h4></div>
-<p>java ArrayList实现了变长数组.它允许所有元素,包括null.每个ArrayList实例都有一个容量(Capacity),即用于存储元素的数组的大小.这个容量可随着不断添加新元素而自动增加,但是增长算法并没有定义.当需要插入大量元素时,在插入前可以调用ensureCapacity方法来增加ArrayList的容量以提高插入效率.  </p>
-<ul>
-<li>java ArrayList添加删除对象代码示例</li>
-</ul>
-<pre class="prettyprint"><code class="java language-java">/** ArrayList添加对象*/
+            <div id="1.1" class="dsd_title_c_2"><h4>1.1 Collection接口</h4></div>
+            <p>Collection是最基本的集合接口,一个Collection代表一组Object,即Collection的元素(Elements).实现Collection接口的类都必须提供两个标准的构造函数:</p>
+            <ul>
+                <li>无参数的构造函数用于创建一个空的Collection.</li>
+                <li>有一个参数的构造函数用于创建一个新的Collection对象,这个对象传入的Collection有相同的元素.允许用户复制一个Collection.</li>
+            </ul>
+            <p>由Collection接口派生的两个接口是List和Set.java List接口和Set接口区别:</p>
+            <ul>
+                <li>List允许有相同元素,Set不允许有相同元素.</li>
+            </ul>
+            <div id="1.2" class="dsd_title_c_2"><h4>1.2 List接口</h4></div>
+            <p>java
+                List是有序的Collection.使用此接口能够精确的控制每个元素插入的位置.能够使用索引(元素在List中的位置,类似于数组下标)来访问List中的元素,这类似于Java的数组.除了具有Collection接口必备的iterator()方法外,List还提供一个listIterator()方法,返回一个ListIterator接口,和标准的Iterator接口相比,ListIterator多了一些add()之类的方法,允许添加,删除,设定元素,还能向前或向后遍历.实现List接口的常用类有LinkedList,ArrayList,Vector和Stack.和Set不同,List允许有相同的元素. </p>
+            <div id="1.3" class="dsd_title_c_2"><h4>1.3 Set接口</h4></div>
+            <p>java
+                Set是一种不包含重复的元素的Collection,即任意的两个元素e1和e2都有e1.equals(e2)=false.Set的构造函数有一个约束条件,传入的Collection参数不能包含重复的元素.Set最多有一个null元素.</p>
+            <div id="1.4" class="dsd_title_c_2"><h4>1.4 Queue接口</h4></div>
+            <p>java Queue接口可以实现先进先出的队列.LinkedList同样实现了Queue接口.PriorityQueue用来创建自然排序的优先级队列. </p>
+            <div id="1.5" class="dsd_title_c_2"><h4>1.5 Map接口</h4></div>
+            <p>java
+                Map没有继承Collection接口.Map提供key到value的映射.一个Map中不能包含相同的key,每个key只能映射一个value.Map的内容可以被当作一组key集合,一组value集合,或者一组key-value映射.</p>
+            <div id="2"><h3>2 常用集合类</h3></div>
+            <div id="2.1" class="dsd_title_c_2"><h4>2.1 LinkedList类</h4></div>
+            <p>java
+                LinkedList实现了List接口,允许null元素.提供额外的get,remove,insert方法在LinkedList的首部或尾部.这些操作使LinkedList可被用作栈(stack),队列(queue)或双向队列(deque).</p>
+            <div id="2.2" class="dsd_title_c_2"><h4>2.2 ArrayList类</h4></div>
+            <p>java
+                ArrayList实现了变长数组.它允许所有元素,包括null.每个ArrayList实例都有一个容量(Capacity),即用于存储元素的数组的大小.这个容量可随着不断添加新元素而自动增加,但是增长算法并没有定义.当需要插入大量元素时,在插入前可以调用ensureCapacity方法来增加ArrayList的容量以提高插入效率. </p>
+            <ul>
+                <li>java ArrayList添加删除对象代码示例</li>
+            </ul>
+            <pre class="prettyprint"><code class="java language-java">/** ArrayList添加对象*/
 ArrayList&lt;Integer&gt; intList = new ArrayList&lt;&gt;();
 System.out.println("ArrayList 长度: " + intList.size());
 for (int i = 0; i &lt; 10; i++) {
@@ -1840,39 +1866,40 @@ System.out.println("ArrayList 长度: " + intList.size());
 intList.remove(5);
 System.out.println("ArrayList 长度: " + intList.size());
 </code></pre>
-<p>遍历ArrayList的几种方式:</p>
-<ul>
-<li>增强for循环遍历ArrayList</li>
-</ul>
-<p>这种方法遍历ArrayList无法获得集合中数据的索引.</p>
-<pre class="prettyprint"><code class="java language-java">for (Integer intNum : arrayList) {
+            <p>遍历ArrayList的几种方式:</p>
+            <ul>
+                <li>增强for循环遍历ArrayList</li>
+            </ul>
+            <p>这种方法遍历ArrayList无法获得集合中数据的索引.</p>
+            <pre class="prettyprint"><code class="java language-java">for (Integer intNum : arrayList) {
     System.out.println(intNum);
 }
 </code></pre>
-<ul>
-<li>for循环遍历ArrayList</li>
-</ul>
-<p>这种方法遍历ArrayList可以获得集合中数据的索引.</p>
-<pre class="prettyprint"><code class="java language-java">for (int i = 0; i &lt; arrayList.size(); i++) {
+            <ul>
+                <li>for循环遍历ArrayList</li>
+            </ul>
+            <p>这种方法遍历ArrayList可以获得集合中数据的索引.</p>
+            <pre class="prettyprint"><code class="java language-java">for (int i = 0; i &lt; arrayList.size(); i++) {
     int num = arrayList.get(i);
     System.out.println(num);
 }
 </code></pre>
-<ul>
-<li>迭代器Itertor遍历ArrayList</li>
-</ul>
-<pre class="prettyprint"><code class="java language-java">Iterator&lt;Integer&gt; it = arrayList.iterator();
+            <ul>
+                <li>迭代器Itertor遍历ArrayList</li>
+            </ul>
+            <pre class="prettyprint"><code class="java language-java">Iterator&lt;Integer&gt; it = arrayList.iterator();
 while (it.hasNext()) {
     int num = it.next();
     System.out.println(num);
 }
 </code></pre>
-<div id="2.3"class="dsd_title_c_2"><h4>2.3 Vector类</h4></div>
-<p>Vector非常类似ArrayList,Vector与ArrayList的区别时是Vector是线程安全的而ArrayList不是.由Vector创建的Iterator,虽然和ArrayList创建的Iterator是同一接口,但由于Vector是线程同步的,当一个Iterator被创建而且正在被使用,另一个线程改变了Vector的状态(例如,添加或删除了一些元素),这时调用Iterator的方法时将抛出ConcurrentModificationException,因此必须捕获该异常.</p>
-<ul>
-<li>Vector处理ConcurrentModificationException代码示例</li>
-</ul>
-<pre class="prettyprint"><code class="java language-java">/** Vector*/
+            <div id="2.3" class="dsd_title_c_2"><h4>2.3 Vector类</h4></div>
+            <p>
+                Vector非常类似ArrayList,Vector与ArrayList的区别时是Vector是线程安全的而ArrayList不是.由Vector创建的Iterator,虽然和ArrayList创建的Iterator是同一接口,但由于Vector是线程同步的,当一个Iterator被创建而且正在被使用,另一个线程改变了Vector的状态(例如,添加或删除了一些元素),这时调用Iterator的方法时将抛出ConcurrentModificationException,因此必须捕获该异常.</p>
+            <ul>
+                <li>Vector处理ConcurrentModificationException代码示例</li>
+            </ul>
+            <pre class="prettyprint"><code class="java language-java">/** Vector*/
 Vector&lt;Integer&gt; vector = new Vector&lt;&gt;();
 System.out.println("Vector 长度: " + vector.size());
 for (int i = 0; i &lt; 5; i++) {
@@ -1887,18 +1914,18 @@ for (Integer intNum : vector) {
     System.out.println(intNum);
 }
 </code></pre>
-<p>Vector添加删除对象和遍历方式和ArrayList类似,参考ArrayList的代码实现.</p>
-<div id="2.4"class="dsd_title_c_2"><h4>2.4 Stack类</h4></div>
-<p>Stack类继承自Vector,实现一个后进先出的堆栈.java Stack的常用方法:</p>
-<ul>
-<li>push: 放入栈   </li>
-<li>pop: 出栈   </li>
-<li>peek: 得到栈顶的元素</li>
-<li>empty: 测试堆栈是否为空</li>
-<li>search:检测一个元素在堆栈中的位置</li>
-</ul>
-<p>Stack代码示例</p>
-<pre class="prettyprint"><code class="java language-java">/** Stack*/
+            <p>Vector添加删除对象和遍历方式和ArrayList类似,参考ArrayList的代码实现.</p>
+            <div id="2.4" class="dsd_title_c_2"><h4>2.4 Stack类</h4></div>
+            <p>Stack类继承自Vector,实现一个后进先出的堆栈.java Stack的常用方法:</p>
+            <ul>
+                <li>push: 放入栈</li>
+                <li>pop: 出栈</li>
+                <li>peek: 得到栈顶的元素</li>
+                <li>empty: 测试堆栈是否为空</li>
+                <li>search:检测一个元素在堆栈中的位置</li>
+            </ul>
+            <p>Stack代码示例</p>
+            <pre class="prettyprint"><code class="java language-java">/** Stack*/
 Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
 System.out.println("Stack 长度: " + stack.size());
 for (int i = 0; i &lt; 5; i++) {
@@ -1921,16 +1948,17 @@ for (Integer anIntList : stack) {
     System.out.println(num);
 }
 </code></pre>
-<p>java Stack遍历方式和ArrayList类似,参考ArrayList的代码实现.</p>
-<div id="2.5"class="dsd_title_c_2"><h4>2.5 HashMap类</h4></div>
-<p>HashMap是最常用的Map,不是线程安全的.它根据键的HashCode值存储数据,根据键可以直接获取它的值,具有很快的访问速度.遍历时,取得数据的顺序是完全随机的.由于键对象不可以重复,所以HashMap最多只允许一条记录的键为空(null),允许多条记录的值为空(null).由于作为key的对象将通过计算其散列函数来确定与之对应的value的位置,因此任何作为key的对象都必须实现HashCode和equals方法.</p>
-<ul>
-<li>HashMap用自定义的类当作key注意事项</li>
-</ul>
-<p>按照散列函数的定义,如果两个对象相同,即obj1.equals(obj2)=true,则它们的HashCode必须相同,但如果两个对象不同,则它们的HashCode不一定不同.
-如果两个不同对象的hashCode相同,这种现象称为冲突.冲突会导致操作哈希表的时间开销增大.所以尽量定义好的hashCode()方法,能加快哈希表的操作.如果相同的对象有不同的HashCode,对哈希表的操作会出现意想不到的结果(期待的get方法返回null).要避免这种问题,只需要牢记一条:要同时覆写equals方法和HashCode方法,而不要只写其中一个.</p>
-<p>HashMap添加和删除对象代码示例</p>
-<pre class="prettyprint"><code class="java language-java">HashMap&lt;Integer,Integer&gt; hashMap = new HashMap&lt;&gt;();
+            <p>java Stack遍历方式和ArrayList类似,参考ArrayList的代码实现.</p>
+            <div id="2.5" class="dsd_title_c_2"><h4>2.5 HashMap类</h4></div>
+            <p>
+                HashMap是最常用的Map,不是线程安全的.它根据键的HashCode值存储数据,根据键可以直接获取它的值,具有很快的访问速度.遍历时,取得数据的顺序是完全随机的.由于键对象不可以重复,所以HashMap最多只允许一条记录的键为空(null),允许多条记录的值为空(null).由于作为key的对象将通过计算其散列函数来确定与之对应的value的位置,因此任何作为key的对象都必须实现HashCode和equals方法.</p>
+            <ul>
+                <li>HashMap用自定义的类当作key注意事项</li>
+            </ul>
+            <p>按照散列函数的定义,如果两个对象相同,即obj1.equals(obj2)=true,则它们的HashCode必须相同,但如果两个对象不同,则它们的HashCode不一定不同.
+                如果两个不同对象的hashCode相同,这种现象称为冲突.冲突会导致操作哈希表的时间开销增大.所以尽量定义好的hashCode()方法,能加快哈希表的操作.如果相同的对象有不同的HashCode,对哈希表的操作会出现意想不到的结果(期待的get方法返回null).要避免这种问题,只需要牢记一条:要同时覆写equals方法和HashCode方法,而不要只写其中一个.</p>
+            <p>HashMap添加和删除对象代码示例</p>
+            <pre class="prettyprint"><code class="java language-java">HashMap&lt;Integer,Integer&gt; hashMap = new HashMap&lt;&gt;();
 System.out.println("HashMap 长度: " + hashMap.size());
 for (int i = 0; i &lt; 5; i++) {
     /** HashMap 添加对象*/
@@ -1942,60 +1970,62 @@ System.out.println("HashMap 长度: " + hashMap.size());
 hashMap.remove(2);
 System.out.println("HashMap 长度: " + hashMap.size());
 </code></pre>
-<p>HashMap遍历</p>
-<ul>
-<li>增强for循环遍历HashMap的entrySet</li>
-</ul>
-<p>采用for-each遍历HashMap的Entry直接拿到了key和value的对象,省去了通过key来获取value数据的操作,效率最高.推荐采用这种方式遍历HashMap
-.代码示例:</p>
-<pre class="prettyprint"><code class="java language-java">System.out.println("HashMap 遍历方式 1 增强for循环遍历 Entry ");
+            <p>HashMap遍历</p>
+            <ul>
+                <li>增强for循环遍历HashMap的entrySet</li>
+            </ul>
+            <p>采用for-each遍历HashMap的Entry直接拿到了key和value的对象,省去了通过key来获取value数据的操作,效率最高.推荐采用这种方式遍历HashMap
+                .代码示例:</p>
+            <pre class="prettyprint"><code class="java language-java">System.out.println("HashMap 遍历方式 1 增强for循环遍历 Entry ");
 for (Map.Entry&lt;Integer,Integer&gt; entry : hashMap.entrySet()) {
     System.out.println("hashMap key: " + entry.getKey() + " hashMap value: " + entry.getValue());
 }
 </code></pre>
-<ul>
-<li>通过迭代器遍历HashMap</li>
-</ul>
-<pre class="prettyprint"><code class="java language-java">Iterator&lt;Integer&gt; it0 = hashMap.keySet().iterator();
+            <ul>
+                <li>通过迭代器遍历HashMap</li>
+            </ul>
+            <pre class="prettyprint"><code class="java language-java">Iterator&lt;Integer&gt; it0 = hashMap.keySet().iterator();
 while (it0.hasNext()) {
     int key = it0.next();
     int value = hashMap.get(key);
     System.out.println("key: " + key + " value: " + value);
 }
 </code></pre>
-<ul>
-<li>增强for循环遍历HashMap的keySet</li>
-</ul>
-<pre class="prettyprint"><code class="java language-java">for (Integer key : hashMap.keySet()) {
+            <ul>
+                <li>增强for循环遍历HashMap的keySet</li>
+            </ul>
+            <pre class="prettyprint"><code class="java language-java">for (Integer key : hashMap.keySet()) {
     int value = hashMap.get(key);
     System.out.println("key: " + key + " value: " + value);
 }
 </code></pre>
-<ul>
-<li>通过迭代器遍历HashMap</li>
-</ul>
-<pre class="prettyprint"><code class="java language-java">Iterator&lt;Integer&gt; it1 = hashMap.values().iterator();
+            <ul>
+                <li>通过迭代器遍历HashMap</li>
+            </ul>
+            <pre class="prettyprint"><code class="java language-java">Iterator&lt;Integer&gt; it1 = hashMap.values().iterator();
 while (it1.hasNext()) {
     int value = it1.next();
     System.out.println("value: " + value);
 }
 </code></pre>
-<ul>
-<li>增强for循环遍历HashMap的values</li>
-</ul>
-<pre class="prettyprint"><code class="java language-java">for (Integer value : hashMap.values()) {
+            <ul>
+                <li>增强for循环遍历HashMap的values</li>
+            </ul>
+            <pre class="prettyprint"><code class="java language-java">for (Integer value : hashMap.values()) {
     System.out.println("value: " + value);
 }
 </code></pre>
-<div id="2.6"class="dsd_title_c_2"><h4>2.6 HashTable类</h4></div>
-<p>HashTable继承Map接口,实现一个key-value映射的哈希表.任何非空(non-null)的对象都可作为key或者value.HashTable与HashMap类似,是HashMap的线程安全版,是线程同步的,即任一时刻只有一个线程能写HashTable,因此也导致了Hashtale在写入时会比较慢.它继承自Dictionary类,不同的是它不允许记录的键或者值为null,同时效率较低.</p>
-<p>建议使用ConcurrentHashMap替代HashTable,如果需要线程同步的map,建议使用线程同步的ConcurrentHashMap类.不建议使用这个类.</p>
-<div id="2.7"class="dsd_title_c_2"><h4>2.7 WeakHashMap类</h4></div>
-<p>java WeakHashMap是一种改进的HashMap.它对key实行弱引用,如果一个key不再被外部所引用,那么该key可以被Java的垃圾回收器(GC)回收.使用方式同HashMap.</p>
-<div id="2.8"class="dsd_title_c_2"><h4>2.8 HashSet类</h4></div>
-<p>HashSet中元素是无序的(这个无序指的是数据的添加顺序和后来的排列顺序不同),而且元素不可重复.HashSet的底层是数组,在增加和删除的时候由于运用的HashCode的比较来确定添加元素的位置,不存在元素的偏移,因此查询和删除和增加元素的效率都非常高.但是HashSet增删的高效率是通过花费大量的空间换来的,因为空间越大,取余数相同的情况就越小.HashSet这种算法会建立许多无用的空间.使用HashSet类时如果发生冲突,就会出现遍历整个数组的情况,这样就使得效率非常的低.</p>
-<p>HashSet示例代码</p>
-<pre class="prettyprint"><code class="java language-java">/** 循环两次，放入重复的1-5*/
+            <div id="2.6" class="dsd_title_c_2"><h4>2.6 HashTable类</h4></div>
+            <p>
+                HashTable继承Map接口,实现一个key-value映射的哈希表.任何非空(non-null)的对象都可作为key或者value.HashTable与HashMap类似,是HashMap的线程安全版,是线程同步的,即任一时刻只有一个线程能写HashTable,因此也导致了Hashtale在写入时会比较慢.它继承自Dictionary类,不同的是它不允许记录的键或者值为null,同时效率较低.</p>
+            <p>建议使用ConcurrentHashMap替代HashTable,如果需要线程同步的map,建议使用线程同步的ConcurrentHashMap类.不建议使用这个类.</p>
+            <div id="2.7" class="dsd_title_c_2"><h4>2.7 WeakHashMap类</h4></div>
+            <p>java WeakHashMap是一种改进的HashMap.它对key实行弱引用,如果一个key不再被外部所引用,那么该key可以被Java的垃圾回收器(GC)回收.使用方式同HashMap.</p>
+            <div id="2.8" class="dsd_title_c_2"><h4>2.8 HashSet类</h4></div>
+            <p>
+                HashSet中元素是无序的(这个无序指的是数据的添加顺序和后来的排列顺序不同),而且元素不可重复.HashSet的底层是数组,在增加和删除的时候由于运用的HashCode的比较来确定添加元素的位置,不存在元素的偏移,因此查询和删除和增加元素的效率都非常高.但是HashSet增删的高效率是通过花费大量的空间换来的,因为空间越大,取余数相同的情况就越小.HashSet这种算法会建立许多无用的空间.使用HashSet类时如果发生冲突,就会出现遍历整个数组的情况,这样就使得效率非常的低.</p>
+            <p>HashSet示例代码</p>
+            <pre class="prettyprint"><code class="java language-java">/** 循环两次，放入重复的1-5*/
 for (int i = 0; i &lt; 5; i++) {
     hashSet.add(i);
 }
@@ -2008,43 +2038,48 @@ for (Integer intNum : hashSet) {
     System.out.println(intNum);
 }
 </code></pre>
-<p>由于HashSet去重功能,第二次循环插入重复数据时,HashSet中并没有加入新的数据,长度依然是5.HashSet的遍历方式同ArrayList，参考ArrayList的遍历.</p>
-<div id="2.9"class="dsd_title_c_2"><h4>2.9 ConcurrentHashMap类</h4></div>
-<p>线程同步的HashMap,线程安全并且锁分离.ConcurrentHashMap内部使用段(Segment)来表示这些不同的部分,每个段其实就是一个小的"hash table",它们有自己的锁.只要多个修改操作发生在不同的段上,它们就可以并发进行.ConcurrentHashMap遍历方法同HashMap.</p>
-<div id="2.10"class="dsd_title_c_2"><h4>2.10 LinkedHashMap类</h4></div>
-<p>有序的HashMap,非线程安全.LinkedHashMap保存了记录的插入顺序,在用Iteraor遍历LinkedHashMap时,先得到的记录肯定是先插入的,在遍历的时候会比HashMap慢,有HashMap的全部特性.java LinkedHashMap使用方式同HashMap.</p>
-<div id="2.11"class="dsd_title_c_2"><h4>2.11 TreeMap类</h4></div>
-<p>TreeMap实现SortMap接口,能够把它保存的记录根据键排序,默认是按键值的升序排序(自然顺序),也可以指定排序的比较器.当用Iterator遍历TreeMap时,得到的记录是排过序的.TreeMap不允许key值为空,非线程同步.java TreeMap使用方式同HashMap.</p>
-<div id="2.12"class="dsd_title_c_2"><h4>2.12 常用集合类总结</h4></div>
-<ul>
-<li>如果涉及到堆栈,队列等操作,应该考虑用List.对于需要快速插入,删除元素,应该使用LinkedList,如果需要快速随机访问元素,应该使用ArrayList.</li>
-<li>如果程序在单线程环境中,或者访问仅仅在一个线程中进行,考虑非同步的类,其效率较高.  </li>
-<li>如果多个线程可能同时操作一个类,应该使用同步的类.</li>
-<li>要特别注意对哈希表的操作,作为key的对象要正确覆写equals和HashCode方法.</li>
-<li>尽量返回接口而非实际的类型,如返回List而非ArrayList,这样如果以后需要将ArrayList换成LinkedList时,代码接口不用改变.扩展性强.</li>
-</ul>
-<div id="3"><h3>3 常用遍历集合方式</h3></div>
-<div id="3.1"class="dsd_title_c_2"><h4>3.1 常用遍历集合方式</h4></div>
-<ul>
-<li>迭代器Iterator</li>
-</ul>
-<p>不论Collection的实际类型如何,它都支持一个iterator()的方法,该方法返回一个迭代器,使用该迭代器即可逐一访问Collection中每一个元素.典型的用法如下:</p>
-<pre class="prettyprint"><code class="java language-java">// 获得一个迭代器
+            <p>由于HashSet去重功能,第二次循环插入重复数据时,HashSet中并没有加入新的数据,长度依然是5.HashSet的遍历方式同ArrayList，参考ArrayList的遍历.</p>
+            <div id="2.9" class="dsd_title_c_2"><h4>2.9 ConcurrentHashMap类</h4></div>
+            <p>线程同步的HashMap,线程安全并且锁分离.ConcurrentHashMap内部使用段(Segment)来表示这些不同的部分,每个段其实就是一个小的"hash
+                table",它们有自己的锁.只要多个修改操作发生在不同的段上,它们就可以并发进行.ConcurrentHashMap遍历方法同HashMap.</p>
+            <div id="2.10" class="dsd_title_c_2"><h4>2.10 LinkedHashMap类</h4></div>
+            <p>
+                有序的HashMap,非线程安全.LinkedHashMap保存了记录的插入顺序,在用Iteraor遍历LinkedHashMap时,先得到的记录肯定是先插入的,在遍历的时候会比HashMap慢,有HashMap的全部特性.java
+                LinkedHashMap使用方式同HashMap.</p>
+            <div id="2.11" class="dsd_title_c_2"><h4>2.11 TreeMap类</h4></div>
+            <p>
+                TreeMap实现SortMap接口,能够把它保存的记录根据键排序,默认是按键值的升序排序(自然顺序),也可以指定排序的比较器.当用Iterator遍历TreeMap时,得到的记录是排过序的.TreeMap不允许key值为空,非线程同步.java
+                TreeMap使用方式同HashMap.</p>
+            <div id="2.12" class="dsd_title_c_2"><h4>2.12 常用集合类总结</h4></div>
+            <ul>
+                <li>如果涉及到堆栈,队列等操作,应该考虑用List.对于需要快速插入,删除元素,应该使用LinkedList,如果需要快速随机访问元素,应该使用ArrayList.</li>
+                <li>如果程序在单线程环境中,或者访问仅仅在一个线程中进行,考虑非同步的类,其效率较高.</li>
+                <li>如果多个线程可能同时操作一个类,应该使用同步的类.</li>
+                <li>要特别注意对哈希表的操作,作为key的对象要正确覆写equals和HashCode方法.</li>
+                <li>尽量返回接口而非实际的类型,如返回List而非ArrayList,这样如果以后需要将ArrayList换成LinkedList时,代码接口不用改变.扩展性强.</li>
+            </ul>
+            <div id="3"><h3>3 常用遍历集合方式</h3></div>
+            <div id="3.1" class="dsd_title_c_2"><h4>3.1 常用遍历集合方式</h4></div>
+            <ul>
+                <li>迭代器Iterator</li>
+            </ul>
+            <p>不论Collection的实际类型如何,它都支持一个iterator()的方法,该方法返回一个迭代器,使用该迭代器即可逐一访问Collection中每一个元素.典型的用法如下:</p>
+            <pre class="prettyprint"><code class="java language-java">// 获得一个迭代器
 Iterator it = collection.iterator();
 while(it.hasNext()) {
     //获取下一个元素
     Object obj = it.next();
 }
 </code></pre>
-<ul>
-<li>for-each遍历集合</li>
-</ul>
-<p>增强for循环,JDK1.5之后提供的新功能,可以输出数组或集合.</p>
-<ul>
-<li>for循环遍历集合</li>
-</ul>
-<div id="3.2"class="dsd_title_c_2"><h4>3.2 遍历集合示例代码</h4></div>
-<pre class="prettyprint"><code class="java language-java">package com.dashidan.lesson15;
+            <ul>
+                <li>for-each遍历集合</li>
+            </ul>
+            <p>增强for循环,JDK1.5之后提供的新功能,可以输出数组或集合.</p>
+            <ul>
+                <li>for循环遍历集合</li>
+            </ul>
+            <div id="3.2" class="dsd_title_c_2"><h4>3.2 遍历集合示例代码</h4></div>
+            <pre class="prettyprint"><code class="java language-java">package com.dashidan.lesson15;
 
 import java.util.*;
 
@@ -2226,8 +2261,8 @@ public class Demo1 {
     }
 }
 </code></pre>
-<p>输出:</p>
-<pre class="prettyprint"><code>===ArrayList===
+            <p>输出:</p>
+            <pre class="prettyprint"><code>===ArrayList===
 ArrayList 长度: 0
 ArrayList 长度: 5
 ArrayList 长度: 4
@@ -2307,61 +2342,75 @@ HashSet 长度: 5
 3
 4
 </code></pre>
-<div id="4"><h3>4 集合常见问题</h3></div>
-<div id="4.1"class="dsd_title_c_2"><h4>4.1 集合类和数组的区别</h4></div>
-<ul>
-<li>数组(可以存储基本数据类型)是用来存现对象的一种容器,数组的长度固定,适合在对象数量固定时使用.</li>
-<li>集合(只能存储对象,对象类型可以不一样)的长度可变,可在对象数量不固定时使用.</li>
-</ul>
-<div id="4.2"class="dsd_title_c_2"><h4>4.2 ArrayList和LinkedList区别</h4></div>
-<ul>
-<li>ArrayList和LinkedList在用法上没有区别,但是在功能上还是有区别的.LinkedList经常用在增删操作较多而查询操作很少的情况下,比如队列和堆栈.ArrayList则相反.</li>
-<li>ArrayList底层是Object数组,所以ArrayList具有数组的查询速度快的优点以及增删速度慢的缺点.
-而在LinkedList的底层是一种双向循环链表.在此链表上每一个数据节点都由三部分组成:前指针(指向前面的节点的位置),数据,后指针(指向后面的节点的位置).最后一个节点的后指针指向第一个节点的前指针,形成一个循环.双向循环链表的查询效率低但是增删效率高.</li>
-<li>对于随机访问get和set,ArrayList觉得优于LinkedList,因为LinkedList要移动指针.</li>
-<li>对于新增和删除操作add和remove,LinedList比较占优势,因为ArrayList要移动数据.</li>
-</ul>
-<div id="4.3"class="dsd_title_c_2"><h4>4.3 ArrayList和LinkedList应用场景</h4></div>
-<p>若只对单条数据插入或删除,ArrayList的速度优于LinkedList.但若是批量随机的插入删除数据,LinkedList的速度大大优于ArrayList.因为ArrayList每插入一条数据,要移动插入点及之后的所有数据</p>
-<div id="4.4"class="dsd_title_c_2"><h4>4.4 队列和栈</h4></div>
-<p>队列:先进先出的数据结构.栈:后进先出的数据结构.使用栈的时候,不能提供非末尾元素出栈的方法.</p>
-<div id="4.5"class="dsd_title_c_2"><h4>4.5 HashTable与HashMap区别</h4></div>
-<ul>
-<li>HashTable是基于陈旧的Dictionary类的,HashMap是Java 1.2引入的Map接口的一个实现</li>
-<li>HashTable是线程安全的,也就是说是同步的,而HashMap是线程序不安全的,不是同步的</li>
-<li>HashMap允许存在一个为空(null)的key,多个为空(null)的value.</li>
-<li>HashTable的key和value都不允许为空(null).</li>
-</ul>
-<div id="4.6"class="dsd_title_c_2"><h4>4.6 ArrayList和Vector区别</h4></div>
-<ul>
-<li>Vector是线程同步的,所以它也是线程安全的.而ArrayList不是线程同步的.如果不考虑到线程的安全因素,一般用ArrayList效率比较高.</li>
-<li>如果集合中的元素的数目大于目前集合数组的长度时,Vector增长率为目前数组长度的100%,而ArrayList增长率为目前数组长度的50%.在集合中使用数据量比较大的数据,用Vector有一定的优势.
--* 如果查找一个指定位置的数据,Vector和ArrayList使用的时间是相同的,都是O(1),这个时候使用Vector和ArrayList都可以.</li>
-</ul>
-<div id="4.7"class="dsd_title_c_2"><h4>4.7 ArrayList和Linklist区别</h4></div>
-<ul>
-<li>ArrayList和Vector是采用数组方式存储数据,此数组元素数大于实际存储的数据以便增加和插入元素,都允许直接序号索引元素,但是插入数据要设计到数组元素移动等内存操作,所以索引数据快插入数据慢.Vector由于使用了synchronized方法(线程安全)所以性能上比ArrayList要差.</li>
-<li>LinkedList使用双向链表实现存储,按序号索引数据需要进行向前或向后遍历,但是插入数据时只需要记录本项的前后项即可,所以插入数度较快！</li>
-<li>如果移动一个指定位置的数据花费的时间为O(n-i),n为总长度,这个时候就应该考虑到使用Linklist,因为它移动一个指定位置的数据所花费的时间为O(1),而查询一个指定位置的数据时花费的时间为O(i).</li>
-</ul>
-<div id="4.8"class="dsd_title_c_2"><h4>4.8 HashMap与TreeMap区别</h4></div>
-<ul>
-<li>TreeMap实现SortedMap,元素顺序固定.HashMap没有实现该接口.</li>
-<li>HashMap通过HashCode对其内容进行快速查找,HashMap中元素的排列顺序是不固定的,而TreeMap中所有的元素都保持着某种固定的顺序.如果需要得到一个有序的结果应该使用TreeMap.</li>
-<li>在Map中插入、删除和定位元素,HashMap是最好的选择.但如果要按自然顺序或自定义顺序遍历键,那么TreeMap会更好.</li>
-<li>使用HashMap要求添加的键类明确定义了hashCode()和`equals()的实现.这个TreeMap没有调优选项,因为该树总处于平衡状态.</li>
-</ul>
+            <div id="4"><h3>4 集合常见问题</h3></div>
+            <div id="4.1" class="dsd_title_c_2"><h4>4.1 集合类和数组的区别</h4></div>
+            <ul>
+                <li>数组(可以存储基本数据类型)是用来存现对象的一种容器,数组的长度固定,适合在对象数量固定时使用.</li>
+                <li>集合(只能存储对象,对象类型可以不一样)的长度可变,可在对象数量不固定时使用.</li>
+            </ul>
+            <div id="4.2" class="dsd_title_c_2"><h4>4.2 ArrayList和LinkedList区别</h4></div>
+            <ul>
+                <li>ArrayList和LinkedList在用法上没有区别,但是在功能上还是有区别的.LinkedList经常用在增删操作较多而查询操作很少的情况下,比如队列和堆栈.ArrayList则相反.</li>
+                <li>ArrayList底层是Object数组,所以ArrayList具有数组的查询速度快的优点以及增删速度慢的缺点.
+                    而在LinkedList的底层是一种双向循环链表.在此链表上每一个数据节点都由三部分组成:前指针(指向前面的节点的位置),数据,后指针(指向后面的节点的位置).最后一个节点的后指针指向第一个节点的前指针,形成一个循环.双向循环链表的查询效率低但是增删效率高.
+                </li>
+                <li>对于随机访问get和set,ArrayList觉得优于LinkedList,因为LinkedList要移动指针.</li>
+                <li>对于新增和删除操作add和remove,LinedList比较占优势,因为ArrayList要移动数据.</li>
+            </ul>
+            <div id="4.3" class="dsd_title_c_2"><h4>4.3 ArrayList和LinkedList应用场景</h4></div>
+            <p>
+                若只对单条数据插入或删除,ArrayList的速度优于LinkedList.但若是批量随机的插入删除数据,LinkedList的速度大大优于ArrayList.因为ArrayList每插入一条数据,要移动插入点及之后的所有数据</p>
+            <div id="4.4" class="dsd_title_c_2"><h4>4.4 队列和栈</h4></div>
+            <p>队列:先进先出的数据结构.栈:后进先出的数据结构.使用栈的时候,不能提供非末尾元素出栈的方法.</p>
+            <div id="4.5" class="dsd_title_c_2"><h4>4.5 HashTable与HashMap区别</h4></div>
+            <ul>
+                <li>HashTable是基于陈旧的Dictionary类的,HashMap是Java 1.2引入的Map接口的一个实现</li>
+                <li>HashTable是线程安全的,也就是说是同步的,而HashMap是线程序不安全的,不是同步的</li>
+                <li>HashMap允许存在一个为空(null)的key,多个为空(null)的value.</li>
+                <li>HashTable的key和value都不允许为空(null).</li>
+            </ul>
+            <div id="4.6" class="dsd_title_c_2"><h4>4.6 ArrayList和Vector区别</h4></div>
+            <ul>
+                <li>Vector是线程同步的,所以它也是线程安全的.而ArrayList不是线程同步的.如果不考虑到线程的安全因素,一般用ArrayList效率比较高.</li>
+                <li>
+                    如果集合中的元素的数目大于目前集合数组的长度时,Vector增长率为目前数组长度的100%,而ArrayList增长率为目前数组长度的50%.在集合中使用数据量比较大的数据,用Vector有一定的优势.
+                    -* 如果查找一个指定位置的数据,Vector和ArrayList使用的时间是相同的,都是O(1),这个时候使用Vector和ArrayList都可以.
+                </li>
+            </ul>
+            <div id="4.7" class="dsd_title_c_2"><h4>4.7 ArrayList和Linklist区别</h4></div>
+            <ul>
+                <li>
+                    ArrayList和Vector是采用数组方式存储数据,此数组元素数大于实际存储的数据以便增加和插入元素,都允许直接序号索引元素,但是插入数据要设计到数组元素移动等内存操作,所以索引数据快插入数据慢.Vector由于使用了synchronized方法(线程安全)所以性能上比ArrayList要差.
+                </li>
+                <li>LinkedList使用双向链表实现存储,按序号索引数据需要进行向前或向后遍历,但是插入数据时只需要记录本项的前后项即可,所以插入数度较快！</li>
+                <li>
+                    如果移动一个指定位置的数据花费的时间为O(n-i),n为总长度,这个时候就应该考虑到使用Linklist,因为它移动一个指定位置的数据所花费的时间为O(1),而查询一个指定位置的数据时花费的时间为O(i).
+                </li>
+            </ul>
+            <div id="4.8" class="dsd_title_c_2"><h4>4.8 HashMap与TreeMap区别</h4></div>
+            <ul>
+                <li>TreeMap实现SortedMap,元素顺序固定.HashMap没有实现该接口.</li>
+                <li>
+                    HashMap通过HashCode对其内容进行快速查找,HashMap中元素的排列顺序是不固定的,而TreeMap中所有的元素都保持着某种固定的顺序.如果需要得到一个有序的结果应该使用TreeMap.
+                </li>
+                <li>在Map中插入、删除和定位元素,HashMap是最好的选择.但如果要按自然顺序或自定义顺序遍历键,那么TreeMap会更好.</li>
+                <li>使用HashMap要求添加的键类明确定义了hashCode()和`equals()的实现.这个TreeMap没有调优选项,因为该树总处于平衡状态.</li>
+            </ul>
         </div>
     </div>
 </div>
 
-<footer class="text-center navbar-fixed-bottom navbar-default">
-        <div class="text-center">
-            <a class="navbar-brand"
-               href="https://mip.dashidan.com/article/java/basic/16.html">下一篇: Java异常</a>
-        </div>
-    <div class="text-center">
-        <a class="navbar-brand" href="https://mip.dashidan.com/index.html">目录</a>
+<hr>
+
+<footer>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
+        <a href="https://dashidan.com//article/java/basic/14.html"> &lt; 14.Java包装类</a>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+        <a href="https://dashidan.com//article/java/index.html">目录</a>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
+        <a href="https://dashidan.com//article/java/basic/16.html"> 16.Java异常 &gt;</a>
     </div>
 </footer>
 
