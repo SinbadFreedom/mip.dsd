@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
-    <link rel="canonical" href="https://dashidan.com/article/java/basic/2.html">
-    <title>windows搭建java开发环境 - java教程 - 大屎蛋教程网</title>
-    <meta name="description" content="Window安装JDK图文教程.windows搭建java开发环境,配置java环境变量图文教程.">
+    <link rel="canonical" href="https://dashidan.com/article/java/faq/3.html">
+    <title>java ArrayListt原理及转化成数组常用方法 - java常见问题 - 大屎蛋教程网</title>
+    <meta name="description" content="在实际项目中会用根据需求用到ArrayList和数组之间的转换。比如往MongoDB数据库中存入一个整型数组(int[])，读取的时候可以得到一个ArrayList&lt;Integer&gt;，无法直接得到一个整型数组(int[]).这个时候就会需要用到ArrayList转化为数组.">
     <style mip-custom>
         html {
     -webkit-text-size-adjust: 100%;
@@ -1755,10 +1755,10 @@ footer > a {
 
     <script  type="application/ld+json"> {
        "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
-       "@id": "https://mip.dashidan.com/article/java/basic/2.html",
-       "title":"windows搭建java开发环境 - java教程 - 大屎蛋教程网",
-       "description": "Window安装JDK图文教程.windows搭建java开发环境,配置java环境变量图文教程.",
-       "pubDate": "2018-05-26T15:09:14",
+       "@id": "https://mip.dashidan.com/article/java/faq/3.html",
+       "title":"java ArrayListt原理及转化成数组常用方法 - java常见问题 - 大屎蛋教程网",
+       "description": "在实际项目中会用根据需求用到ArrayList和数组之间的转换。比如往MongoDB数据库中存入一个整型数组(int[])，读取的时候可以得到一个ArrayList&lt;Integer&gt;，无法直接得到一个整型数组(int[]).这个时候就会需要用到ArrayList转化为数组.",
+       "pubDate": "2018-05-26T15:09:16",
        "isOriginal": "1"
 }</script>
 
@@ -1777,91 +1777,151 @@ footer > a {
 <div class="container-fluid">
     <div class="text-left">
         <a href="https://mip.dashidan.com//index.html">首页</a> > <a
-            href="https://mip.dashidan.com//article/java/index.html">java</a> > 2.搭建Java开发环境
+            href="https://mip.dashidan.com//article/java/index.html">java</a> > 3.java ArrayListt原理及转化成数组常用方法
     </div>
 
     <div class="dsd_content">
-        <div class="dsd_title"><h1>2.搭建Java开发环境</h1></div>
+        <div class="dsd_title"><h1>3.java ArrayListt原理及转化成数组常用方法</h1></div>
         <div id="xs_content_border">
-            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 下载SDK</a><br><a href="#1.1">&nbsp;&nbsp;1.1 jdk官网链接</a><br><a href="#1.2">&nbsp;&nbsp;1.2 确认接受协议.</a><br><a href="#1.3">&nbsp;&nbsp;1.3 选择适合自己操作系统的版本点击链接下载.</a><br><a href="#2">2 windows安装jdk</a><br><a href="#3">3 windows7配置Java环境变量</a><br><a href="#3.1">&nbsp;&nbsp;3.1 选择高级系统设置</a><br><a href="#3.2">&nbsp;&nbsp;3.2 设置环境变量</a><br><a href="#3.3">&nbsp;&nbsp;3.3 新建用户变量</a><br><a href="#3.4">&nbsp;&nbsp;3.4 配置系统变量</a><br><a href="#3.5">&nbsp;&nbsp;3.5 JDK与JRE</a><br><a href="#4">4 重启电脑</a><br><a href="#5">5 测试</a><br><a href="#5.1">&nbsp;&nbsp;5.1 打开"命令提示符"</a><br><a href="#5.2">&nbsp;&nbsp;5.2 测试环境变量配置是否生效</a><br><a href="#5.3">&nbsp;&nbsp;5.3 测试用户变量配置</a><br><a href="#6">6 相关文章</a></div></div><div class="jumbotron">
-<p>SDK全称(Standard Development Kit),标准开发工具包. java和JDK的关系,就像鱼和水的关系.  </p>  
+            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 ArrayList底层原理</a><br><a href="#1.1">&nbsp;&nbsp;1.1 ArrayList内部存储对象</a><br><a href="#1.2">&nbsp;&nbsp;1.2 ArrayList检测内部容量</a><br><a href="#1.3">&nbsp;&nbsp;1.3 ArrayList内部数组扩容</a><br><a href="#1.4">&nbsp;&nbsp;1.4 ArrayList的get方法原理</a><br><a href="#2">2 ArrayList转化为数组常用方式</a><br><a href="#2.1">&nbsp;&nbsp;2.1 遍历ArrayList转化数组</a><br><a href="#2.2">&nbsp;&nbsp;2.2 ArrayList.toArray()方法</a><br><a href="#2.2">&nbsp;&nbsp;2.2 ArrayList.toArray(Object[])方法</a><br><a href="#3">3 数组转化为ArrayList</a><br><a href="#4">4 完整示例代码</a></div></div><div class="jumbotron">
+<p>在实际项目中会用根据需求用到ArrayList和数组之间的转换。比如往MongoDB数据库中存入一个整型数组(int[])，读取的时候可以得到一个ArrayList<Integer>，无法直接得到一个整型数组(int[]).这个时候就会需要用到ArrayList转化为数组.
+</p>
 </div>
-<div id="1"><h3>1 下载SDK</h3></div>
-<div id="1.1"class="dsd_title_c_2"><h4>1.1 jdk官网链接</h4></div>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK官网下载链接</a></p>
-<div id="1.2"class="dsd_title_c_2"><h4>1.2 确认接受协议.</h4></div>
-<p>选中Java SE Development Kit 8u144中的Accept License Agreement.</p>
-<div id="1.3"class="dsd_title_c_2"><h4>1.3 选择适合自己操作系统的版本点击链接下载.</h4></div>
-<p>根据自己的操作系统选择对应的安装包下载, windows, mac os, 或者linux.以windows为例,需要区分是32位还是64位操作系统.windows x86是32位版本,windows x64是64位版本.</p>
-<p><a href="http://dashidan.com/article/windows/faq/1.html#1">windows系统是32位还是64位</a></p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-1.png" alt="图2-1" width="480" height="482"></mip-img>   </p>
-<div id="2"><h3>2 windows安装jdk</h3></div>
-<p>windows安装jdk非常简单, 像安装普通软件一样.点击下一步直到完成,采用默认安装配置.需要注意的是如果修改jdk安装目录, 要选择英文或者拼音的目录, 不要使用中文目录, 来避免一些由于中文编码不支持所可能带来的问题.</p>
-<div id="3"><h3>3 windows7配置Java环境变量</h3></div>
-<div id="3.1"class="dsd_title_c_2"><h4>3.1 选择高级系统设置</h4></div>
-<p>选择步骤:计算机-&gt;点右键-&gt;属性-&gt;高级系统设置. 如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-2.png" alt="图2-2" width="480" height="216"></mip-img>   </p>
-<div id="3.2"class="dsd_title_c_2"><h4>3.2 设置环境变量</h4></div>
-<p>设置java环境变量步骤:在高级系统设置弹出窗口中点击-&gt;环境变量.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-3.png" alt="图2-3" width="420" height="442"></mip-img>  </p>
-<div id="3.3"class="dsd_title_c_2"><h4>3.3 新建用户变量</h4></div>
-<p>在用户变量栏中点击-&gt;新建按钮, 在弹出页面变量名一栏中输入:</p>
-<pre class="prettyprint"><code>classpath
+<div id="1"><h3>1 ArrayList底层原理</h3></div>
+<p>ArrayList底层是是一个变长数组，随着add方法加入的元素数量增加会增加内部数组的长度。</p>
+<div id="1.1"class="dsd_title_c_2"><h4>1.1 ArrayList内部存储对象</h4></div>
+<p>ArrayList内部存储对象是一个Object数组(Object[]).</p>
+<pre class="prettyprint"><code>transient Object[] elementData; // non-private to simplify nested class access
 </code></pre>
-<p>windows操作系统将多个变量用分号分割.</p>
-<pre class="prettyprint"><code>.;C:\Program Files\Java\jdk1.8.0_144\lib
+<p>这里用到了transient关键字。参考<a href="https://dashidan.com//article/java/basic/24.html">transient关键字的作用</a></p>
+<div id="1.2"class="dsd_title_c_2"><h4>1.2 ArrayList检测内部容量</h4></div>
+<p>ArrayList通过add方法添加对象时，会检测内部容量。</p>
+<pre class="prettyprint"><code>public boolean add(E e) {
+    ensureCapacityInternal(size + 1);  // Increments modCount!!
+    elementData[size++] = e;
+    return true;
+}
 </code></pre>
-<div class="bs-callout bs-callout-success">
-    <h4>变量值</h4>
-    <p>由".;"加"JDK安装目录"加"lib"组成.其中"."表示当前程序运行当前路径.</p>
-</div>
-<p>Java用户变量classpath配置.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-4.png" alt="图2-4" width="394" height="406"></mip-img>   </p>
-<div id="3.4"class="dsd_title_c_2"><h4>3.4 配置系统变量</h4></div>
-<p>在"系统变量"栏中找到Path-&gt;点击"编辑"按钮增加</p>
-<ul>
-<li>Win7,xp,8配置Java环境变量
-Win7,8,xp这几个操作系统版本path变量将多个变量用分号分割.新增加的java环境变量path变量由";"加上"JDK安装目录"加"bin"目录组成.</li>
-</ul>
-<pre class="prettyprint"><code>;C:\Program Files\Java\jdk1.8.0_144\bin
+<p>ensureCapacityInternal方法来检测内部对象数组的长度，不足的话，扩容。</p>
+<p>ArrayList默认长度定位为10</p>
+<pre class="prettyprint"><code>private static final int DEFAULT_CAPACITY = 10;
 </code></pre>
-<ul>
-<li>Win10配置Java环境变量
-win10操作系统增加环境变量时会新建一个属性,不需要加分号.</li>
-</ul>
-<pre class="prettyprint"><code>C:\Program Files\Java\jdk1.8.0_144\bin
+<div id="1.3"class="dsd_title_c_2"><h4>1.3 ArrayList内部数组扩容</h4></div>
+<p>ArrayList通过grow方法扩容。扩容时，扩大当前容量的两倍。这个长度是通过位运算计算得出的。</p>
+<pre class="prettyprint"><code>int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);
 </code></pre>
-<p>如图:<br />
-<mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-5.png" alt="图2-5" width="394" height="406"></mip-img>   </p>
-<div id="3.5"class="dsd_title_c_2"><h4>3.5 JDK与JRE</h4></div>
-<p>JDK是java开发工具集成包,开发,编译java程序必须安装.jre(Java Runtime Environment)是java运行时环境.在一些不需要编译java源文件只需要运行java程序的环境中只装JRE也可以.</p>
-<p>Java默认安装目录"C:\Program Files\Java\jdk1.8.0<em>144".在"jdk1.8.0</em>144"的同级目录有个文件夹"jre1.8.0_144",是Java运行环境(Java Runtime Environment).</p>
-<div id="4"><h3>4 重启电脑</h3></div>
-<p>配置完成重启电脑,使环境变量生效.部分电脑配置环境变量不重启不生效, 这一步不要忘记.</p>
-<div id="5"><h3>5 测试</h3></div>
-<div id="5.1"class="dsd_title_c_2"><h4>5.1 打开"命令提示符"</h4></div>
-<p>windows打开"命令提示符"方法:鼠标点击桌面左下角windows图标-&gt;所有程序-&gt;附件-&gt;命令提示符.</p>
-<p><a href="http://dashidan.com/article/windows/faq/2.html">打开windows命令提示符</a></p>
-<div id="5.2"class="dsd_title_c_2"><h4>5.2 测试环境变量配置是否生效</h4></div>
-<p>在命令提示符中输入java命令java -version:</p>
-<pre class="prettyprint"><code>java -version
+<p>grow方法源码:</p>
+<pre class="prettyprint"><code>private void grow(int minCapacity) {
+    // overflow-conscious code
+    int oldCapacity = elementData.length;
+    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);
+    if (newCapacity - minCapacity &lt; 0)
+        newCapacity = minCapacity;
+    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)
+        newCapacity = hugeCapacity(minCapacity);
+    // minCapacity is usually close to size, so this is a win:
+    elementData = Arrays.copyOf(elementData, newCapacity);
+}
 </code></pre>
-<p>输出java版本号信息说明配置正确.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-6.png" alt="图2-6" width="480" height="151"></mip-img>   </p>
-<div id="5.3"class="dsd_title_c_2"><h4>5.3 测试用户变量配置</h4></div>
-<p>在命令提示符中输入javac命令:</p>
-<pre class="prettyprint"><code>javac
+<div id="1.4"class="dsd_title_c_2"><h4>1.4 ArrayList的get方法原理</h4></div>
+<p>ArrayList的get方法原理是通过数组下标获取数组中对应的对象。get方法源码:</p>
+<pre class="prettyprint"><code>public E get(int index) {
+    rangeCheck(index);
+
+    return elementData(index);
+}
 </code></pre>
-<p>javac 命令是编译java程序的命令这个命令如果输出javac命令行信息说明java用户环境变量配置正确.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-7.png" alt="图2-7" width="480" height="289"></mip-img>   </p>
-<div class="bs-callout bs-callout-danger">
-    <h4>执行java,javac错误提示</h4>
-    如果执行java命令时在命令行窗口提示错误,表示环境变量配置有问题,需要<a href="#2.3">检查Java环境变量配置</a>.<br>
-    运行java命令提示'javac'不是内部或外部命令,也不是可运行的程序或批处理文件.<a href="#2.3">检查Java用户变量配置</a>
-</div>
-<div id="6"><h3>6 相关文章</h3></div>
-<p><a href="https://dashidan.com//article/java/addenda/4.html">linux搭建Java开发环境</a>  </p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/common/greatman.jpg" alt="图" width="333" height="320"></mip-img></p>
+<p>elementData方法源码:</p>
+<pre class="prettyprint"><code>E elementData(int index) {
+    return (E) elementData[index];
+}
+</code></pre>
+<div id="2"><h3>2 ArrayList转化为数组常用方式</h3></div>
+<p>ArrayList转化为数组有几种常用方式:遍历ArrayList转化数组, ArrayList.toArray()方法，带参数的ArrayList.toArray(Object[])方法.</p>
+<div id="2.1"class="dsd_title_c_2"><h4>2.1 遍历ArrayList转化数组</h4></div>
+<p>这种是最容易理解的方式。</p>
+<pre class="prettyprint"><code>int[] arr0 = new int[list.size()];
+for (int i = 0; i &lt; list.size(); i++) {
+    arr0[i] = list.get(i);
+}
+</code></pre>
+<div id="2.2"class="dsd_title_c_2"><h4>2.2 ArrayList.toArray()方法</h4></div>
+<p>ArrayList.toArray()方法会返回Object[]数组，无法强转为对应数组.</p>
+<pre class="prettyprint"><code>Object[] arr1 = list.toArray();
+</code></pre>
+<p>如果强转成对应类型的对象数组会怎样呢？
+答案是会抛出异常.如果把以上代码改为:</p>
+<pre class="prettyprint"><code>Integer[] arr1 = new Integer[list.size() - 10];
+</code></pre>
+<p>编译程序时会报java.lang.ClassCastException异常.</p>
+<pre class="prettyprint"><code>Exception in thread "main" java.lang.ClassCastException: [Ljava.lang.Object; cannot be cast to [Ljava.lang.Integer;
+    at com.dashidan.faq3.Demo1.main(Demo1.java:30)
+</code></pre>
+<p>这种方式获取的数组，可以在遍历数组对象时候进行强转.</p>
+<div id="2.2"class="dsd_title_c_2"><h4>2.2 ArrayList.toArray(Object[])方法</h4></div>
+<p>ArrayList工具类还提供一个带参数的转化数组的方法ArrayList.toArray(Object[])。这个方法需要事先定义好转化的数组对象类型,让后将ArrayList中对象复制到该数组中.</p>
+<pre class="prettyprint"><code>Integer[] arr1 = new Integer[list.size()];
+list.toArray(arr1);
+</code></pre>
+<p>使用这种方式的转化的时候要注意：创建的数组对象长度最好和list的长度一直，如果小于list的长度，得到的数组中的对象为空，超过list长度，会用空位填充。</p>
+<p>将上述代码改为长度减10：</p>
+<pre class="prettyprint"><code>Integer[] arr1 = new Integer[list.size()-10];
+</code></pre>
+<p>这样得到的数组长度为90，但内部对象都是空</p>
+<p>将上述代码改为长度加10：</p>
+<pre class="prettyprint"><code>Integer[] arr1 = new Integer[list.size()+10];
+</code></pre>
+<p>这样得到的数组长度为110，前100个与list中的数据对应，后10个用null填充。</p>
+<div id="3"><h3>3 数组转化为ArrayList</h3></div>
+<p>可以通过for循环遍历数组，插入ArrayList来实现.</p>
+<pre class="prettyprint"><code>/** 数组转化为ArrayList*/
+int[] aaa = new int[100];
+ArrayList bbb = new ArrayList&lt;Integer&gt;();
+for (int i = 0; i &lt; aaa.length; i++) {
+    bbb.add(aaa[i]);
+}
+</code></pre>
+<div id="4"><h3>4 完整示例代码</h3></div>
+<pre class="prettyprint"><code>package com.dashidan.faq3;
+
+import java.util.ArrayList;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 3.java ArrayList转化为数组
+ * Created by 大屎蛋 on 2018/5/24.
+ */
+public class Demo1 {
+    public static void main(String[] args) {
+
+        /** 初始化ArrayList*/
+        ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 100; i++) {
+            list.add(i);
+        }
+
+        /** 1 遍历ArrayList转化数组*/
+        int[] arr0 = new int[list.size()];
+        for (int i = 0; i &lt; list.size(); i++) {
+            arr0[i] = list.get(i);
+        }
+
+        /** 2 ArrayList.toArray() 方法转化数组*/
+        Object[] arr1 = list.toArray();
+
+        /** 3 ArrayList.toArray(T[] a)方法转化数组*/
+        Integer[] arr2 = new Integer[list.size() + 10];
+        list.toArray(arr2);
+
+        /** 数组转化为ArrayList*/
+        int[] aaa = new int[100];
+        ArrayList bbb = new ArrayList&lt;Integer&gt;();
+        for (int i = 0; i &lt; aaa.length; i++) {
+            bbb.add(aaa[i]);
+        }
+    }
+}
+</code></pre>
         </div>
     </div>
 </div>
@@ -1870,13 +1930,13 @@ win10操作系统增加环境变量时会新建一个属性,不需要加分号.<
 
 <footer>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
-            <a href="https://dashidan.com//article/java/basic/1.html"> &lt; 1.Java教程概述</a>
+            <a href="https://dashidan.com//article/java/faq/2.html"> &lt; 2.HashMap中的put和putIfAbsense区别</a>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
         <a href="https://dashidan.com//article/java/index.html">目录</a>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
-            <a href="https://dashidan.com//article/java/basic/3.html"> 3.第一个Java程序 &gt;</a>
+            <a href="https://dashidan.com//article/java/faq/4.html"> 4.ConcurrentModifyException的产生原因及如何避免 &gt;</a>
     </div>
 </footer>
 

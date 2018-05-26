@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
-    <link rel="canonical" href="https://dashidan.com/article/java/basic/2.html">
-    <title>windows搭建java开发环境 - java教程 - 大屎蛋教程网</title>
-    <meta name="description" content="Window安装JDK图文教程.windows搭建java开发环境,配置java环境变量图文教程.">
+    <link rel="canonical" href="https://dashidan.com/article/java/basic/24.html">
+    <title>transient关键字详解 - java教程 - 大屎蛋教程网</title>
+    <meta name="description" content="我在自己的项目中很少使用transient关键字。这个关键字的作用是和序列化相关的。JDK的源码中ArrayList类用到了transient关键字. 整理一下这个关键字相关的内容.">
     <style mip-custom>
         html {
     -webkit-text-size-adjust: 100%;
@@ -1755,9 +1755,9 @@ footer > a {
 
     <script  type="application/ld+json"> {
        "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
-       "@id": "https://mip.dashidan.com/article/java/basic/2.html",
-       "title":"windows搭建java开发环境 - java教程 - 大屎蛋教程网",
-       "description": "Window安装JDK图文教程.windows搭建java开发环境,配置java环境变量图文教程.",
+       "@id": "https://mip.dashidan.com/article/java/basic/24.html",
+       "title":"transient关键字详解 - java教程 - 大屎蛋教程网",
+       "description": "我在自己的项目中很少使用transient关键字。这个关键字的作用是和序列化相关的。JDK的源码中ArrayList类用到了transient关键字. 整理一下这个关键字相关的内容.",
        "pubDate": "2018-05-26T15:09:14",
        "isOriginal": "1"
 }</script>
@@ -1777,91 +1777,136 @@ footer > a {
 <div class="container-fluid">
     <div class="text-left">
         <a href="https://mip.dashidan.com//index.html">首页</a> > <a
-            href="https://mip.dashidan.com//article/java/index.html">java</a> > 2.搭建Java开发环境
+            href="https://mip.dashidan.com//article/java/index.html">java</a> > 24.transient关键字详解
     </div>
 
     <div class="dsd_content">
-        <div class="dsd_title"><h1>2.搭建Java开发环境</h1></div>
+        <div class="dsd_title"><h1>24.transient关键字详解</h1></div>
         <div id="xs_content_border">
-            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 下载SDK</a><br><a href="#1.1">&nbsp;&nbsp;1.1 jdk官网链接</a><br><a href="#1.2">&nbsp;&nbsp;1.2 确认接受协议.</a><br><a href="#1.3">&nbsp;&nbsp;1.3 选择适合自己操作系统的版本点击链接下载.</a><br><a href="#2">2 windows安装jdk</a><br><a href="#3">3 windows7配置Java环境变量</a><br><a href="#3.1">&nbsp;&nbsp;3.1 选择高级系统设置</a><br><a href="#3.2">&nbsp;&nbsp;3.2 设置环境变量</a><br><a href="#3.3">&nbsp;&nbsp;3.3 新建用户变量</a><br><a href="#3.4">&nbsp;&nbsp;3.4 配置系统变量</a><br><a href="#3.5">&nbsp;&nbsp;3.5 JDK与JRE</a><br><a href="#4">4 重启电脑</a><br><a href="#5">5 测试</a><br><a href="#5.1">&nbsp;&nbsp;5.1 打开"命令提示符"</a><br><a href="#5.2">&nbsp;&nbsp;5.2 测试环境变量配置是否生效</a><br><a href="#5.3">&nbsp;&nbsp;5.3 测试用户变量配置</a><br><a href="#6">6 相关文章</a></div></div><div class="jumbotron">
-<p>SDK全称(Standard Development Kit),标准开发工具包. java和JDK的关系,就像鱼和水的关系.  </p>  
+            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 接口 Serializable</a><br><a href="#2">2 序列化与反序列化</a><br><a href="#3">3 transient关键字</a><br><a href="#3.1">&nbsp;&nbsp;3.1 JDK中transient关键字应用举例</a><br><a href="#3.2">&nbsp;&nbsp;3.2 对象序列化transient关键字应用举例</a></div></div><div class="jumbotron">
+<p>我在自己的项目中很少使用transient关键字。这个关键字的作用是和序列化相关的。JDK的源码中ArrayList类用到了transient关键字.整理一下这个关键字相关的内容.
+</p>
 </div>
-<div id="1"><h3>1 下载SDK</h3></div>
-<div id="1.1"class="dsd_title_c_2"><h4>1.1 jdk官网链接</h4></div>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK官网下载链接</a></p>
-<div id="1.2"class="dsd_title_c_2"><h4>1.2 确认接受协议.</h4></div>
-<p>选中Java SE Development Kit 8u144中的Accept License Agreement.</p>
-<div id="1.3"class="dsd_title_c_2"><h4>1.3 选择适合自己操作系统的版本点击链接下载.</h4></div>
-<p>根据自己的操作系统选择对应的安装包下载, windows, mac os, 或者linux.以windows为例,需要区分是32位还是64位操作系统.windows x86是32位版本,windows x64是64位版本.</p>
-<p><a href="http://dashidan.com/article/windows/faq/1.html#1">windows系统是32位还是64位</a></p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-1.png" alt="图2-1" width="480" height="482"></mip-img>   </p>
-<div id="2"><h3>2 windows安装jdk</h3></div>
-<p>windows安装jdk非常简单, 像安装普通软件一样.点击下一步直到完成,采用默认安装配置.需要注意的是如果修改jdk安装目录, 要选择英文或者拼音的目录, 不要使用中文目录, 来避免一些由于中文编码不支持所可能带来的问题.</p>
-<div id="3"><h3>3 windows7配置Java环境变量</h3></div>
-<div id="3.1"class="dsd_title_c_2"><h4>3.1 选择高级系统设置</h4></div>
-<p>选择步骤:计算机-&gt;点右键-&gt;属性-&gt;高级系统设置. 如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-2.png" alt="图2-2" width="480" height="216"></mip-img>   </p>
-<div id="3.2"class="dsd_title_c_2"><h4>3.2 设置环境变量</h4></div>
-<p>设置java环境变量步骤:在高级系统设置弹出窗口中点击-&gt;环境变量.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-3.png" alt="图2-3" width="420" height="442"></mip-img>  </p>
-<div id="3.3"class="dsd_title_c_2"><h4>3.3 新建用户变量</h4></div>
-<p>在用户变量栏中点击-&gt;新建按钮, 在弹出页面变量名一栏中输入:</p>
-<pre class="prettyprint"><code>classpath
+<div id="1"><h3>1 接口 Serializable</h3></div>
+<p>提到transient关键字之前需要先了解Serializable接口. <a href="https://dashidan.com/apidoc/java/api6/index.html">Serializable接口 JDK1.6文档</a>. java.io.Serializable接口中没有任何方法或者字段，仅用于标识可序列化的语义。类通过实现接口以启用其序列化功能。未实现此接口的类将无法使其任何状态序列化或反序列化。可序列化类的所有子类型本身都是可序列化的。</p>
+<div id="2"><h3>2 序列化与反序列化</h3></div>
+<p>序列化是指将对象的状态信息转换为可以存储或传输的形式的过程。简单理解为，对象转换为字节序列的过程称为对象的序列化；把字节序列恢复为对象的过程称为对象的反序列化。</p>
+<div id="3"><h3>3 transient关键字</h3></div>
+<p>这个类实现了Serilizable接口，这个类的所有属性和方法都会自动序列化。</p>
+<p>在实际开发过程中，这个类的有些属性需要序列化，而其他属性不需要被序列化。 例如：一些敏感信息（如密码，银行卡号等），为了安全起见，不希望在网络操作（主要涉及到序列化操作，本地序列化缓存也适用）中被传输，这些信息对应的变量就可以加上transient关键字。换句话说，这个字段的生命周期仅存于调用者的内存中而不会写到磁盘里持久化。</p>
+<p>实现Serilizable接口，将不需要序列化的属性前添加关键字transient，序列化对象的时候，这个属性就不会序列化到指定的目的地中。</p>
+<div id="3.1"class="dsd_title_c_2"><h4>3.1 JDK中transient关键字应用举例</h4></div>
+<p>ArrayList源码中应用到了transient关键字。</p>
+<pre class="prettyprint"><code>transient Object[] elementData; // non-private to simplify nested class access
 </code></pre>
-<p>windows操作系统将多个变量用分号分割.</p>
-<pre class="prettyprint"><code>.;C:\Program Files\Java\jdk1.8.0_144\lib
-</code></pre>
-<div class="bs-callout bs-callout-success">
-    <h4>变量值</h4>
-    <p>由".;"加"JDK安装目录"加"lib"组成.其中"."表示当前程序运行当前路径.</p>
-</div>
-<p>Java用户变量classpath配置.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-4.png" alt="图2-4" width="394" height="406"></mip-img>   </p>
-<div id="3.4"class="dsd_title_c_2"><h4>3.4 配置系统变量</h4></div>
-<p>在"系统变量"栏中找到Path-&gt;点击"编辑"按钮增加</p>
+<p>elementData是一个缓存数组，通常会预留一些容量，等容量不足时再扩充。扩充空间超过实际数据长度的冗余部分，没有实际意义。不需要进行序列化。所以ArrayList的设计者将elementData设计为transient，然后在writeObject方法中只序列化了实际存储的那些元素，而不是整个数组。</p>
+<div id="3.2"class="dsd_title_c_2"><h4>3.2 对象序列化transient关键字应用举例</h4></div>
 <ul>
-<li>Win7,xp,8配置Java环境变量
-Win7,8,xp这几个操作系统版本path变量将多个变量用分号分割.新增加的java环境变量path变量由";"加上"JDK安装目录"加"bin"目录组成.</li>
+<li><p>实现步骤：
+1.创建一个简单的类，定义几个成员变量，其中的一个变量设置为transient关键字修饰。
+2.创建一个字节输出流，将这个对象序列化，输出到字节数组中。
+3.创建一个输入流，从这个字节数组反序列化，实例化这个对象。
+4.输出这个对象的属性，查看有transient关键字修饰修饰的变量，和没有这个关键词修饰的变量的区别。</p></li>
+<li><p>示例代码</p></li>
 </ul>
-<pre class="prettyprint"><code>;C:\Program Files\Java\jdk1.8.0_144\bin
+<pre class="prettyprint"><code>package com.dashidan.lesson24;
+
+import java.io.*;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * Java教程基础篇:  24.transient关键字详解
+ * 2018/5/26
+ */
+public class Demo1 {
+
+    static int id = 100;
+    static String name = "大屎蛋";
+    static String url = "http://dashidan.com";
+    static String weather = "晴朗";
+
+    public static void main(String[] args) {
+
+        /** 创建测试对象*/
+        TestObject testObject = new TestObject(id, name, url, weather);
+        try {
+            /** 将对象序列化，输出到byte[]中*/
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ObjectOutputStream outputStream = new ObjectOutputStream(byteArrayOutputStream);
+            outputStream.writeObject(testObject);
+            outputStream.close();
+            byte[] bytes = byteArrayOutputStream.toByteArray();
+            byteArrayOutputStream.close();
+
+            /** 将byte[]字节反序列化，转化为对象*/
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+            ObjectInputStream inputStream = new ObjectInputStream(byteArrayInputStream);
+            TestObject obj = (TestObject) inputStream.readObject();
+            inputStream.close();
+            byteArrayInputStream.close();
+
+            /** 输出运行结果*/
+            System.out.println(obj.getId());
+            System.out.println(obj.getName());
+            System.out.println(obj.getUrl());
+            System.out.println(obj.getWeather());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+/**
+ * 实现Serializable接口的测试类，其中weather属性被定义transient
+ */
+class TestObject implements Serializable {
+
+    int id;
+    String name;
+    String url;
+    transient String weather;
+
+    public TestObject(int id, String name, String url, String weather) {
+        this.id = id;
+        this.name = name;
+        this.url = url;
+        this.weather = weather;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getWeather() {
+        return weather;
+    }
+}
 </code></pre>
-<ul>
-<li>Win10配置Java环境变量
-win10操作系统增加环境变量时会新建一个属性,不需要加分号.</li>
-</ul>
-<pre class="prettyprint"><code>C:\Program Files\Java\jdk1.8.0_144\bin
+<p>输出结果</p>
+<pre class="prettyprint"><code>100
+大屎蛋
+http://dashidan.com
+null
 </code></pre>
-<p>如图:<br />
-<mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-5.png" alt="图2-5" width="394" height="406"></mip-img>   </p>
-<div id="3.5"class="dsd_title_c_2"><h4>3.5 JDK与JRE</h4></div>
-<p>JDK是java开发工具集成包,开发,编译java程序必须安装.jre(Java Runtime Environment)是java运行时环境.在一些不需要编译java源文件只需要运行java程序的环境中只装JRE也可以.</p>
-<p>Java默认安装目录"C:\Program Files\Java\jdk1.8.0<em>144".在"jdk1.8.0</em>144"的同级目录有个文件夹"jre1.8.0_144",是Java运行环境(Java Runtime Environment).</p>
-<div id="4"><h3>4 重启电脑</h3></div>
-<p>配置完成重启电脑,使环境变量生效.部分电脑配置环境变量不重启不生效, 这一步不要忘记.</p>
-<div id="5"><h3>5 测试</h3></div>
-<div id="5.1"class="dsd_title_c_2"><h4>5.1 打开"命令提示符"</h4></div>
-<p>windows打开"命令提示符"方法:鼠标点击桌面左下角windows图标-&gt;所有程序-&gt;附件-&gt;命令提示符.</p>
-<p><a href="http://dashidan.com/article/windows/faq/2.html">打开windows命令提示符</a></p>
-<div id="5.2"class="dsd_title_c_2"><h4>5.2 测试环境变量配置是否生效</h4></div>
-<p>在命令提示符中输入java命令java -version:</p>
-<pre class="prettyprint"><code>java -version
+<p>从这个输出结果可以看出由transient修饰的变量输出为null,说明没有序列化。</p>
+<p>将这个关键字删除，再运行一遍，输出结果:</p>
+<pre class="prettyprint"><code>100
+大屎蛋
+http://dashidan.com
+晴朗
 </code></pre>
-<p>输出java版本号信息说明配置正确.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-6.png" alt="图2-6" width="480" height="151"></mip-img>   </p>
-<div id="5.3"class="dsd_title_c_2"><h4>5.3 测试用户变量配置</h4></div>
-<p>在命令提示符中输入javac命令:</p>
-<pre class="prettyprint"><code>javac
-</code></pre>
-<p>javac 命令是编译java程序的命令这个命令如果输出javac命令行信息说明java用户环境变量配置正确.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-7.png" alt="图2-7" width="480" height="289"></mip-img>   </p>
-<div class="bs-callout bs-callout-danger">
-    <h4>执行java,javac错误提示</h4>
-    如果执行java命令时在命令行窗口提示错误,表示环境变量配置有问题,需要<a href="#2.3">检查Java环境变量配置</a>.<br>
-    运行java命令提示'javac'不是内部或外部命令,也不是可运行的程序或批处理文件.<a href="#2.3">检查Java用户变量配置</a>
-</div>
-<div id="6"><h3>6 相关文章</h3></div>
-<p><a href="https://dashidan.com//article/java/addenda/4.html">linux搭建Java开发环境</a>  </p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/common/greatman.jpg" alt="图" width="333" height="320"></mip-img></p>
+<p>移除这个关键字以后，输出结果中就能反序列出这个属性的值。通过这个简单的例子可以理解transient关键字在序列化与反序列化中的作用。</p>
         </div>
     </div>
 </div>
@@ -1870,13 +1915,12 @@ win10操作系统增加环境变量时会新建一个属性,不需要加分号.<
 
 <footer>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
-            <a href="https://dashidan.com//article/java/basic/1.html"> &lt; 1.Java教程概述</a>
+            <a href="https://dashidan.com//article/java/basic/23.html"> &lt; 23.final关键字作用详解</a>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
         <a href="https://dashidan.com//article/java/index.html">目录</a>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
-            <a href="https://dashidan.com//article/java/basic/3.html"> 3.第一个Java程序 &gt;</a>
     </div>
 </footer>
 

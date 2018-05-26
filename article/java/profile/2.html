@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
-    <link rel="canonical" href="https://dashidan.com/article/java/basic/2.html">
-    <title>windows搭建java开发环境 - java教程 - 大屎蛋教程网</title>
-    <meta name="description" content="Window安装JDK图文教程.windows搭建java开发环境,配置java环境变量图文教程.">
+    <link rel="canonical" href="https://dashidan.com/article/java/profile/2.html">
+    <title>java数组拷贝的3种方式和效率对比 - java效率优化专题 - 大屎蛋教程网</title>
+    <meta name="description" content="Java语言中常用的数组拷贝方式有：for循环拷贝，通过Arrays.copyOf()方法，System.arraycopy和clone()方法拷贝。">
     <style mip-custom>
         html {
     -webkit-text-size-adjust: 100%;
@@ -1755,10 +1755,10 @@ footer > a {
 
     <script  type="application/ld+json"> {
        "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
-       "@id": "https://mip.dashidan.com/article/java/basic/2.html",
-       "title":"windows搭建java开发环境 - java教程 - 大屎蛋教程网",
-       "description": "Window安装JDK图文教程.windows搭建java开发环境,配置java环境变量图文教程.",
-       "pubDate": "2018-05-26T15:09:14",
+       "@id": "https://mip.dashidan.com/article/java/profile/2.html",
+       "title":"java数组拷贝的3种方式和效率对比 - java效率优化专题 - 大屎蛋教程网",
+       "description": "Java语言中常用的数组拷贝方式有：for循环拷贝，通过Arrays.copyOf()方法，System.arraycopy和clone()方法拷贝。",
+       "pubDate": "2018-05-26T15:09:16",
        "isOriginal": "1"
 }</script>
 
@@ -1777,91 +1777,179 @@ footer > a {
 <div class="container-fluid">
     <div class="text-left">
         <a href="https://mip.dashidan.com//index.html">首页</a> > <a
-            href="https://mip.dashidan.com//article/java/index.html">java</a> > 2.搭建Java开发环境
+            href="https://mip.dashidan.com//article/java/index.html">java</a> > 2.java数组拷贝的3种方式和效率对比
     </div>
 
     <div class="dsd_content">
-        <div class="dsd_title"><h1>2.搭建Java开发环境</h1></div>
+        <div class="dsd_title"><h1>2.java数组拷贝的3种方式和效率对比</h1></div>
         <div id="xs_content_border">
-            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 下载SDK</a><br><a href="#1.1">&nbsp;&nbsp;1.1 jdk官网链接</a><br><a href="#1.2">&nbsp;&nbsp;1.2 确认接受协议.</a><br><a href="#1.3">&nbsp;&nbsp;1.3 选择适合自己操作系统的版本点击链接下载.</a><br><a href="#2">2 windows安装jdk</a><br><a href="#3">3 windows7配置Java环境变量</a><br><a href="#3.1">&nbsp;&nbsp;3.1 选择高级系统设置</a><br><a href="#3.2">&nbsp;&nbsp;3.2 设置环境变量</a><br><a href="#3.3">&nbsp;&nbsp;3.3 新建用户变量</a><br><a href="#3.4">&nbsp;&nbsp;3.4 配置系统变量</a><br><a href="#3.5">&nbsp;&nbsp;3.5 JDK与JRE</a><br><a href="#4">4 重启电脑</a><br><a href="#5">5 测试</a><br><a href="#5.1">&nbsp;&nbsp;5.1 打开"命令提示符"</a><br><a href="#5.2">&nbsp;&nbsp;5.2 测试环境变量配置是否生效</a><br><a href="#5.3">&nbsp;&nbsp;5.3 测试用户变量配置</a><br><a href="#6">6 相关文章</a></div></div><div class="jumbotron">
-<p>SDK全称(Standard Development Kit),标准开发工具包. java和JDK的关系,就像鱼和水的关系.  </p>  
+            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 测试场景</a><br><a href="#1.1">&nbsp;&nbsp;1.1 初始化数组</a><br><a href="#1.1">&nbsp;&nbsp;1.1 for循环拷贝数组</a><br><a href="#1.2">&nbsp;&nbsp;1.2 Arrays.copyOf拷贝数组</a><br><a href="#1.3">&nbsp;&nbsp;1.3 System.arraycopy复制数组</a><br><a href="#1.4">&nbsp;&nbsp;1.4 clone()方法拷贝数组</a><br><a href="#2">2 测试这几种复制方法</a><br><a href="#2.1">&nbsp;&nbsp;2.1 示例代码</a><br><a href="#3">3 结论</a></div></div><div class="jumbotron">
+<p>Java语言中常用的数组拷贝方式有：for循环拷贝，通过Arrays.copyOf()方法，System.arraycopy和clone()方法拷贝。</p>
 </div>
-<div id="1"><h3>1 下载SDK</h3></div>
-<div id="1.1"class="dsd_title_c_2"><h4>1.1 jdk官网链接</h4></div>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK官网下载链接</a></p>
-<div id="1.2"class="dsd_title_c_2"><h4>1.2 确认接受协议.</h4></div>
-<p>选中Java SE Development Kit 8u144中的Accept License Agreement.</p>
-<div id="1.3"class="dsd_title_c_2"><h4>1.3 选择适合自己操作系统的版本点击链接下载.</h4></div>
-<p>根据自己的操作系统选择对应的安装包下载, windows, mac os, 或者linux.以windows为例,需要区分是32位还是64位操作系统.windows x86是32位版本,windows x64是64位版本.</p>
-<p><a href="http://dashidan.com/article/windows/faq/1.html#1">windows系统是32位还是64位</a></p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-1.png" alt="图2-1" width="480" height="482"></mip-img>   </p>
-<div id="2"><h3>2 windows安装jdk</h3></div>
-<p>windows安装jdk非常简单, 像安装普通软件一样.点击下一步直到完成,采用默认安装配置.需要注意的是如果修改jdk安装目录, 要选择英文或者拼音的目录, 不要使用中文目录, 来避免一些由于中文编码不支持所可能带来的问题.</p>
-<div id="3"><h3>3 windows7配置Java环境变量</h3></div>
-<div id="3.1"class="dsd_title_c_2"><h4>3.1 选择高级系统设置</h4></div>
-<p>选择步骤:计算机-&gt;点右键-&gt;属性-&gt;高级系统设置. 如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-2.png" alt="图2-2" width="480" height="216"></mip-img>   </p>
-<div id="3.2"class="dsd_title_c_2"><h4>3.2 设置环境变量</h4></div>
-<p>设置java环境变量步骤:在高级系统设置弹出窗口中点击-&gt;环境变量.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-3.png" alt="图2-3" width="420" height="442"></mip-img>  </p>
-<div id="3.3"class="dsd_title_c_2"><h4>3.3 新建用户变量</h4></div>
-<p>在用户变量栏中点击-&gt;新建按钮, 在弹出页面变量名一栏中输入:</p>
-<pre class="prettyprint"><code>classpath
+<div id="1"><h3>1 测试场景</h3></div>
+<p>我们用最简单的整数数组来测试。首先创建一个整型数组，并且初始化数据。然后分别用这3种方式来拷贝数组同样的次数。来测分别试这三种情况的效率。</p>
+<div id="1.1"class="dsd_title_c_2"><h4>1.1 初始化数组</h4></div>
+<pre class="prettyprint"><code>int len = 1000;
+int[] arr0 = new int[len];
+for (int i = 0; i &lt; len; i++) {
+    arr0[i] = i;
+}
 </code></pre>
-<p>windows操作系统将多个变量用分号分割.</p>
-<pre class="prettyprint"><code>.;C:\Program Files\Java\jdk1.8.0_144\lib
+<div id="1.1"class="dsd_title_c_2"><h4>1.1 for循环拷贝数组</h4></div>
+<p>采用for循环遍历数组，然后根据数组下标对应赋值，来实现复制数组。</p>
+<pre class="prettyprint"><code>/** 1 for 循环拷贝*/
+int[] arr1 = new int[len];
+for (int i = 0; i &lt; len; i++) {
+    arr1[i] = arr0[i];
+}
 </code></pre>
-<div class="bs-callout bs-callout-success">
-    <h4>变量值</h4>
-    <p>由".;"加"JDK安装目录"加"lib"组成.其中"."表示当前程序运行当前路径.</p>
-</div>
-<p>Java用户变量classpath配置.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-4.png" alt="图2-4" width="394" height="406"></mip-img>   </p>
-<div id="3.4"class="dsd_title_c_2"><h4>3.4 配置系统变量</h4></div>
-<p>在"系统变量"栏中找到Path-&gt;点击"编辑"按钮增加</p>
+<div id="1.2"class="dsd_title_c_2"><h4>1.2 Arrays.copyOf拷贝数组</h4></div>
+<p>java.util.Arrays类中提供了一个copyOf()方法，通过这个方法可以实现数组复制。这个方法的原理是内部创建了一个数组对象，然后通过System.arraycopy来实现数组复制.</p>
 <ul>
-<li>Win7,xp,8配置Java环境变量
-Win7,8,xp这几个操作系统版本path变量将多个变量用分号分割.新增加的java环境变量path变量由";"加上"JDK安装目录"加"bin"目录组成.</li>
+<li>copyOf方法源码</li>
 </ul>
-<pre class="prettyprint"><code>;C:\Program Files\Java\jdk1.8.0_144\bin
+<pre class="prettyprint"><code>public static int[] copyOf(int[] original, int newLength) {
+    int[] copy = new int[newLength];
+    System.arraycopy(original, 0, copy, 0,
+                     Math.min(original.length, newLength));
+    return copy;
+}
 </code></pre>
 <ul>
-<li>Win10配置Java环境变量
-win10操作系统增加环境变量时会新建一个属性,不需要加分号.</li>
+<li>System.arraycopy源码</li>
 </ul>
-<pre class="prettyprint"><code>C:\Program Files\Java\jdk1.8.0_144\bin
+<p>System.arraycop方法是通过native方法,Java虚拟机内部实现的。</p>
+<pre class="prettyprint"><code>public static native void arraycopy(Object src,  int  srcPos,
+                                    Object dest, int destPos,
+                                    int length);
 </code></pre>
-<p>如图:<br />
-<mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-5.png" alt="图2-5" width="394" height="406"></mip-img>   </p>
-<div id="3.5"class="dsd_title_c_2"><h4>3.5 JDK与JRE</h4></div>
-<p>JDK是java开发工具集成包,开发,编译java程序必须安装.jre(Java Runtime Environment)是java运行时环境.在一些不需要编译java源文件只需要运行java程序的环境中只装JRE也可以.</p>
-<p>Java默认安装目录"C:\Program Files\Java\jdk1.8.0<em>144".在"jdk1.8.0</em>144"的同级目录有个文件夹"jre1.8.0_144",是Java运行环境(Java Runtime Environment).</p>
-<div id="4"><h3>4 重启电脑</h3></div>
-<p>配置完成重启电脑,使环境变量生效.部分电脑配置环境变量不重启不生效, 这一步不要忘记.</p>
-<div id="5"><h3>5 测试</h3></div>
-<div id="5.1"class="dsd_title_c_2"><h4>5.1 打开"命令提示符"</h4></div>
-<p>windows打开"命令提示符"方法:鼠标点击桌面左下角windows图标-&gt;所有程序-&gt;附件-&gt;命令提示符.</p>
-<p><a href="http://dashidan.com/article/windows/faq/2.html">打开windows命令提示符</a></p>
-<div id="5.2"class="dsd_title_c_2"><h4>5.2 测试环境变量配置是否生效</h4></div>
-<p>在命令提示符中输入java命令java -version:</p>
-<pre class="prettyprint"><code>java -version
+<ul>
+<li>调用Arrays.copyOf()方法</li>
+</ul>
+<pre class="prettyprint"><code>int[] arr2 = Arrays.copyOf(arr0, arr0.length);
 </code></pre>
-<p>输出java版本号信息说明配置正确.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-6.png" alt="图2-6" width="480" height="151"></mip-img>   </p>
-<div id="5.3"class="dsd_title_c_2"><h4>5.3 测试用户变量配置</h4></div>
-<p>在命令提示符中输入javac命令:</p>
-<pre class="prettyprint"><code>javac
+<div id="1.3"class="dsd_title_c_2"><h4>1.3 System.arraycopy复制数组</h4></div>
+<p>System.arraycopy方法提供了从数组中截取一部分，生成一个新的数组，也是Arrays.copyOf()方法的底层实现。</p>
+<pre class="prettyprint"><code>int[] arr3 = new int[len];
+System.arraycopy(arr0, 0, arr3, 0, arr0.length);
 </code></pre>
-<p>javac 命令是编译java程序的命令这个命令如果输出javac命令行信息说明java用户环境变量配置正确.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-7.png" alt="图2-7" width="480" height="289"></mip-img>   </p>
-<div class="bs-callout bs-callout-danger">
-    <h4>执行java,javac错误提示</h4>
-    如果执行java命令时在命令行窗口提示错误,表示环境变量配置有问题,需要<a href="#2.3">检查Java环境变量配置</a>.<br>
-    运行java命令提示'javac'不是内部或外部命令,也不是可运行的程序或批处理文件.<a href="#2.3">检查Java用户变量配置</a>
-</div>
-<div id="6"><h3>6 相关文章</h3></div>
-<p><a href="https://dashidan.com//article/java/addenda/4.html">linux搭建Java开发环境</a>  </p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/common/greatman.jpg" alt="图" width="333" height="320"></mip-img></p>
+<div id="1.4"class="dsd_title_c_2"><h4>1.4 clone()方法拷贝数组</h4></div>
+<p>Java的Object</p>
+<pre class="prettyprint"><code>int[] arr3 = arr0.clone();
+</code></pre>
+<div id="2"><h3>2 测试这几种复制方法</h3></div>
+<p>将上述4中复制方式，对一个长度1000的数组，复制一千万次，来看一下执行时间。</p>
+<div id="2.1"class="dsd_title_c_2"><h4>2.1 示例代码</h4></div>
+<pre class="prettyprint"><code>package com.dashidan.profile1;
+
+import java.util.Arrays;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 2.java数组复制的3种方式和效率对比
+ *
+ * Created by 大屎蛋 on 2018/5/23.
+ */
+public class Demo1 {
+
+    public static void main(String[] args) {
+        /** 初始化数组*/
+        int len = 1000;
+        int count = 10000000;
+        int[] arr0 = new int[len];
+        for (int i = 0; i &lt; len; i++) {
+            arr0[i] = i;
+        }
+
+        long t1 = System.currentTimeMillis();
+
+        for (int c = 0; c &lt; count; c++) {
+            /** 1 for 循环复制*/
+            int[] arr1 = new int[len];
+            for (int i = 0; i &lt; len; i++) {
+                arr1[i] = arr0[i];
+            }
+        }
+
+        long t2 = System.currentTimeMillis();
+
+        /** 2 Arrays.copyOf复制数组*/
+        for (int c = 0; c &lt; count; c++) {
+            int[] arr2 = Arrays.copyOf(arr0, arr0.length);
+        }
+
+        long t3 = System.currentTimeMillis();
+
+        /** 3 System.arraycopy复制数组*/
+        for (int c = 0; c &lt; count; c++) {
+            int[] arr3 = new int[len];
+            System.arraycopy(arr0, 0, arr3, 0, arr0.length);
+        }
+
+        long t4 = System.currentTimeMillis();
+        /** 4 Object.clone() 复制数组*/
+        for (int c = 0; c &lt; count; c++) {
+            int[] arr4 = arr0.clone();
+        }
+
+        long t5 = System.currentTimeMillis();
+
+        System.out.println("1 for 循环复制: " + (t2 - t1));
+        System.out.println("2 Arrays.copyOf复制数组:  " + (t3 - t2));
+        System.out.println("3 System.arraycopy复制数组:  " + (t4 - t3));
+        System.out.println("4 Object.clone() 复制数组: * " + (t5 - t4));
+    }
+}
+</code></pre>
+<p>输出结果:</p>
+<pre class="prettyprint"><code>1 for 循环复制: 4451
+2 Arrays.copyOf复制数组:  6474
+3 System.arraycopy复制数组:  6439
+4 Object.clone() 复制数组: * 6436
+</code></pre>
+<p>这个输出结果根据电脑和运行环境，可能会不一致。从这个输出可以看出：</p>
+<p>for循环遍历数组复制的方式用时最小.比其他3中少了50%左右的时间。</p>
+<ul>
+<li>其他不变，只将循环次数改为一百万次的输出结果</li>
+</ul>
+<pre class="prettyprint"><code>1 for 循环复制: 640
+2 Arrays.copyOf复制数组:  828
+3 System.arraycopy复制数组:  643
+4 Object.clone() 复制数组: * 645
+</code></pre>
+<p>这个差距就很小了。</p>
+<ul>
+<li>其他不变，循环次数改为一千万次的输出结果，初始数组的长度100的输出结果</li>
+</ul>
+<pre class="prettyprint"><code>1 for 循环复制: 948
+2 Arrays.copyOf复制数组:  709
+3 System.arraycopy复制数组:  659
+4 Object.clone() 复制数组: * 666
+</code></pre>
+<p>这个差距也不大。反而是for循环遍历耗时最多。</p>
+<ul>
+<li>其他不变，循环次数改为一千万次的输出结果，初始数组的长度10的输出结果</li>
+</ul>
+<pre class="prettyprint"><code>1 for 循环复制: 250
+2 Arrays.copyOf复制数组:  127
+3 System.arraycopy复制数组:  157
+4 Object.clone() 复制数组: * 193
+</code></pre>
+<p>在数组长度为10的时候，for循环遍历赋值耗时要超过其他3种方式。</p>
+<ul>
+<li>其他不变，循环次数改为一百万次，初始数组的长度10000的输出结果</li>
+</ul>
+<pre class="prettyprint"><code>1 for 循环复制: 5851
+2 Arrays.copyOf复制数组:  6471
+3 System.arraycopy复制数组:  6443
+4 Object.clone() 复制数组:  6485
+</code></pre>
+<p>这个输出结果差不多。</p>
+<div id="3"><h3>3 结论</h3></div>
+<p>通过上述测试代码的输出数据，可以简单分析一下，当数组长度超过一定值的时候(测试代码中，长度改为1000，这个值不精确)，for循环遍历赋值，效率会略高出其他3种方式。</p>
+<p>另外在运行次数长的时候（测试代码改为运行1千万次，数组长度1000）的时候，for循环遍历赋值效率最高，而且优势明显(快50%左右)。数组长度改为100，就没那么明显了。</p>
+<p>System.arraycopy提供了截取数组中的一部分来生成新的数组，这个功能很方便。（也可以用for循环遍历来实现）。</p>
+<p>Arrays.copyOf()和clone()方法可以复制整个数组，在数组长度比较短的时候，代码比较简介，推荐采用。</p>
         </div>
     </div>
 </div>
@@ -1870,13 +1958,13 @@ win10操作系统增加环境变量时会新建一个属性,不需要加分号.<
 
 <footer>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
-            <a href="https://dashidan.com//article/java/basic/1.html"> &lt; 1.Java教程概述</a>
+            <a href="https://dashidan.com//article/java/profile/1.html"> &lt; 1.for循环中的效率优化</a>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
         <a href="https://dashidan.com//article/java/index.html">目录</a>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
-            <a href="https://dashidan.com//article/java/basic/3.html"> 3.第一个Java程序 &gt;</a>
+            <a href="https://dashidan.com//article/java/profile/3.html"> 3.java浮点数运算和整数型运算的效率比较 &gt;</a>
     </div>
 </footer>
 

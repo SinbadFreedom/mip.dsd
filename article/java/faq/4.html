@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://c.mipcdn.com/static/v1/mip.css">
-    <link rel="canonical" href="https://dashidan.com/article/java/basic/2.html">
-    <title>windows搭建java开发环境 - java教程 - 大屎蛋教程网</title>
-    <meta name="description" content="Window安装JDK图文教程.windows搭建java开发环境,配置java环境变量图文教程.">
+    <link rel="canonical" href="https://dashidan.com/article/java/faq/4.html">
+    <title>java ArrayListt原理及转化成数组常用方法 - java常见问题 - 大屎蛋教程网</title>
+    <meta name="description" content="在我做的一个模块中，会用到遍历一个集合类，遍历的同时根据条件判断集合中的对象，如果不符合条件则将该对象从集合中移除。这种情况很容易产生ConcurrentModificationExceptionException，这个异常会导致程序停止继续运行，所以遇到这个异常必须要处理来保证程序正确运行。">
     <style mip-custom>
         html {
     -webkit-text-size-adjust: 100%;
@@ -1755,10 +1755,10 @@ footer > a {
 
     <script  type="application/ld+json"> {
        "@context": "https://zhanzhang.baidu.com/contexts/cambrian.jsonld",
-       "@id": "https://mip.dashidan.com/article/java/basic/2.html",
-       "title":"windows搭建java开发环境 - java教程 - 大屎蛋教程网",
-       "description": "Window安装JDK图文教程.windows搭建java开发环境,配置java环境变量图文教程.",
-       "pubDate": "2018-05-26T15:09:14",
+       "@id": "https://mip.dashidan.com/article/java/faq/4.html",
+       "title":"java ArrayListt原理及转化成数组常用方法 - java常见问题 - 大屎蛋教程网",
+       "description": "在我做的一个模块中，会用到遍历一个集合类，遍历的同时根据条件判断集合中的对象，如果不符合条件则将该对象从集合中移除。这种情况很容易产生ConcurrentModificationExceptionException，这个异常会导致程序停止继续运行，所以遇到这个异常必须要处理来保证程序正确运行。",
+       "pubDate": "2018-05-26T15:09:16",
        "isOriginal": "1"
 }</script>
 
@@ -1777,91 +1777,382 @@ footer > a {
 <div class="container-fluid">
     <div class="text-left">
         <a href="https://mip.dashidan.com//index.html">首页</a> > <a
-            href="https://mip.dashidan.com//article/java/index.html">java</a> > 2.搭建Java开发环境
+            href="https://mip.dashidan.com//article/java/index.html">java</a> > 4.ConcurrentModifyException的产生原因及如何避免
     </div>
 
     <div class="dsd_content">
-        <div class="dsd_title"><h1>2.搭建Java开发环境</h1></div>
+        <div class="dsd_title"><h1>4.ConcurrentModifyException的产生原因及如何避免</h1></div>
         <div id="xs_content_border">
-            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 下载SDK</a><br><a href="#1.1">&nbsp;&nbsp;1.1 jdk官网链接</a><br><a href="#1.2">&nbsp;&nbsp;1.2 确认接受协议.</a><br><a href="#1.3">&nbsp;&nbsp;1.3 选择适合自己操作系统的版本点击链接下载.</a><br><a href="#2">2 windows安装jdk</a><br><a href="#3">3 windows7配置Java环境变量</a><br><a href="#3.1">&nbsp;&nbsp;3.1 选择高级系统设置</a><br><a href="#3.2">&nbsp;&nbsp;3.2 设置环境变量</a><br><a href="#3.3">&nbsp;&nbsp;3.3 新建用户变量</a><br><a href="#3.4">&nbsp;&nbsp;3.4 配置系统变量</a><br><a href="#3.5">&nbsp;&nbsp;3.5 JDK与JRE</a><br><a href="#4">4 重启电脑</a><br><a href="#5">5 测试</a><br><a href="#5.1">&nbsp;&nbsp;5.1 打开"命令提示符"</a><br><a href="#5.2">&nbsp;&nbsp;5.2 测试环境变量配置是否生效</a><br><a href="#5.3">&nbsp;&nbsp;5.3 测试用户变量配置</a><br><a href="#6">6 相关文章</a></div></div><div class="jumbotron">
-<p>SDK全称(Standard Development Kit),标准开发工具包. java和JDK的关系,就像鱼和水的关系.  </p>  
+            <div><div class="dsd_catalog"><h3>目录</h3><a href="#1">1 关于ConcurrentModificationException</a><br><a href="#2">2 单线程触发场景举例</a><br><a href="#2.1">&nbsp;&nbsp;2.1 单线程触发举例</a><br><a href="#2.2">&nbsp;&nbsp;2.2 解决单线程环境的ConcurrentModificationException异常</a><br><a href="#2.3">&nbsp;&nbsp;2.3 ArrayList集合改为CopyOnWriteArrayLis</a><br><a href="#2.4">&nbsp;&nbsp;2.4 通过迭代器遍历删除</a><br><a href="#2.5">&nbsp;&nbsp;2.5 这两种方式的效率比较</a><br><a href="#3">3 多线程触发举例</a><br><a href="#3.1">&nbsp;&nbsp;3.1 多线程触发步骤</a><br><a href="#3.2">&nbsp;&nbsp;3.2 示例代码</a><br><a href="#3.3">&nbsp;&nbsp;3.3 解决多线程环境的ConcurrentModificationException异常</a><br><a href="#3.4">&nbsp;&nbsp;3.4 采用ConcurrentHashMap替换HashMap</a><br><a href="#4">4 其他方法</a></div></div><div class="jumbotron">
+<p>在我做的一个模块中，会用到遍历一个集合类，遍历的同时根据条件判断集合中的对象，如果不符合条件则将该对象从集合中移除。这种情况很容易产生ConcurrentModificationExceptionException，这个异常会导致程序停止继续运行，所以遇到这个异常必须要处理来保证程序正确运行。
+</p>
 </div>
-<div id="1"><h3>1 下载SDK</h3></div>
-<div id="1.1"class="dsd_title_c_2"><h4>1.1 jdk官网链接</h4></div>
-<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK官网下载链接</a></p>
-<div id="1.2"class="dsd_title_c_2"><h4>1.2 确认接受协议.</h4></div>
-<p>选中Java SE Development Kit 8u144中的Accept License Agreement.</p>
-<div id="1.3"class="dsd_title_c_2"><h4>1.3 选择适合自己操作系统的版本点击链接下载.</h4></div>
-<p>根据自己的操作系统选择对应的安装包下载, windows, mac os, 或者linux.以windows为例,需要区分是32位还是64位操作系统.windows x86是32位版本,windows x64是64位版本.</p>
-<p><a href="http://dashidan.com/article/windows/faq/1.html#1">windows系统是32位还是64位</a></p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-1.png" alt="图2-1" width="480" height="482"></mip-img>   </p>
-<div id="2"><h3>2 windows安装jdk</h3></div>
-<p>windows安装jdk非常简单, 像安装普通软件一样.点击下一步直到完成,采用默认安装配置.需要注意的是如果修改jdk安装目录, 要选择英文或者拼音的目录, 不要使用中文目录, 来避免一些由于中文编码不支持所可能带来的问题.</p>
-<div id="3"><h3>3 windows7配置Java环境变量</h3></div>
-<div id="3.1"class="dsd_title_c_2"><h4>3.1 选择高级系统设置</h4></div>
-<p>选择步骤:计算机-&gt;点右键-&gt;属性-&gt;高级系统设置. 如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-2.png" alt="图2-2" width="480" height="216"></mip-img>   </p>
-<div id="3.2"class="dsd_title_c_2"><h4>3.2 设置环境变量</h4></div>
-<p>设置java环境变量步骤:在高级系统设置弹出窗口中点击-&gt;环境变量.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-3.png" alt="图2-3" width="420" height="442"></mip-img>  </p>
-<div id="3.3"class="dsd_title_c_2"><h4>3.3 新建用户变量</h4></div>
-<p>在用户变量栏中点击-&gt;新建按钮, 在弹出页面变量名一栏中输入:</p>
-<pre class="prettyprint"><code>classpath
+<div id="1"><h3>1 关于ConcurrentModificationException</h3></div>
+<p>ConcurrentModificationException这个异常是从JDK1.2时就存在。当方法检测到对象的并发修改，但不允许这种修改时，抛出此异常。这个异常在单线程和多线程运行环境都可以产生。</p>
+<p>某个线程在 Collection 上进行迭代时，通常不允许另一个线性修改该Collection。通常在这些情况下，迭代的结果是不确定的。如果检测到这种行为，一些迭代器实现（包括JRE提供的所有通用collection实现）可能选择抛出此异常。</p>
+<p>执行该操作的迭代器称为快速失败迭代器，因为迭代器很快就完全失败，而不会冒着在将来某个时间任意发生不确定行为的风险。</p>
+<p>执行该操作的迭代器称为快速失败迭代器，因为迭代器很快就完全失败，而不会冒着在将来某个时间任意发生不确定行为的风险。迭代器的快速失败行为无法得到保证，因为一般来说，不可能对是否出现不同步并发修改做出任何硬性保证。快速失败操作会尽最大努力抛出ConcurrentModificationException。</p>
+<p>因此，为提高此类操作的正确性而编写一个依赖于此异常的程序是错误的做法，正确做法是：ConcurrentModificationException 应该仅用于检测 bug。</p>
+<div id="2"><h3>2 单线程触发场景举例</h3></div>
+<div id="2.1"class="dsd_title_c_2"><h4>2.1 单线程触发举例</h4></div>
+<p>如果线程使用快速失败迭代器在collection上迭代时直接修改该collection，则迭代器将抛出此异常。</p>
+<p>触发场景
+1.初始化集合类访入100个对象，并给这些对象的属性value值赋1-100的值。
+2.遍历该集合类，判断对象的value值小于10则删除。
+3.运行程序会抛出ConcurrentModificationException异常。</p>
+<pre class="prettyprint"><code>package com.dashidan.faq4;
+
+import java.util.ArrayList;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 4.ConcurrentModifyException的产生原因及如何避免
+ * Created by 大屎蛋 on 2018/5/24.
+ */
+public class Demo1 {
+
+    public static void main(String[] args) {
+        /** 初始化集合类*/
+        ArrayList&lt;TestObj&gt; list = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 100; i++) {
+            list.add(new TestObj(i));
+        }
+
+        /** 遍历时删除元素*/
+        for (TestObj obj : list) {
+            if (obj.getValue() &lt; 10) {
+                /** 这里会抛出ConcurrentModificationException*/
+                list.remove(obj);
+            }
+        }
+    }
+}
+
+class TestObj {
+    int value;
+
+    public TestObj(int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
+    }
+}
 </code></pre>
-<p>windows操作系统将多个变量用分号分割.</p>
-<pre class="prettyprint"><code>.;C:\Program Files\Java\jdk1.8.0_144\lib
+<p>运行结果:</p>
+<pre class="prettyprint"><code>Exception in thread "main" java.util.ConcurrentModificationException
+    at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:901)
+    at java.util.ArrayList$Itr.next(ArrayList.java:851)
+    at com.dashidan.faq4.Demo1.main(Demo1.java:20)
 </code></pre>
-<div class="bs-callout bs-callout-success">
-    <h4>变量值</h4>
-    <p>由".;"加"JDK安装目录"加"lib"组成.其中"."表示当前程序运行当前路径.</p>
-</div>
-<p>Java用户变量classpath配置.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-4.png" alt="图2-4" width="394" height="406"></mip-img>   </p>
-<div id="3.4"class="dsd_title_c_2"><h4>3.4 配置系统变量</h4></div>
-<p>在"系统变量"栏中找到Path-&gt;点击"编辑"按钮增加</p>
+<p>看.抛出这个异常就是这么简单。</p>
+<div id="2.2"class="dsd_title_c_2"><h4>2.2 解决单线程环境的ConcurrentModificationException异常</h4></div>
+<p>单线程环境中可以通过将ArrayList集合改为CopyOnWriteArrayList，或者可以通过迭代器遍历删除，可以避免出现ConcurrentModificationException异常.</p>
+<div id="2.3"class="dsd_title_c_2"><h4>2.3 ArrayList集合改为CopyOnWriteArrayLis</h4></div>
+<p>示例代码:</p>
+<pre class="prettyprint"><code>package com.dashidan.faq4;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 4.ConcurrentModifyException的产生原因及如何避免
+ * Created by 大屎蛋 on 2018/5/24.
+ */
+public class Demo2 {
+
+    public static void main(String[] args) {
+        /** 初始化集合类*/
+        CopyOnWriteArrayList&lt;TestObj&gt; list = new CopyOnWriteArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 100; i++) {
+            list.add(new TestObj(i));
+        }
+
+        /** 遍历时删除元素*/
+        for (TestObj obj : list) {
+            if (obj.getValue() &lt; 10) {
+                /** 这里不会抛出ConcurrentModificationException*/
+                list.remove(obj);
+            }
+        }
+
+        System.out.println();
+    }
+}
+</code></pre>
+<div id="2.4"class="dsd_title_c_2"><h4>2.4 通过迭代器遍历删除</h4></div>
+<p>通过集合类的iterator()方法获取迭代器对象Iterator<TestObj>,通过迭代器对象的iterator.hasNext()方法判断是否还有数据，如果有的话，通过iterator.next()方法得到下一个对象，然后通过iterator.remove()方法删除.在单线程环境中这样可以避免出现ConcurrentModificationException。</p>
+<p>示例代码:</p>
+<pre class="prettyprint"><code>package com.dashidan.faq4;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 4.ConcurrentModifyException的产生原因及如何避免
+ * Created by 大屎蛋 on 2018/5/24.
+ */
+public class Demo3 {
+
+    public static void main(String[] args) {
+        for (int n = 0; n &lt; 1000000; n++) {
+            /** 初始化集合类*/
+            ArrayList&lt;TestObj&gt; list = new ArrayList&lt;&gt;();
+            for (int i = 0; i &lt; 100; i++) {
+                list.add(new TestObj(i));
+            }
+
+            /** 遍历时删除元素*/
+            Iterator&lt;TestObj&gt; iterator = list.iterator();
+            while (iterator.hasNext()) {
+                TestObj testObj = iterator.next();
+                if (testObj.getValue() &lt; 10) {
+                    iterator.remove();
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<div id="2.5"class="dsd_title_c_2"><h4>2.5 这两种方式的效率比较</h4></div>
+<p>每个都执行一百万次比较时间：</p>
 <ul>
-<li>Win7,xp,8配置Java环境变量
-Win7,8,xp这几个操作系统版本path变量将多个变量用分号分割.新增加的java环境变量path变量由";"加上"JDK安装目录"加"bin"目录组成.</li>
+<li>Demo2测试代码</li>
 </ul>
-<pre class="prettyprint"><code>;C:\Program Files\Java\jdk1.8.0_144\bin
+<pre class="prettyprint"><code>package com.dashidan.faq4;
+
+import java.util.concurrent.CopyOnWriteArrayList;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 4.ConcurrentModifyException的产生原因及如何避免
+ * Created by 大屎蛋 on 2018/5/24.
+ */
+public class Demo2 {
+
+    public static void main(String[] args) {
+        long t1 = System.currentTimeMillis();
+        for (int n = 0; n &lt; 1000000; n++) {
+            /** 初始化集合类*/
+            CopyOnWriteArrayList&lt;TestObj&gt; list = new CopyOnWriteArrayList&lt;&gt;();
+            for (int i = 0; i &lt; 100; i++) {
+                list.add(new TestObj(i));
+            }
+
+            /** 遍历时删除元素*/
+            for (TestObj obj : list) {
+                if (obj.getValue() &lt; 10) {
+                    /** 这里不会抛出ConcurrentModificationException*/
+                    list.remove(obj);
+                }
+            }
+        }
+
+        long t2 = System.currentTimeMillis();
+        System.out.println("t2 - t1 " + (t2 - t1));
+    }
+}
+</code></pre>
+<p>输出结果:</p>
+<pre class="prettyprint"><code>t2 - t1 7013
 </code></pre>
 <ul>
-<li>Win10配置Java环境变量
-win10操作系统增加环境变量时会新建一个属性,不需要加分号.</li>
+<li>Demo1测试代码</li>
 </ul>
-<pre class="prettyprint"><code>C:\Program Files\Java\jdk1.8.0_144\bin
+<pre class="prettyprint"><code>package com.dashidan.faq4;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 4.ConcurrentModifyException的产生原因及如何避免
+ * Created by 大屎蛋 on 2018/5/24.
+ */
+public class Demo3 {
+
+    public static void main(String[] args) {
+        long t1 = System.currentTimeMillis();
+        for (int n = 0; n &lt; 1000000; n++) {
+            /** 初始化集合类*/
+            ArrayList&lt;TestObj&gt; list = new ArrayList&lt;&gt;();
+            for (int i = 0; i &lt; 100; i++) {
+                list.add(new TestObj(i));
+            }
+
+            /** 遍历时删除元素*/
+            Iterator&lt;TestObj&gt; iterator = list.iterator();
+            while (iterator.hasNext()) {
+                TestObj testObj = iterator.next();
+                if (testObj.getValue() &lt; 10) {
+                    iterator.remove();
+                }
+            }
+        }
+        long t2 = System.currentTimeMillis();
+        System.out.println("t2 - t1 " + (t2 - t1));
+    }
+}
 </code></pre>
-<p>如图:<br />
-<mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-5.png" alt="图2-5" width="394" height="406"></mip-img>   </p>
-<div id="3.5"class="dsd_title_c_2"><h4>3.5 JDK与JRE</h4></div>
-<p>JDK是java开发工具集成包,开发,编译java程序必须安装.jre(Java Runtime Environment)是java运行时环境.在一些不需要编译java源文件只需要运行java程序的环境中只装JRE也可以.</p>
-<p>Java默认安装目录"C:\Program Files\Java\jdk1.8.0<em>144".在"jdk1.8.0</em>144"的同级目录有个文件夹"jre1.8.0_144",是Java运行环境(Java Runtime Environment).</p>
-<div id="4"><h3>4 重启电脑</h3></div>
-<p>配置完成重启电脑,使环境变量生效.部分电脑配置环境变量不重启不生效, 这一步不要忘记.</p>
-<div id="5"><h3>5 测试</h3></div>
-<div id="5.1"class="dsd_title_c_2"><h4>5.1 打开"命令提示符"</h4></div>
-<p>windows打开"命令提示符"方法:鼠标点击桌面左下角windows图标-&gt;所有程序-&gt;附件-&gt;命令提示符.</p>
-<p><a href="http://dashidan.com/article/windows/faq/2.html">打开windows命令提示符</a></p>
-<div id="5.2"class="dsd_title_c_2"><h4>5.2 测试环境变量配置是否生效</h4></div>
-<p>在命令提示符中输入java命令java -version:</p>
-<pre class="prettyprint"><code>java -version
+<p>输出结果:</p>
+<pre class="prettyprint"><code>t2 - t1 1919
 </code></pre>
-<p>输出java版本号信息说明配置正确.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-6.png" alt="图2-6" width="480" height="151"></mip-img>   </p>
-<div id="5.3"class="dsd_title_c_2"><h4>5.3 测试用户变量配置</h4></div>
-<p>在命令提示符中输入javac命令:</p>
-<pre class="prettyprint"><code>javac
+<p>输出结果可能不一样，但可以从数据上看出第二种方法效率高于第一种方法.</p>
+<p>单线程环境中推荐第二种方式，第二种方式的适应性适应性更广，继承自Collection类的集合类，都可以采用这种方式。</p>
+<div id="3"><h3>3 多线程触发举例</h3></div>
+<p>多线程情景中，一个线程遍历，一个线程修改，即使采用迭代器(Iterator)来遍历还是会出现ConcurrentModificationException异常，单线程情境下安全的操作，多线程情境中不再安全。</p>
+<div id="3.1"class="dsd_title_c_2"><h4>3.1 多线程触发步骤</h4></div>
+<p>1.初始化一个集合类。
+2.启动一个线程随机删除数据。
+3.主线程不停的遍历该集合。</p>
+<div id="3.2"class="dsd_title_c_2"><h4>3.2 示例代码</h4></div>
+<pre class="prettyprint"><code>package com.dashidan.faq4;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 4.ConcurrentModifyException的产生原因及如何避免
+ * Created by 大屎蛋 on 2018/5/24.
+ */
+public class Demo4 {
+
+    public static void main(String[] args) {
+        /** 初始化集合类*/
+        ArrayList&lt;TestObj&gt; list = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 10000000; i++) {
+            list.add(new TestObj(i));
+        }
+
+        /**启动一个线程随机删除数据*/
+        new Thread(new ThreadClass(list)).start();
+
+        /** 遍历元素*/
+&lt;TestObj&gt; iterator = list.iterator();
+        while (iterator.hasNext()) {
+            TestObj testObj = iterator.next();
+        }
+    }
+}
+
+
+class ThreadClass implements Runnable {
+
+    List&lt;TestObj&gt; list;
+
+    public ThreadClass(List&lt;TestObj&gt; list) {
+        this.list = list;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            int index = new Random().nextInt(list.size());
+            list.remove(index);
+        }
+    }
+}
 </code></pre>
-<p>javac 命令是编译java程序的命令这个命令如果输出javac命令行信息说明java用户环境变量配置正确.如图:</p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/java/basic/2-7.png" alt="图2-7" width="480" height="289"></mip-img>   </p>
-<div class="bs-callout bs-callout-danger">
-    <h4>执行java,javac错误提示</h4>
-    如果执行java命令时在命令行窗口提示错误,表示环境变量配置有问题,需要<a href="#2.3">检查Java环境变量配置</a>.<br>
-    运行java命令提示'javac'不是内部或外部命令,也不是可运行的程序或批处理文件.<a href="#2.3">检查Java用户变量配置</a>
-</div>
-<div id="6"><h3>6 相关文章</h3></div>
-<p><a href="https://dashidan.com//article/java/addenda/4.html">linux搭建Java开发环境</a>  </p>
-<p><mip-img layout="responsive" src="https://dashidan.com//img/common/greatman.jpg" alt="图" width="333" height="320"></mip-img></p>
+<div id="3.3"class="dsd_title_c_2"><h4>3.3 解决多线程环境的ConcurrentModificationException异常</h4></div>
+<p>将ArrayList改为CopyOnWriteArrayList在多线程环境中同样可以避免出现这个异常。</p>
+<p>示例代码:</p>
+<pre class="prettyprint"><code>package com.dashidan.faq4;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 4.ConcurrentModifyException的产生原因及如何避免
+ * Created by 大屎蛋 on 2018/5/24.
+ */
+public class Demo5 {
+    public static void main(String[] args) {
+        /** 初始化集合类*/
+        ArrayList&lt;TestObj&gt; list = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; 10000000; i++) {
+            list.add(new TestObj(i));
+        }
+
+        CopyOnWriteArrayList&lt;TestObj&gt; list1 = new CopyOnWriteArrayList&lt;&gt;(list);
+
+        /**启动一个线程随机删除数据*/
+        new Thread(new ThreadClass(list1)).start();
+
+        /** 遍历元素*/
+        Iterator&lt;TestObj&gt; iterator = list1.iterator();
+        while (iterator.hasNext()) {
+            TestObj testObj = iterator.next();
+        }
+
+        System.out.println("end");
+    }
+}
+</code></pre>
+<p>这里需要注意的是需要先放入ArrayList中然后在通过CopyOnWriteArrayList构造函数中传入参数来实现这个测试。</p>
+<p>如果直接将3.2中的实例代码中的ArrayList改为CopyOnWriteArrayList，程序会花大量的时间用在初始化上。因为CopyOnWriteArrayList每次修改数据都会复制一个新的数组。这种效率上的消耗也是比较大。</p>
+<div id="3.4"class="dsd_title_c_2"><h4>3.4 采用ConcurrentHashMap替换HashMap</h4></div>
+<p>如果上述例子中的ArrayList替换为HashMap，也会出现这个异常。解决方案是：多线程环境修改和遍历HashMap，采用ConcurrentHashMap替换HashMap类，可以避免出现ConcurrentModificationException异常。</p>
+<p>示例代码:</p>
+<pre class="prettyprint"><code>package com.dashidan.faq4;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+
+/**
+ * 大屎蛋教程网-dashidan.com
+ * 4.ConcurrentModifyException的产生原因及如何避免
+ * Created by 大屎蛋 on 2018/5/24.
+ */
+public class Demo6 {
+    public static void main(String[] args) {
+        /** 初始化集合类*/
+        ConcurrentHashMap&lt;Integer, TestObj&gt; map = new ConcurrentHashMap&lt;&gt;();
+        for (int i = 0; i &lt; 1000000; i++) {
+            map.put(i, new TestObj(i));
+        }
+
+        /**启动一个线程随机删除数据*/
+        new Thread(new ThreadClass1(map)).start();
+
+        /** 遍历元素*/
+        Iterator&lt;TestObj&gt; iterator = map.values().iterator();
+        while (iterator.hasNext()) {
+            TestObj testObj = iterator.next();
+        }
+
+        System.out.println("end");
+    }
+}
+
+class ThreadClass1 implements Runnable {
+
+    Map&lt;Integer, TestObj&gt; map;
+
+    public ThreadClass1(Map&lt;Integer, TestObj&gt; map) {
+        this.map = map;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            if (map.size() &gt; 0) {
+                int index = new Random().nextInt(map.size());
+                map.remove(index);
+            }
+        }
+    }
+}
+</code></pre>
+<div id="4"><h3>4 其他方法</h3></div>
+<p>文中提到是作者常用的一些解决方案，还有其他的替代方案，比如采用同步锁等的方案等。在写代码的过程中多思考多总结。办法总比问题多。</p>
         </div>
     </div>
 </div>
@@ -1870,13 +2161,13 @@ win10操作系统增加环境变量时会新建一个属性,不需要加分号.<
 
 <footer>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
-            <a href="https://dashidan.com//article/java/basic/1.html"> &lt; 1.Java教程概述</a>
+            <a href="https://dashidan.com//article/java/faq/3.html"> &lt; 3.java ArrayListt原理及转化成数组常用方法</a>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
         <a href="https://dashidan.com//article/java/index.html">目录</a>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
-            <a href="https://dashidan.com//article/java/basic/3.html"> 3.第一个Java程序 &gt;</a>
+            <a href="https://dashidan.com//article/java/faq/5.html"> 5.Java随机数Random类 &gt;</a>
     </div>
 </footer>
 
